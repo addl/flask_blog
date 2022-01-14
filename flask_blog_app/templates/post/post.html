@@ -1,0 +1,28 @@
+{% extends 'common/base.html' %}
+
+{% block title %}
+{{ super() }} create post
+{% endblock %}
+
+{% block main_content %}
+
+<div class="grid">
+    <article>
+        <h2>{{ post.translations[g.lang_code].title }}</h2>
+        <h3>{{ _('by') }} {{ post.user.email }} / {{ post.timestamp.strftime('%Y-%m-%d') }}</h3>
+        {{ post_md | safe }}
+    </article>
+    {% endblock %}
+
+    {% block sidebar %}
+    <aside>
+        <h3>In this post</h3>
+        <ul>
+            <li>Flask babel</li>
+            <li>Configuration</li>
+            <li>Generating files</li>
+            <li>More...</li>
+        </ul>
+    </aside>
+    {% endblock %}
+</div>

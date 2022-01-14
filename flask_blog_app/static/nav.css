@@ -1,0 +1,110 @@
+@import 'https://fonts.googleapis.com/css?family=Raleway';
+
+nav a {
+    color: white;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+nav ul li {
+   display: inline;
+}
+
+nav.container {
+    font-family: Raleway;
+	padding: 2em 0;
+}
+
+nav.container a {
+    color: #FFF;
+    text-decoration: none;
+    font: 16px Raleway;
+    margin: 0px 10px;
+    padding: 10px 10px;
+    position: relative;
+    z-index: 0;
+    cursor: pointer;
+}
+
+nav.container a::after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  content: "";
+  width: 0%;
+  height: 1px;
+  background-color: #fff;
+  transition: all 0.5s;
+  visibility: hidden;
+}
+
+nav.container a:hover::after {
+    visibility: initial;
+    width: 95%;
+}
+
+/* Brackets go out */
+.feature-box .brackets a:before, .feature-box .brackets a:after {
+    position: absolute;
+    opacity: 0;
+    font-size: 16px;
+    top: 0px;
+    color: #394046;
+    transition: all 0.3s;
+}
+.feature-box .brackets .link_wrapper {
+    position: relative;
+    display: inline;
+}
+
+.feature-box .brackets a:before {
+    content: '[';
+    left: -10px;
+    transform: translateX(10px);
+}
+
+.feature-box .brackets a:after {
+    content: ']';
+    right: -10px;
+    transform: translateX(-10px);
+}
+
+.feature-box .brackets a:hover:before, .feature-box .brackets a:hover:after {
+    opacity: 1;
+    transform: translateX(0px);
+}
+/* End brackets */
+
+/* Logo and search*/
+nav.logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #cccccc14;
+}
+
+nav.logo .social {
+    width: 30%;
+    padding-left: 10px;
+}
+nav.logo .social a {
+    padding: 2px 4px;
+}
+
+nav.logo .center_logo {
+    width: 30%;
+    font-size: 32px;
+    text-align: center;
+}
+
+nav.logo .search {
+    width: 30%;
+    justify-content: flex-end;
+    display: flex;
+}

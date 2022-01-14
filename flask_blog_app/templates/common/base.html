@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='fontawesome/all.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+
+    <title>
+        {% block title %}
+        My Refactor
+        {% endblock %}
+    </title>
+
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    {% block meta_description %}
+    <meta content="Slogan here"
+          name="Description">
+    {% endblock %}
+
+    {% block extrahead %}{% endblock %}
+</head>
+
+<body>
+{% include 'common/header.html' %}
+
+<main class="container">
+    {% block main_content %}
+
+    {% endblock %}
+
+    {% block sidebar %}
+
+    {% endblock %}
+</main>
+
+{% include 'common/footer.html' %}
+</body>
+</html>

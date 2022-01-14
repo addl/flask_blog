@@ -1,0 +1,74 @@
+@import "nav.css";
+@import "subscribe.css";
+@import "search.css";
+@import "quote.css";
+@import "footer.css";
+@import "boxes.css";
+
+body {
+    /*font-family: “Playfair Display”, “Didot”, "Times New Roman", Times, serif;*/
+    margin: 0;
+}
+
+header.container {
+    padding-top: 0px;
+    padding-bottom: 30px;
+}
+
+.container {
+    padding: 40px 15%;
+}
+
+/* Header */
+.banner {
+  background-color: #111;
+}
+
+section.welcome {
+    text-align: center;
+    border-bottom: 1px solid #d4d4d4;
+}
+
+a {
+    color: #111;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+/* Side bar */
+.grid {
+  display: flex;
+  justify-content: space-between;
+}
+
+article {
+    width: 66%;
+}
+
+aside {
+    width: 30%;
+    overflow: hidden;
+}
+
+@media screen and (max-width: 800px) {
+    .container {
+        padding: 20px 5%;
+    }
+
+    .grid {
+      flex-direction: column;
+    }
+
+    article {
+        border-bottom: 1px solid #d4d4d4;
+    }
+
+    article, aside {
+        width: 100%;
+    }
+}
+
+

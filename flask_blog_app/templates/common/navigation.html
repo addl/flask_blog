@@ -1,0 +1,12 @@
+<nav class="container">
+    <ul class="brackets">
+        <li><a href="/">{{ _('Home') }}</a></li>
+        <li><a href="{{ url_for('POST_BP.all_posts') }}">{{ _('Blog') }}</a></li>
+        {% if current_user.is_authenticated %}
+        <li><a href="{{ url_for('POST_BP.create_post') }}">Create post</a></li>
+        <li><a href="{{ url_for('AUTH_BP.logout') }}">{{ _('Logout') }}</a></li>
+        {% else %}
+        <li><a href="{{ url_for('AUTH_BP.login') }}">{{ _('Sign in') }}</a></li>
+        {% endif %}
+    </ul>
+</nav>

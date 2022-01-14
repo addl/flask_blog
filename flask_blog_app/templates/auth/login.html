@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login • My refactor</title>
+    <meta name="description" content="Beautiful and scalable code">
+    <link rel="shortcut icon" href="https://picocss.com/favicon.ico">
+    <link rel="canonical" href="https://picocss.com/examples/sign-in/">
+
+    <!-- Pico.css -->
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+
+    <!-- Custom styles for this example -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+</head>
+
+<body>
+
+<main class="container">
+    <article class="grid">
+        <div>
+            <hgroup>
+                <h1>Sign in</h1>
+                <h2>A minimalist layout for Login pages</h2>
+            </hgroup>
+            <form method="POST" action="{{ url_for('AUTH_BP.login') }}">
+                {{ form.csrf_token }}
+                {{ form.email.label }} {{ form.email }}
+                {{ form.password.label }} {{ form.password }}
+                <fieldset>
+                    <label for="remember_me">
+                        {{ form.remember_me }}
+                        Remember me
+                    </label>
+                </fieldset>
+
+                <button type="submit">Login</button>
+            </form>
+        </div>
+        <div></div>
+    </article>
+</main>
+
+<!-- Footer -->
+<footer class="container-fluid">
+    <small>Built with <a href="https://picocss.com" class="secondary">Pico</a> • <a
+            href="https://github.com/picocss/examples/tree/master/sign-in/" class="secondary">Source code</a></small>
+</footer>
+
+</body>
+
+</html>

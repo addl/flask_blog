@@ -1,0 +1,14 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-gap: 1rem;
+}
+.grid-item {
+  padding: 20px;
+  text-align: center;
+}
+
+.feature-box h3 {
+    color: #333!important;
+    text-align: center;
+}

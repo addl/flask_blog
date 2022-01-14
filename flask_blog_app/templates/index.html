@@ -1,0 +1,32 @@
+{% extends 'common/base.html' %}
+
+{% block title %}
+{{ super() }} create post
+{% endblock %}
+
+{% block main_content %}
+<section class="welcome">
+    <h3>Welcome to My refactor</h3>
+    <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nulla nunc dui,
+        tristique in semper vel.</p>
+</section>
+
+<div class="grid-container">
+    {% for p in posts %}
+    <div class="grid-item feature-box">
+        <div class="brackets">
+            <h3>{{ p.title }}</h3>
+            <p>
+                Class aptent taciti sociosqu ad litora torquent per conubia nostra,
+                per inceptos himenaeos. Nulla nunc dui, tristique in semper vel.
+            </p>
+            <div class="link_wrapper">
+                <a href="{{ url_for('POST_BP.show_post', human_url=p.human_url) }}" class="read-more">Read More</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+{% endblock %}
