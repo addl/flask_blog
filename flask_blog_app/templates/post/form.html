@@ -5,10 +5,11 @@
 {% endblock %}
 
 {% block main_content %}
-    <form method="POST" action="{{ url_for('POST_BP.create_post') }}">
+    <form method="POST" action="{{ url_for('POST_BP.create_post') }}" enctype="multipart/form-data">
         {{ form.csrf_token }}
         {{ form.title.label }} {{ form.title }}
         {{ form.title_es.label }} {{ form.title_es }}
+        {{ form.file_content.label }} {{ form.file_content }}
         {% if form.title.errors %}
             <ul class="errors">
                 {% for error in form.title.errors %}

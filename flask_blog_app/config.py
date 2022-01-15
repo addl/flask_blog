@@ -8,6 +8,7 @@ class Config(object):
     CSRF_ENABLED = True
     SECRET_KEY = 'this-really-needs-to-be-changed'
     SQLALCHEMY_DATABASE_URI = 'postgresql://pguser:postgres@127.0.0.1:5432/flask_blog'
+    UPLOAD_FOLDER = '/home/lion/Public'
 
 
 class ProductionConfig(Config):

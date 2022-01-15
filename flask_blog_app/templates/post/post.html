@@ -8,7 +8,7 @@
 
 <div class="grid">
     <article>
-        <h2>{{ post.translations[g.lang_code].title }}</h2>
+        <h2>{{ post.title }}</h2>
         <h3>{{ _('by') }} {{ post.user.email }} / {{ post.timestamp.strftime('%Y-%m-%d') }}</h3>
         {{ post_md | safe }}
     </article>
