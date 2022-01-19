@@ -8,13 +8,17 @@
     </div>
 
     <div class="center_logo">
-        <a href="/"><strong>My refactor</strong></a>
+        <a href="/">
+            <span class="wing left"></span>
+            <strong>My refactor</strong>
+            <span class="wing right"></span>
+        </a>
     </div>
 
     <div class="search">
-        <form class="searchBox">
-            <input class="searchInput" type="text" name="" placeholder="What do you want to learn..">
-            <button class="searchButton" href="#">
+        <form class="searchBox" id="searchForm" action="{{ url_for('POST_BP.search_posts') }}" method="get">
+            <input class="searchInput" type="text" name="query" placeholder="What do you want to learn..">
+            <button class="searchButton">
                 <i class="fas fa-search"></i>
             </button>
         </form>

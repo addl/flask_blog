@@ -1,0 +1,11 @@
+.tags .tag::before {
+    content: '#';
+    margin-right: 2px;
+}
+
+.tags .tag {
+    background: linen;
+    color: #000;
+    padding: 0.2em 0.4em;
+    cursor: pointer;
+}

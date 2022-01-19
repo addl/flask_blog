@@ -1,6 +1,6 @@
-## In this post
+# I18N con Flask y Babel
 
-1. Install flask-babel extension
+1. Instalar extension flask-babel extension
 
 2. To notice that flask-bable is just an extension, the package Babel is an standalone module to work with i18n
 
@@ -74,7 +74,7 @@ Now we are going to include some text inside this file.
 
 
 ## Configure project and flask-babel extension, the followingcode inside 'app.__init__.py' within create_app, in case you are using 'application factory'
-```python
+```
 @babel.localeselector
     def get_locale():
         # if a user is logged in, use the locale from the user settings
@@ -174,7 +174,7 @@ This command will generate a '.mo' file just next to the '.po' file
 
 ## Running the application
 Set default locale to "es", just to test:
-```python
+```
 @babel_ext.localeselector
 def get_locale():
     return 'es'

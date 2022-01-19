@@ -3,12 +3,32 @@
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   grid-gap: 1rem;
 }
+
+.grid .grid-container {
+    width: 100%;
+}
+
 .grid-item {
   padding: 20px;
   text-align: center;
 }
 
-.feature-box h3 {
-    color: #333!important;
-    text-align: center;
+.grid-item h3 {
+    10px 0 0;
 }
+
+.grid-item a.read-more {
+    background: linen;
+    padding: 8px 14px;
+    color: #363636;
+}
+
+.grid-item a.read-more:hover {
+    background: #363636;
+    color: white;
+}
+
+.grid-item .box_content {
+    padding: 0 0 1em 0;
+}
+

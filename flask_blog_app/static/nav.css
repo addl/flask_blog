@@ -1,7 +1,14 @@
 @import 'https://fonts.googleapis.com/css?family=Raleway';
 
 nav a {
-    color: white;
+    color: #363636;
+}
+
+nav ul li a {
+    font-family: "Montserrat", Sans-serif;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 600;
 }
 
 nav ul {
@@ -18,13 +25,14 @@ nav ul li {
 
 nav.container {
     font-family: Raleway;
-	padding: 2em 0;
+	padding: 1.5em 0;
+	border-top: 1px solid #cccccc42;
+    border-bottom: 1px solid #363636;
 }
 
 nav.container a {
-    color: #FFF;
+    color: #363636;
     text-decoration: none;
-    font: 16px Raleway;
     margin: 0px 10px;
     padding: 10px 10px;
     position: relative;
@@ -32,61 +40,16 @@ nav.container a {
     cursor: pointer;
 }
 
-nav.container a::after {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  content: "";
-  width: 0%;
-  height: 1px;
-  background-color: #fff;
-  transition: all 0.5s;
-  visibility: hidden;
+nav.container a:hover {
+    font-weight: 700;
+    border-bottom: 2px solid #363636;
 }
-
-nav.container a:hover::after {
-    visibility: initial;
-    width: 95%;
-}
-
-/* Brackets go out */
-.feature-box .brackets a:before, .feature-box .brackets a:after {
-    position: absolute;
-    opacity: 0;
-    font-size: 16px;
-    top: 0px;
-    color: #394046;
-    transition: all 0.3s;
-}
-.feature-box .brackets .link_wrapper {
-    position: relative;
-    display: inline;
-}
-
-.feature-box .brackets a:before {
-    content: '[';
-    left: -10px;
-    transform: translateX(10px);
-}
-
-.feature-box .brackets a:after {
-    content: ']';
-    right: -10px;
-    transform: translateX(-10px);
-}
-
-.feature-box .brackets a:hover:before, .feature-box .brackets a:hover:after {
-    opacity: 1;
-    transform: translateX(0px);
-}
-/* End brackets */
 
 /* Logo and search*/
 nav.logo {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #cccccc14;
 }
 
 nav.logo .social {
@@ -101,6 +64,35 @@ nav.logo .center_logo {
     width: 30%;
     font-size: 32px;
     text-align: center;
+    font-family: 'Dancing Script', serif;
+    position: relative;
+}
+
+.wing {
+    position: absolute;
+    border: 1px solid #adadad40;
+    width: 30px;
+}
+
+.center_logo .wing.left {
+    transform: translate(-40px, 22px);
+}
+
+.center_logo .wing.right {
+    transform: translate(10px, 22px);
+}
+
+.title {
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+.title .wing.left {
+    transform: translate(-40px, 8px);
+}
+
+.title .wing.right {
+    transform: translate(10px, 8px);
 }
 
 nav.logo .search {

@@ -7,33 +7,40 @@
 
 .subscribe-title {
 	font-weight: bold;
-	font-size: 26px;
+	font-size: 22px;
 	margin-bottom: 18px;
+    color: white;
 }
 
 .subscribe-text {
     max-width: 450px;
-    margin-bottom: 40px;
+    font-size: 14px;
 }
 
-.form {
-	margin-bottom: 25px;
+.subscribe .form {
+	margin: 15px 0;
 	display: flex;
 }
 
-.form input {
+.subscribe .form input {
 	padding: 10px;
 	border: 1px;
+	min-width: 300px;
 }
 
-.form input:focus {
+.subscribe .form input:focus {
 	outline: none;
 }
 
-.form button[type=submit] {
-    background: #3D9FFF;
+.form button {
+    background: linen;
     padding: 10px;
     border: none;
-    color: white;
+    color: #000;
     cursor: pointer;
+    min-width: 80px;
+}
+
+.form button:hover {
+    background: #dad1c8;
 }

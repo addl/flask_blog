@@ -1,28 +1,63 @@
 {% extends 'common/base.html' %}
 
 {% block title %}
-{{ super() }} create post
+{{ super() }} - {{ post.title }}
+{% endblock %}
+
+{% block meta_description %}
+    <meta name="description" content="{{ post.description }}">
+{% endblock %}
+
+{% block extra_head %}
+<script>
+    $(document).ready(function() {
+        /* Highlight code */
+        $('pre').toggleClass('sh_python');
+        /* Table Content */
+        theUl = $('<ul />');
+        $("article h2").each(function(index, elem) {
+            /* Set the id*/
+            var theId = $(elem).html().replaceAll(' ', '-').toLowerCase()
+            $(elem).attr('id', theId);
+            theLi = $('<li />');
+            theA = $('<a />').html($(elem).html()).attr('href', '#' + theId).appendTo(theLi);
+            $(theUl).append(theLi);
+        });
+        $("#table-content").append(theUl);
+        //sh_highlightDocument();
+    });
+
+
+</script>
+{% endblock %}
+
+{% block language %}
+    <a>ESP</a>
+{% endblock %}
+
+{% block sidebar %}
+<aside>
+    <div id="table-content">
+        <h1 class="title">
+            <span class="wing left"></span>
+            Table of Content
+            <span class="wing right"></span>
+        </h1>
+    </div>
+    <div id="affiliate"></div>
+</aside>
 {% endblock %}
 
 {% block main_content %}
+<article>
+    <div class="section-header">
+        <h1 class="post-title">
+            {{ post.title }}
+        </h1>
+        <h3 class="extra-data">{{ _('by') }} {{ post.user.email }} | {{ post.timestamp.strftime('%Y-%m-%d') }}</h3>
+        <span class="divider" />
+    </div>
+    {{ post_md | safe }}
+</article>
+{% endblock %}
 
-<div class="grid">
-    <article>
-        <h2>{{ post.title }}</h2>
-        <h3>{{ _('by') }} {{ post.user.email }} / {{ post.timestamp.strftime('%Y-%m-%d') }}</h3>
-        {{ post_md | safe }}
-    </article>
-    {% endblock %}
-
-    {% block sidebar %}
-    <aside>
-        <h3>In this post</h3>
-        <ul>
-            <li>Flask babel</li>
-            <li>Configuration</li>
-            <li>Generating files</li>
-            <li>More...</li>
-        </ul>
-    </aside>
-    {% endblock %}
-</div>

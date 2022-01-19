@@ -1,0 +1,18 @@
+#table-content ul {
+    list-style: square;
+    padding: 0;
+}
+
+#table-content li {
+    line-height: 1.5em;
+    color: #363636;
+    margin: 12px 0;
+}
+
+#table-content li a {
+    padding: 4px 0;
+}
+
+#table-content li a:hover {
+    color: #3D9FFF;
+}

@@ -1,22 +1,29 @@
 {% extends 'common/base.html' %}
 
 {% block title %}
-{{ super() }} - All Posts
+{{ super() }} Home
+{% endblock %}
+
+{% block welcome %}
+<section class="welcome">
+    <h3>List of posts with tag {{ tag.name }}</h3>
+</section>
 {% endblock %}
 
 {% block main_content %}
 <div class="grid-container">
-    {% for p in posts %}
+    {% for p in tag.posts %}
     <div class="grid-item feature-box">
         <h3>{{ p.title }}</h3>
         <div class="tags">
             {% for tag in p.tags %}
-            <span class="tag"><a href="{{ url_for('BLOG_BP.filter_by_tag', tag=tag.name) }}">{{ tag.name }}</a></span>
+                <span class="tag">{{ tag.name }}</span>
             {% endfor %}
         </div>
         <div class="box_content">
             <p>
-                {{ p.description }}
+                Class aptent taciti sociosqu ad litora torquent per conubia nostra,
+                per inceptos himenaeos. Nulla nunc dui, tristique in semper vel.
             </p>
         </div>
         <a href="{{ url_for('POST_BP.show_post', human_url=p.human_url) }}" class="read-more">Read More</a>

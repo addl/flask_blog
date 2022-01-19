@@ -1,0 +1,25 @@
+{% extends 'common/base.html' %}
+
+{% block title %}
+{{ super() }} Home
+{% endblock %}
+
+{% block welcome %}
+<section class="welcome">
+    <h3>Ooops! Is not your fault</h3>
+    <p>It's ours. Internal server error</p>
+</section>
+{% endblock %}
+
+{% block main_content %}
+<div class="grid-container">
+    <div class="grid-item feature-box">
+        <div class="notfound">
+            <div class="notfound-404">
+                <h1><span>5</span><span>0</span><span>5</span></h1>
+            </div>
+            <h2>we are sorry, we have encountered an unexpected problem</h2>
+        </div>
+    </div>
+</div>
+{% endblock %}

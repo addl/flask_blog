@@ -1,0 +1,1 @@
+insert into public.user (id, email, password_hash) values(1, 'admin@myrefactor.com', 'pbkdf2:sha256:260000$fHkmgAJCI3trVWbh$25f04d9ac20d006bf3667a2c51d7a0be4ef17b0b44bafacbdb34e5672a198394');

@@ -1,20 +1,18 @@
 header blockquote {
-  position: relative;
+    font-family: 'Dancing Script', serif;
+    position: relative;
     margin: 0em auto;
     width: 80%;
     max-width: 550px;
-    font-size: 20px;
+    font-size: 24px;
     line-height: 30px;
-    padding-left: 30px;
-    border-left: 2px solid #fff;
-    color: white;
+    color: #363636;
 }
 
 header blockquote cite {
   display: block;
   text-align: right;
-  font-size: 16px;
-  margin-top: 10px;
+  font-size: 18px;
   text-transform: lowercase;
-  color: gray;
+  color: #adadad;
 }

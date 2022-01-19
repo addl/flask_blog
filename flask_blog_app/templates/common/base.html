@@ -2,8 +2,21 @@
 <html lang="en" data-theme="light">
 <head>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='fontawesome/all.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='codehilite.css') }}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Spartan">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
 
     <title>
         {% block title %}
@@ -13,27 +26,29 @@
 
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    {% block meta_description %}
-    <meta content="Slogan here"
-          name="Description">
-    {% endblock %}
 
-    {% block extrahead %}{% endblock %}
+    {% block meta_description %}{% endblock %}
+
+    {% block extra_head %}{% endblock %}
 </head>
 
 <body>
 {% include 'common/header.html' %}
 
 <main class="container">
-    {% block main_content %}
+    {% block welcome %}
 
     {% endblock %}
+    <div class="grid">
+        {% block sidebar %}
+        {% endblock %}
 
-    {% block sidebar %}
-
-    {% endblock %}
+        {% block main_content %}
+        {% endblock %}
+    </div>
 </main>
 
 {% include 'common/footer.html' %}
+
 </body>
 </html>

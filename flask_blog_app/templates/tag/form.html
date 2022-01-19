@@ -1,0 +1,21 @@
+{% extends 'common/base.html' %}
+
+{% block title %}
+    {{ super() }} create tag
+{% endblock %}
+
+{% block main_content %}
+    <form method="POST" action="{{ url_for('TAG_BP.create_tag') }}">
+        {{ form.csrf_token }}
+        {{ form.name.label }} {{ form.name }}
+        {% if form.name.errors %}
+            <ul class="errors">
+                {% for error in form.name.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <br />
+        <input type="submit" value="Save">
+    </form>
+{% endblock %}

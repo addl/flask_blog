@@ -4,10 +4,58 @@
 @import "quote.css";
 @import "footer.css";
 @import "boxes.css";
+@import "toc.css";
+@import "tags.css";
+@import "404.css";
 
-body {
-    /*font-family: “Playfair Display”, “Didot”, "Times New Roman", Times, serif;*/
+body, input {
+    font-family: "Spartan", Sans-serif;
     margin: 0;
+}
+
+button {
+    font-family: 'Montserrat', Sans-serif;
+    font-weight: 700;
+}
+
+.banner {
+    padding-top: 8px;
+    background: linen;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: "Montserrat", Sans-serif;
+    color: #363636;
+    text-align: center;
+}
+
+article h1, article h2, article h3, article h4, article h5 {
+    text-align: left;
+}
+
+.section-header {
+    margin-bottom: 2em;
+}
+
+.section-header .divider {
+    border: none;
+    border-bottom: 1px solid #cccccc42;
+    height: 1px;
+    display: block;
+    margin: 0 auto 1em;
+    width: 60%;
+}
+
+article .section-header .post-title, article .section-header .extra-data {
+    text-align: center;
+    margin-top: 0;
+}
+
+article .section-header .extra-data {
+    text-align: center;
+    font-size: 13px;
+    color: #adadad;
+    font-weight: 400;
 }
 
 header.container {
@@ -19,14 +67,20 @@ header.container {
     padding: 40px 15%;
 }
 
-/* Header */
-.banner {
-  background-color: #111;
+pre {
+    overflow: auto;
+    padding: 1em;
+    -webkit-box-shadow: 4px 4px 12px -5px rgb(0 0 0 / 70%);
+    -moz-box-shadow: 4px 4px 12px -5px rgb(0 0 0 / 70%);
+    box-shadow: 4px 4px 12px -5px rgb(0 0 0 / 70%);
 }
 
+/* Header */
 section.welcome {
     text-align: center;
     border-bottom: 1px solid #d4d4d4;
+    width: 80%;
+    margin: 0 auto;
 }
 
 a {
@@ -38,6 +92,13 @@ a:hover {
     text-decoration: none;
 }
 
+.link_wrapper a {
+    text-transform: uppercase;
+    font-family: 'Montserrat';
+    color: teal;
+    font-weight: 700;
+}
+
 /* Side bar */
 .grid {
   display: flex;
@@ -45,15 +106,24 @@ a:hover {
 }
 
 article {
-    width: 66%;
+    width: 75%;
+    padding: 0 1em;
 }
 
 aside {
     width: 30%;
     overflow: hidden;
+    padding: 0 1em;
+    min-width: 200px;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1200px) {
+    .container {
+        padding: 20px 10%;
+    }
+}
+
+@media screen and (max-width: 850px) {
     .container {
         padding: 20px 5%;
     }
@@ -62,13 +132,25 @@ aside {
       flex-direction: column;
     }
 
-    article {
-        border-bottom: 1px solid #d4d4d4;
-    }
-
     article, aside {
         width: 100%;
     }
 }
 
+@media screen and (max-width: 500px) {
+    .logo .social, .logo .wing {
+        display: none;
+    }
+
+    article, aside {
+        padding: 1em 0;
+    }
+}
+
+/* Forms */
+
+fieldset {
+    border: none;
+    margin: 1em;
+}
 

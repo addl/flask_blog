@@ -1,22 +1,21 @@
 .searchBox {
     height: 40px;
     padding: 10px;
+    position: relative;
 }
 
 .searchBox:hover > .searchInput {
     width: 300px;
     padding: 0 6px;
-    position: relative;
 }
 
 .searchBox:hover > .searchButton {
-  background: white;
-  color : #2f3640;
+  background: #363636;
+  color : white;
 }
 
 .searchButton {
-    color: white;
-    float: right;
+    color: #363636;
     width: 40px;
     height: 40px;
     display: flex;
@@ -35,16 +34,15 @@
     border:none;
     background: none;
     outline:none;
-    float:left;
     padding: 0;
-    color: white;
-    font-size: 16px;
+    color: #363636;
+    font-size: 14px;
     transition: 0.4s;
     line-height: 40px;
     width: 0px;
     position: absolute;
     right: 50px;
-    border-left: 1px solid #cccccc;
+    border-left: 1px solid #363636;
 }
 
 @media screen and (max-width: 620px) {

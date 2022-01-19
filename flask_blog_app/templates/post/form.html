@@ -7,19 +7,34 @@
 {% block main_content %}
     <form method="POST" action="{{ url_for('POST_BP.create_post') }}" enctype="multipart/form-data">
         {{ form.csrf_token }}
-        {{ form.title.label }} {{ form.title }}
-        {{ form.title_es.label }} {{ form.title_es }}
-        {{ form.file_content.label }} {{ form.file_content }}
-        {% if form.title.errors %}
+        <fieldset>
+            {{ form.title.label }} {{ form.title }}
+        </fieldset>
+        <fieldset>
+            {{ form.title_es.label }} {{ form.title_es }}
+        </fieldset>
+        <fieldset>{{ form.file_content.label }} {{ form.file_content }}</fieldset>
+        <fieldset>{{ form.file_content_es.label }} {{ form.file_content_es }}</fieldset>
+        <fieldset>
+            {{ form.tags.label }} {{ form.tags }}
+            <p><a href="{{ url_for('BLOG_BP.create_tag')}}">Create tag</a></p>
+        </fieldset>
+        <fieldset>
+            {{ form.description.label }} {{ form.description }}
+        </fieldset>
+        <fieldset>
+            {{ form.description_es.label }} {{ form.description_es }}
+        </fieldset>
+        <br />
+
+        {% if form.errors %}
             <ul class="errors">
-                {% for error in form.title.errors %}
+                {% for error in form.errors %}
                     <li>{{ error }}</li>
                 {% endfor %}
             </ul>
         {% endif %}
         <br />
-        {{ form.content.label }} {{ form.content }}
-        {{ form.content_es.label }} {{ form.content_es }}
         <input type="submit" value="Save">
     </form>
 {% endblock %}
