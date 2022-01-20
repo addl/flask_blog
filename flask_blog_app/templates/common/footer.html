@@ -3,12 +3,15 @@
     <div class="grid-container">
         <div class="footer-content grid-item">
             <div class="subscribe">
-                <h2 class="subscribe-title">Let's keep in touch</h2>
-                <p class="subscribe-text">Subscribe to keep up with fresh news and exciting updates. We promise not to
-                    spam you!</p>
+                <h2 class="subscribe-title">{{ _('Keep in touch') }}</h2>
+                <p class="subscribe-text">{{ _('Subscribe to keep up with fresh news and exciting updates. We promise not to
+                    spam you!') }}</p>
                 <form class="form" id="subscriptionForm" action="{{ url_for('BLOG_BP.subscribe') }}">
-                    <input type="email" name="email" placeholder="Enter your email address"/>
-                    <button type="submit">Send</button>
+                    <input type="email" name="email" placeholder="{{ _('Enter your email address') }}"/>
+                    <button type="submit">{{ _('Send') }}</button>
+                    <div class="feedback">
+                        <span>{{ _('Thank you for subscribing!') }}</span>
+                    </div>
                 </form>
             </div>
             <ul class="socials">
@@ -27,8 +30,8 @@
         </div>
         <div class="footer-menu">
             <ul class="f-menu">
-                <li><a href="">Blog</a></li>
-                <li><a href="">About</a></li>
+                <li><a href="{{ url_for('BLOG_BP.home') }}">{{ _('Home') }}</a></li>
+                <li><a href="{{ url_for('POST_BP.all_posts') }}">{{ _('Blog') }}</a></li>
             </ul>
         </div>
     </div>

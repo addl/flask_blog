@@ -20,6 +20,28 @@
 .subscribe .form {
 	margin: 15px 0;
 	display: flex;
+    position: relative;
+}
+
+.subscribe .form .feedback{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background: linen;
+    color: black;
+    font-weight: 700;
+    overflow:hidden;
+    line-height: 2.5em;
+    -webkit-transition: width 1s ease-in-out;
+    -moz-transition: width 1s ease-in-out;
+    -o-transition: width 1s ease-in-out;
+    transition: width 1s ease-in-out;
+}
+
+.subscribe .form .feedback.active {
+    width: 100%;
 }
 
 .subscribe .form input {

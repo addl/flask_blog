@@ -26,8 +26,6 @@
         $("#table-content").append(theUl);
         //sh_highlightDocument();
     });
-
-
 </script>
 {% endblock %}
 
@@ -40,7 +38,7 @@
     <div id="table-content">
         <h1 class="title">
             <span class="wing left"></span>
-            Table of Content
+            {{ _('Table of Content') }}
             <span class="wing right"></span>
         </h1>
     </div>
@@ -54,7 +52,15 @@
         <h1 class="post-title">
             {{ post.title }}
         </h1>
-        <h3 class="extra-data">{{ _('by') }} {{ post.user.email }} | {{ post.timestamp.strftime('%Y-%m-%d') }}</h3>
+        <h3 class="extra-data">
+            {{ _('by') }} {{ post.user.email }} | {{ post.timestamp.strftime('%Y-%m-%d') }} |
+            {% if g.lang_code == 'en' %}
+                <a href="/es/posts/{{ post.translations.es.human_url }}"><span class="fi fi-es fis"></span></a>
+            {% endif %}
+            {% if g.lang_code == 'es' %}
+                <a href="/en/posts/{{ post.translations.en.human_url }}"><span class="fi fi-gb fis"></span></a>
+            {% endif %}
+        </h3>
         <span class="divider" />
     </div>
     {{ post_md | safe }}

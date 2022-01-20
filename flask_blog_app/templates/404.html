@@ -1,13 +1,13 @@
 {% extends 'common/base.html' %}
 
 {% block title %}
-{{ super() }} Home
+{{ super() }} - {{ _('Not found') }}
 {% endblock %}
 
 {% block welcome %}
 <section class="welcome">
-    <h3>Ooops! 404 Status</h3>
-    <p>We are sorry, it seems your page is not found</p>
+    <h3>{{ _('Ooops! 404 Status') }}</h3>
+    <p>{{ _('We are sorry, it seems your page is not found') }}</p>
 </section>
 {% endblock %}
 
@@ -18,7 +18,7 @@
             <div class="notfound-404">
                 <h1><span>4</span><span>0</span><span>4</span></h1>
             </div>
-            <h2>we are sorry, but the page you requested was not found</h2>
+            <h2>{{ _('we are sorry, the page you requested was not found') }}</h2>
         </div>
     </div>
 </div>

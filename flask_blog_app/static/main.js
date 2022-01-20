@@ -6,7 +6,7 @@ $(document).ready(function() {
             url: $(this).attr('action'),
             data: $(this).serialize()
         }).done(function( msg ) {
-            alert( "Data Saved: " + msg );
+            $('#subscriptionForm .feedback').toggleClass('active');
         });
     });
 });

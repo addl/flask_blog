@@ -38,7 +38,7 @@ extensions=jinja2.ext.autoescape,jinja2.ext.with_
 
 By default Babel uses English (en) and when generating files the English is the base, so generating a file for Spanish, will generated a file with the par EN-ES.
 
-```
+```commandline
 pybabel extract -F babel.cfg -o messages.pot .
 ```
 
@@ -47,6 +47,10 @@ pybabel extract -F babel.cfg -o messages.pot .
 -o output file location 'messages.pot'
 
 . scan from this path on (more in a sec)
+ALternative you can pass the actual directory you want to scan to look for translatable text:
+```commandline
+pybabel extract -F babel.cfg -o messages.pot flask_app
+```
 
 The reult of above oprtation is a file 'messages.pot'
 
@@ -126,8 +130,8 @@ Mark texts in Jinja template:
 ```
 
 Let's extract the text by generating again 'messages.pot' file, execute in console:
-```
-pybabel extract -F babel.cfg -o messages.pot .
+```commandline
+pybabel extract -F babel.cfg -o messages.pot flask_app
 ```
 
 Now you can see that the file changed, by including new entries:
@@ -147,8 +151,8 @@ msgstr ""
 ...
 ```
 Now we are ready to create the '.po' translation files:
-```
-pybabel init -i messages.pot -d app/translations -l es
+```commandline
+pybabel init -i messages.pot -d flask_app/translations -l es
 ```
 The pybabel init command takes the messages.pot file as input and writes a new language catalog to the directory given in the -d option for the language specified in the -l option. I'm going to be installing all the translations in the app/translations directory, because that is where Flask-Babel will expect translation files to be by default. The command will create a es subdirectory inside this directory for the Spanish data files. In particular, there will be a new file named app/translations/es/LC_MESSAGES/messages.po, that is where the translations need to be made.
 Now we just need to modify the file by providing actual translation to Spanish:
@@ -166,9 +170,14 @@ msgid "Home"
 msgstr "Inicio"
 ...
 ```
+
 '.po' files is like a source of translations, while '.pot' is like a template, we need to compile '.po' fies to create '.mo', '.mo' files are compiled version, means to be used by a computer, this is the actual file used by flask-babel to load translations.
+Keep in mind we need to update sometimes
+> Look for update solution so that .po files is not created again
+
+Let's compile the .po into .mo
 ```
-pybabel compile -d app/translations
+pybabel compile -d flask_app/translations
 ```
 This command will generate a '.mo' file just next to the '.po' file
 

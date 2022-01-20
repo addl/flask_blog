@@ -1,13 +1,13 @@
 {% extends 'common/base.html' %}
 
 {% block title %}
-{{ super() }} Home
+{{ super() }} - {{ _('Internal Server Error') }}
 {% endblock %}
 
 {% block welcome %}
 <section class="welcome">
-    <h3>Ooops! Is not your fault</h3>
-    <p>It's ours. Internal server error</p>
+    <h3>{{ _('Ooops! Is not your fault') }}</h3>
+    <p>{{ _('It's ours. Internal server error') }}</p>
 </section>
 {% endblock %}
 
@@ -18,7 +18,7 @@
             <div class="notfound-404">
                 <h1><span>5</span><span>0</span><span>5</span></h1>
             </div>
-            <h2>we are sorry, we have encountered an unexpected problem</h2>
+            <h2>{{ _('we are sorry, we have encountered an unexpected problem') }}</h2>
         </div>
     </div>
 </div>

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-01-12 07:25+0200\n"
+"POT-Creation-Date: 2022-01-20 07:48+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,20 +18,71 @@ msgstr ""
 "Generated-By: Babel 2.9.1\n"
 
 #: flask_blog_app/post/forms.py:8
-msgid "Name"
-msgstr "Nombre"
+msgid "Title EN"
+msgstr ""
 
-#: flask_blog_app/post/forms.py:9
-msgid "Content"
-msgstr "Contenido"
+#: flask_blog_app/templates/404.html:4
+msgid "Not found"
+msgstr ""
 
+#: flask_blog_app/templates/404.html:9
+msgid "Ooops! 404 Status"
+msgstr ""
+
+#: flask_blog_app/templates/404.html:10
+msgid "We are sorry, it seems your page is not found"
+msgstr ""
+
+#: flask_blog_app/templates/404.html:21
+msgid "we are sorry, the page you requested was not found"
+msgstr ""
+
+#: flask_blog_app/templates/common/footer.html:33
 #: flask_blog_app/templates/common/navigation.html:3
+#: flask_blog_app/templates/index.html:4
 msgid "Home"
-msgstr "Inicio"
+msgstr ""
 
+#: flask_blog_app/templates/index.html:36
+#: flask_blog_app/templates/post/all.html:22
+#: flask_blog_app/templates/search/result.html:33
+#: flask_blog_app/templates/tag/filter_posts.html:28
+msgid "Read More"
+msgstr ""
+
+#: flask_blog_app/templates/common/footer.html:6
+msgid "Keep in touch"
+msgstr ""
+
+#: flask_blog_app/templates/common/footer.html:7
+msgid ""
+"Subscribe to keep up with fresh news and exciting updates. We promise not"
+" to\n"
+"                    spam you!"
+msgstr ""
+
+#: flask_blog_app/templates/common/footer.html:10
+msgid "Enter your email address"
+msgstr ""
+
+#: flask_blog_app/templates/common/footer.html:11
+msgid "Send"
+msgstr ""
+
+#: flask_blog_app/templates/common/footer.html:13
+msgid "Thank you for subscribing!"
+msgstr ""
+
+#: flask_blog_app/templates/common/footer.html:34
 #: flask_blog_app/templates/common/navigation.html:4
 msgid "Blog"
-msgstr "Bitacora"
+msgstr ""
+
+#: flask_blog_app/templates/common/header.html:7
+msgid ""
+"The most damaging phrase in the language is.. it's always been done this "
+"way."
+msgstr ""
 
 #: flask_blog_app/templates/common/navigation.html:7
 msgid "Logout"
@@ -39,5 +90,33 @@ msgstr ""
 
 #: flask_blog_app/templates/common/navigation.html:9
 msgid "Sign in"
+msgstr ""
+
+#: flask_blog_app/templates/post/all.html:4
+msgid "All Posts"
+msgstr ""
+
+#: flask_blog_app/templates/post/post.html:41
+msgid "Table of Content"
+msgstr ""
+
+#: flask_blog_app/templates/post/post.html:56
+msgid "by"
+msgstr ""
+
+#: flask_blog_app/templates/search/result.html:4
+msgid "Search results for: "
+msgstr ""
+
+#: flask_blog_app/templates/search/result.html:14
+msgid "Search results for query:"
+msgstr ""
+
+#: flask_blog_app/templates/tag/filter_posts.html:4
+msgid "All posts with tag: "
+msgstr ""
+
+#: flask_blog_app/templates/tag/filter_posts.html:9
+msgid "List of posts with tag: "
 msgstr ""
 
