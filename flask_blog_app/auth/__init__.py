@@ -15,7 +15,7 @@ def login():
         existing_user = User.query.filter_by(email=login_form.email.data).first()
         if existing_user is None or not existing_user.check_password(login_form.password.data):
             flash('Invalid username or password')
-            return redirect(url_for('login'))
+            return redirect(url_for('.login'))
         login_user(existing_user, remember=login_form.remember_me.data)
         return redirect('/')
     return render_template('auth/login.html', form=login_form)

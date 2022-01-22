@@ -66,13 +66,9 @@ def create_app(test_config=None, get_locale=None):
         path_ = request.path[1:]
         return send_from_directory(app.static_folder, path_)
 
-    @app.errorhandler(404)
-    def not_found(e):
-        return render_template("404.html")
-
-    @app.errorhandler(500)
-    def not_found(e):
-        return render_template("500.html")
+    # Error handlers registering
+    app.register_error_handler(404, not_found)
+    app.register_error_handler(500, internal_error)
 
     # blueprint registration
     from flask_blog_app.blog import blog_bp
@@ -86,3 +82,12 @@ def create_app(test_config=None, get_locale=None):
         from .post.models import Post
 
         return app
+
+
+# Error handlers
+def not_found(e):
+    return render_template("404.html"), 404
+
+
+def internal_error(e):
+    return render_template("500.html"), 500

@@ -99,3 +99,33 @@ If this returns without indicating any issues, restart the Nginx process to read
 You should now be able to navigate to your server’s domain name in your web browser:
 
 ```http://161.35.103.255```
+
+## CReate deamon with UWsgi emperor mode
+```commandline
+sudo cp /home/myrefactor/flask_blog/myrefactor.ini /etc/uwsgi/apps-available/myapp.ini
+$ sudo ln -s /etc/uwsgi/apps-available/myrefactor.ini /etc/uwsgi/apps-enabled/myrefactor.ini
+```
+nce it is enabled, start emperor mode:
+```commandline
+sudo uwsgi --emperor /etc/uwsgi/apps-enabled/
+```
+##Start on Machine Start-up
+The best part about running uWSGI in emperor mode is we can have our apps launch upon machine startups without writing any services. Add a file called /etc/rc.local and include the following:
+```commandline
+/usr/local/bin/uwsgi --emperor /etc/uwsgi/sites-enabled --daemonize /var/log/uwsgi-emperor.log
+```
+restart your vps and confirm
+
+## Elastic search
+
+## Install elastic
+```commandline
+wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.16.3-amd64.deb
+sudo dpkg -i elasticsearch-7.16.3-amd64.deb
+sudo systemctl daemon-reload
+sudo systemctl enable elasticsearch.service
+sudo service elasticsearch start
+sudo service elasticsearch status
+```
+Onc ES is runnig, we need to make sure our app will work.
+By default indexes are not created in Elasticsearch, so if you are using ES and try to store data in ES, you might want to create indexes before sending data to ES or to tell ES to create indexes automatically. I would prefer to create indexes automatically:
