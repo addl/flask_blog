@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg width="97.896mm" height="97.896mm" version="1.1" viewBox="0 0 97.896 97.896" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+ <metadata>
+  <rdf:RDF>
+   <cc:Work rdf:about="">
+    <dc:format>image/svg+xml</dc:format>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:title/>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <g transform="translate(-59.531 -73.427)">
+  <rect x="33.479" y="62.434" width="150" height="150" fill="none"/>
+ </g>
+ <g transform="translate(-26.052 -10.993)" display="none">
+  <g transform="translate(-37.171 -62.434)" font-family="sans-serif" font-size="40px" letter-spacing="0px" word-spacing="0px">
+   <flowRoot transform="matrix(.26458 0 0 .26458 18.442 1.6036)" fill="#43beac" style="line-height:1.25" xml:space="preserve"><flowRegion fill="#43beac"><rect x="130" y="662.52" width="106.46" height="121.01" fill="#43beac"/></flowRegion><flowPara font-family="'Barlow Condensed'" font-size="96px" font-stretch="condensed" style="font-feature-settings:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-variant-numeric:normal">MY</flowPara></flowRoot>
+   <flowRoot transform="matrix(.26458 0 0 .26458 17.105 1.6036)" fill="#000000" style="line-height:1.25" xml:space="preserve"><flowRegion><rect x="255" y="662.52" width="420" height="120"/></flowRegion><flowPara fill="#ffffff" font-family="'Barlow Condensed'" font-size="96px" font-stretch="condensed" style="font-feature-settings:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-variant-numeric:normal">REFACTOR</flowPara></flowRoot>
+  </g>
+ </g>
+ <g transform="translate(-59.531 -73.427)">
+  <path d="m88.635 73.427v26.458h42.333v44.979h-42.333l20.505 14.861 16.003 11.598h32.284v-97.896zm-29.104 29.104v68.792h26.458v-68.792z" color="#000000" color-rendering="auto" dominant-baseline="auto" fill="#fff" image-rendering="auto" shape-rendering="auto" solid-color="#000000" style="font-feature-settings:normal;font-variant-alternates:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-variant-numeric:normal;font-variant-position:normal;isolation:auto;mix-blend-mode:normal;shape-padding:0;text-decoration-color:#000000;text-decoration-line:none;text-decoration-style:solid;text-indent:0;text-orientation:mixed;text-transform:none;white-space:normal"/>
+  <rect x="59.531" y="73.427" width="26.458" height="26.458" fill="#43beac"/>
+  <g transform="translate(-3.6917)">
+   <g transform="matrix(.26458 0 0 .26458 18.442 1.6036)" fill="#43beac" aria-label="MY">
+    <path d="m166.19 687.99q0.288-0.672 1.152-0.672h4.992q0.96 0 0.96 0.96v65.28q0 0.96-0.96 0.96h-4.896q-0.96 0-0.96-0.96v-51.456q0-0.288-0.192-0.288-0.096 0-0.288 0.192l-9.984 20.736q-0.288 0.672-0.96 0.672-0.768 0-1.056-0.672l-9.984-20.64q-0.192-0.192-0.384-0.192-0.096 0-0.096 0.288v51.36q0 0.96-0.96 0.96h-4.896q-0.96 0-0.96-0.96v-65.28q0-0.96 0.96-0.96h4.992q0.864 0 1.152 0.672l10.944 22.176q0.096 0.192 0.288 0.192t0.288-0.192z" style="font-feature-settings:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-variant-numeric:normal"/>
+    <path d="m198.01 754.42q-0.96 0-0.96-0.96v-28.704q0-0.384-0.096-0.48l-13.344-35.808-0.096-0.384q0-0.768 0.864-0.768h5.184q0.864 0 1.152 0.768l9.408 28.128q0.096 0.192 0.288 0.192t0.288-0.192l9.408-28.128q0.288-0.768 1.152-0.768h5.184q0.48 0 0.672 0.384 0.288 0.288 0.096 0.768l-13.248 35.808q-0.096 0.096-0.096 0.48v28.704q0 0.96-0.96 0.96z" style="font-feature-settings:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-variant-numeric:normal"/>
+   </g>
+   <g transform="matrix(.26458 0 0 .26458 17.105 1.6036)" fill="#fff" aria-label="REFACTOR">
+    <path d="m288.79 754.52q-0.864 0-1.152-0.768l-9.792-29.664q-0.096-0.288-0.384-0.288h-8.352q-0.384 0-0.384 0.384v29.376q0 0.96-0.96 0.96h-4.896q-0.96 0-0.96-0.96v-65.28q0-0.96 0.96-0.96h15.84q7.008 0 11.328 5.184 4.32 5.088 4.32 13.344 0 6.24-2.688 10.752t-7.296 6.336q-0.384 0.096-0.288 0.48l10.464 30.048 0.096 0.384q0 0.672-0.864 0.672zm-19.68-61.248q-0.384 0-0.384 0.384v24.288q0 0.384 0.384 0.384h8.64q4.416 0 7.104-3.36 2.688-3.456 2.688-9.12t-2.688-9.12-7.104-3.456z" style="font-feature-settings:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-variant-numeric:normal"/>
+    <path d="m334.91 692.31q0 0.96-0.96 0.96h-22.272q-0.384 0-0.384 0.384v23.808q0 0.384 0.384 0.384h14.016q0.96 0 0.96 0.96v4.128q0 0.96-0.96 0.96h-14.016q-0.384 0-0.384 0.384v23.904q0 0.384 0.384 0.384h22.272q0.96 0 0.96 0.96v4.032q0 0.96-0.96 0.96h-28.512q-0.96 0-0.96-0.96v-65.28q0-0.96 0.96-0.96h28.512q0.96 0 0.96 0.96z" style="font-feature-settings:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-variant-numeric:normal"/>
+    <path d="m375.96 692.31q0 0.96-0.96 0.96h-22.08q-0.384 0-0.384 0.384v23.808q0 0.384 0.384 0.384h13.92q0.96 0 0.96 0.96v4.128q0 0.96-0.96 0.96h-13.92q-0.384 0-0.384 0.384v29.28q0 0.96-0.96 0.96h-4.896q-0.96 0-0.96-0.96v-65.28q0-0.96 0.96-0.96h28.32q0.96 0 0.96 0.96z" style="font-feature-settings:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-variant-numeric:normal"/>
+    <path d="m407.07 754.52q-0.864 0-1.056-0.864l-2.4-11.904q0-0.192-0.192-0.288-0.096-0.096-0.288-0.096h-17.376q-0.192 0-0.384 0.096-0.096 0.096-0.096 0.288l-2.4 11.904q-0.096 0.864-1.056 0.864h-4.896q-0.48 0-0.768-0.288-0.192-0.288-0.096-0.768l14.4-65.28q0.192-0.864 1.056-0.864h5.76q0.96 0 1.056 0.864l14.592 65.28v0.192q0 0.864-0.864 0.864zm-20.544-19.104q0 0.384 0.288 0.384h15.168q0.288 0 0.288-0.384l-7.68-37.728q-0.096-0.288-0.192-0.288t-0.192 0.288z" style="font-feature-settings:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-variant-numeric:normal"/>
+    <path d="m434.66 755.29q-7.392 0-11.904-4.512-4.416-4.512-4.416-12.096v-35.616q0-7.488 4.416-12 4.512-4.512 11.904-4.512 7.488 0 11.904 4.512 4.512 4.416 4.512 12v1.632q0 0.96-0.96 0.96l-4.992 0.288q-0.96 0-0.96-0.96v-2.4q0-4.512-2.592-7.296t-6.912-2.784q-4.224 0-6.912 2.784-2.592 2.784-2.592 7.296v36.672q0 4.512 2.592 7.296 2.688 2.784 6.912 2.784 4.32 0 6.912-2.784t2.592-7.296v-2.4q0-0.96 0.96-0.96l4.992 0.288q0.96 0 0.96 0.96v1.536q0 7.584-4.512 12.096t-11.904 4.512z" style="font-feature-settings:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-variant-numeric:normal"/>
+    <path d="m492.2 687.32q0.96 0 0.96 0.96v4.032q0 0.96-0.96 0.96h-12.672q-0.384 0-0.384 0.384v59.904q0 0.96-0.96 0.96h-4.896q-0.96 0-0.96-0.96v-59.904q0-0.384-0.384-0.384h-11.904q-0.96 0-0.96-0.96v-4.032q0-0.96 0.96-0.96z" style="font-feature-settings:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-variant-numeric:normal"/>
+    <path d="m515.29 755.29q-7.392 0-12-4.608-4.512-4.608-4.512-12.192v-35.136q0-7.584 4.512-12.192 4.608-4.608 12-4.608 7.488 0 12.096 4.608t4.608 12.192v35.136q0 7.488-4.608 12.192-4.608 4.608-12.096 4.608zm0-5.952q4.416 0 7.104-2.88 2.784-2.976 2.784-7.584v-35.808q0-4.704-2.784-7.584-2.688-2.976-7.104-2.976-4.32 0-7.008 2.976-2.688 2.88-2.688 7.584v35.808q0 4.608 2.688 7.584 2.688 2.88 7.008 2.88z" style="font-feature-settings:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-variant-numeric:normal"/>
+    <path d="m570.98 754.52q-0.864 0-1.152-0.768l-9.792-29.664q-0.096-0.288-0.384-0.288h-8.352q-0.384 0-0.384 0.384v29.376q0 0.96-0.96 0.96h-4.896q-0.96 0-0.96-0.96v-65.28q0-0.96 0.96-0.96h15.84q7.008 0 11.328 5.184 4.32 5.088 4.32 13.344 0 6.24-2.688 10.752t-7.296 6.336q-0.384 0.096-0.288 0.48l10.464 30.048 0.096 0.384q0 0.672-0.864 0.672zm-19.68-61.248q-0.384 0-0.384 0.384v24.288q0 0.384 0.384 0.384h8.64q4.416 0 7.104-3.36 2.688-3.456 2.688-9.12t-2.688-9.12-7.104-3.456z" style="font-feature-settings:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-variant-numeric:normal"/>
+   </g>
+  </g>
+ </g>
+</svg>

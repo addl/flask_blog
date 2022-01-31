@@ -1,7 +1,6 @@
 # Bugs
-1. When wrong password error
-2. Create tag is not working
-3. no error handler for 500 error
+1. No filtering by tags
+2. Testing recording rectangular area, free cam
 
 # To add
 Terms of service, privacy policy

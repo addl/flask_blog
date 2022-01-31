@@ -129,3 +129,19 @@ sudo service elasticsearch status
 ```
 Onc ES is runnig, we need to make sure our app will work.
 By default indexes are not created in Elasticsearch, so if you are using ES and try to store data in ES, you might want to create indexes before sending data to ES or to tell ES to create indexes automatically. I would prefer to create indexes automatically:
+
+## Updating app
+In case you need to update your app.you will need to restart uwsgi
+```commandline
+sudo systemctl restart uwsgi
+```
+
+## create upload foler
+We need to create a folder to store the uploaded files
+```commandline
+mkdir /home/myrefactor/uploads
+```
+### Asign permission
+```commandline
+sudo chmod -R 777 /home/myrefactor/uploads
+```

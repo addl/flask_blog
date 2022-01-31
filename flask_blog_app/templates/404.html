@@ -4,6 +4,10 @@
 {{ super() }} - {{ _('Not found') }}
 {% endblock %}
 
+{% block extra_head %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='404.css') }}">
+{% endblock%}
+
 {% block welcome %}
 <section class="welcome">
     <h3>{{ _('Ooops! 404 Status') }}</h3>

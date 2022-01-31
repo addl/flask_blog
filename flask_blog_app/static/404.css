@@ -22,7 +22,7 @@
 
 .notfound .notfound-404 {
   position: relative;
-  height: 240px;
+  height: 180px;
 }
 
 .notfound .notfound-404 h1 {
@@ -33,7 +33,7 @@
   -webkit-transform: translate(-50%, -50%);
       -ms-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  font-size: 252px;
+  font-size: 180px;
   font-weight: 900;
   margin: 0px;
   color: #262626;
@@ -47,12 +47,11 @@
 }
 
 .notfound .notfound-404 h3 {
-  font-family: 'Cabin', sans-serif;
+  font-family: 'Spartan', sans-serif;
   position: relative;
   font-size: 16px;
   font-weight: 700;
   text-transform: uppercase;
-  color: #262626;
   margin: 0px;
   letter-spacing: 3px;
   padding-left: 6px;
@@ -64,8 +63,7 @@
   font-weight: 400;
   text-transform: uppercase;
   color: #000;
-  margin-top: 0px;
-  margin-bottom: 25px;
+  margin: 25px 0 0 0;
 }
 
 @media only screen and (max-width: 767px) {

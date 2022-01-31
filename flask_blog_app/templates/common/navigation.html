@@ -1,5 +1,5 @@
-<nav class="container">
-    <ul class="brackets">
+<nav>
+    <ul>
         <li><a href="{{ url_for('BLOG_BP.home') }}">{{ _('Home') }}</a></li>
         <li><a href="{{ url_for('POST_BP.all_posts') }}">{{ _('Blog') }}</a></li>
         {% if current_user.is_authenticated %}

@@ -11,7 +11,7 @@
 
 {% block welcome %}
 <section class="welcome">
-    <h3>Welcome to My refactor</h3>
+    <h2>Welcome to My refactor</h2>
     <p>A place where we talk about clean code! How to improve our code skills by applying best practices and
         most common design patterns in order to get a high scalable code.
     </p>
@@ -22,15 +22,10 @@
 <div class="grid-container">
     {% for p in posts %}
     <div class="grid-item feature-box">
-        <h3>{{ p.title }}</h3>
-        <div class="tags">
-            {% for tag in p.tags %}
-            <span class="tag"><a href="{{ url_for('BLOG_BP.filter_by_tag', tag=tag.name) }}">{{ tag.name }}</a></span>
-            {% endfor %}
-        </div>
+        <h2>{{ p.title }}</h2>
         <div class="box_content">
             <p>
-                {{ p.description }}
+                In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before the final copy is available
             </p>
         </div>
         <a href="{{ url_for('POST_BP.show_post', human_url=p.human_url) }}" class="read-more">{{ _('Read More') }}</a>
