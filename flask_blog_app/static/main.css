@@ -39,6 +39,11 @@ h2, article .section-header .post-title {
     text-transform: uppercase;
 }
 
+article h2 {
+    border-left: 1px solid var(--contrast-color);
+    padding-left: 12px;
+}
+
 .banner {
     background: var(--main-color);
 }
@@ -70,8 +75,14 @@ nav.upper-nav .logo {
     margin: 10px 0;
 }
 
+nav.upper-nav .logo a {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
 nav.upper-nav .logo h1 {
-    margin: 0;
+    margin: 0 0.5em;
     color: var(--base-color);
     font-weight: 500;
     text-transform: uppercase;
@@ -112,7 +123,7 @@ nav ul li a {
     padding-left: 5px;
     border-left: 1px solid transparent;
     color: var(--base-color);
-    transition: 0.2s;
+    transition: 0.5s;
 }
 
 nav ul li:hover a{
@@ -199,6 +210,7 @@ article h1, article h2, article h3, article h4, article h5 {
 article .section-header .post-title, article .section-header .extra-data {
     text-align: center;
     margin-top: 0;
+    border: none;
 }
 
 article .section-header .extra-data {
@@ -213,7 +225,7 @@ header.container {
 }
 
 .container {
-    padding: 40px 15%;
+    padding: 0px 15%;
 }
 
 pre {
@@ -250,6 +262,10 @@ header blockquote {
     line-height: 30px;
     color: var(--base-color);
     font-family: 'Dancing Script', cursive;
+    padding-left: 1em;
+}
+
+header blockquote p {
     border-left: 1px solid var(--contrast-color);
     padding-left: 1em;
 }
@@ -257,7 +273,7 @@ header blockquote {
 header blockquote cite {
   display: block;
   text-align: right;
-  font-size: 18px;
+  font-size: 20px;
   text-transform: lowercase;
   color: #adadad;
 }
@@ -276,13 +292,19 @@ article {
 aside {
     width: 30%;
     overflow: hidden;
-    padding: 0 1em;
+    padding: 0 2em;
     min-width: 200px;
+    margin-right: 1em;
+    background: #f5f5f5;
+}
+
+article, aside {
+    padding-top: 30px;
 }
 
 @media screen and (max-width: 1200px) {
     .container {
-        padding: 20px 10%;
+        padding: 0px 10%;
     }
 }
 
@@ -301,13 +323,16 @@ aside {
     line-height: 1.5em;
     color: var(--main-color);
     margin: 12px 0;
+    transition: 0.3s;
 }
 
 #table-content li a {
     padding: 4px 0;
+    display: block;
+    transition: 0.3s;
 }
 
-#table-content li a:hover {
+#table-content li:hover, #table-content li a:hover {
     color: var(--contrast-color);
 }
 
@@ -513,7 +538,7 @@ ul.socials {
 
 @media screen and (max-width: 850px) {
     .container {
-        padding: 20px 5%;
+        padding: 0px 5%;
     }
 
     .grid {

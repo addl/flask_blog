@@ -6,7 +6,7 @@ https://phoenixnap.com/kb/create-a-sudo-user-on-debian
 
 ## Installation of packages
 ```commandline
-sudo apt-get install python3-venv uwsgi uwsgi-src python3-pip python3-dev libpq-dev
+sudo apt-get install python3-venv uwsgi uwsgi-plugin-python3 uwsgi-src python3-pip python3-dev libpq-dev
 ```
 
 ## Create VENV and installing dependencies

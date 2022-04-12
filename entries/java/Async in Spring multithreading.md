@@ -19,7 +19,7 @@ BACKOFFICE API access to the endpoints
 load all lookup, add them to cache, migrate from excel
 
 
-
+```
 CompletableFuture<List<MatchingResponseDTO>> matchUsingQueueRes1 =
           matchingService.matchUsingQueue(entity, queue);
       CompletableFuture<List<MatchingResponseDTO>> matchUsingQueueRes2 =
@@ -63,12 +63,12 @@ CompletableFuture<List<MatchingResponseDTO>> matchUsingQueueRes1 =
     }
     return CompletableFuture.completedFuture(response);
   }
-  
+ ```
   
   
   
 
-  
+```java
 public MatchingDestinationEntity addVacancy(String vacancyId) {
     FindVacancyResponseDTO response = this.findVacancy(vacancyId);
     MatchingDestinationEntity entity = this.convertVacancy(response);
@@ -185,3 +185,4 @@ public MatchingDestinationEntity addVacancy(String vacancyId) {
     // else no matching should start
     return entity;
   }
+```

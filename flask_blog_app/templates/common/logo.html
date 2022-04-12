@@ -1,18 +1,19 @@
 <nav class="upper-nav">
-    <div class="social">
+
+    <div class="logo">
+        <a href="{{ url_for('BLOG_BP.home') }}">
+            <img src="{{ url_for('static', filename='log_no_letters_res1.svg') }}" width="50" height="50" />
+             <h1><span>my</span> refactor</h1>
+        </a>
+    </div>
+
+    <!--<div class="social">
         <a href="#"><i class="fab fa-facebook"></i></a>
         <a href="#"><i class="fab fa-twitter"></i></a>
         <a href="#"><i class="fab fa-google-plus"></i></a>
         <a href="#"><i class="fab fa-youtube"></i></a>
         <a href="#"><i class="fab fa-linkedin"></i></a>
-    </div>
-
-    <div class="logo">
-        <a href="{{ url_for('BLOG_BP.home') }}">
-            <img src="{{ url_for('static', filename='log_no_letters_res1.svg') }}" width="80" height="80" />
-            <h1><span>my</span> refactor</h1>
-        </a>
-    </div>
+    </div>-->
 
     <div class="search">
         <form class="searchBox" id="searchForm" action="{{ url_for('POST_BP.search_posts') }}" method="get">
