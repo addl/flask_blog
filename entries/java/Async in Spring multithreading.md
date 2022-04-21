@@ -1,24 +1,5 @@
 
 
-where to get details from Esco skills, it comes pre calculated
-
-
-4 queue in rabbitMq
-
-Adding more queue or processor
-
-
-Mooaz, will migrate to have minEducationLevel and degree and certificates(list of values) certificates: { en: [], ar: []}
-
-
-Check QExperience the lookups
-
-BACKOFFICE API access to the endpoints
-
-
-load all lookup, add them to cache, migrate from excel
-
-
 ```
 CompletableFuture<List<MatchingResponseDTO>> matchUsingQueueRes1 =
           matchingService.matchUsingQueue(entity, queue);

@@ -219,6 +219,10 @@ article .section-header .extra-data {
     font-family: 'Lora';
 }
 
+article img {
+    max-width: 100%;
+}
+
 header.container {
     padding-top: 0px;
     padding-bottom: 30px;
@@ -245,7 +249,7 @@ section.welcome {
 }
 
 a {
-    color: var(--main-color);
+    color: var(--contrast-color);
     text-decoration: none;
 }
 
