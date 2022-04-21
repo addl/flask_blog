@@ -24,7 +24,10 @@
             $(theUl).append(theLi);
         });
         $("#table-content").append(theUl);
-        //sh_highlightDocument();
+        /* Image Viewer */
+        const a = new ImgPreviewer('.post-content', {
+            scrollbar: true
+        })
     });
 </script>
 {% endblock %}
@@ -61,7 +64,9 @@
         </p>
         <span class="divider" />
     </div>
-    {{ post_md | safe }}
+    <section class="post-content">
+        {{ post_md | safe }}
+    </section>
 </article>
 {% endblock %}
 
