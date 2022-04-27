@@ -67,6 +67,17 @@
     <section class="post-content">
         {{ post_md | safe }}
     </section>
+    <section class="comments">
+        <div id="comments"></div>
+        <form method="POST" action="{{ url_for('POST_BP.create_comment') }}">
+            {{ form.csrf_token }}
+            {{ form.post_id }}
+            <fieldset>
+                {{ form.content.label }} {{ form.content }}
+            </fieldset>
+            <input type="submit" value="Submit">
+        </form>
+    </section>
 </article>
 {% endblock %}
 

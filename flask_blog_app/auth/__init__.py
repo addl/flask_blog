@@ -1,7 +1,6 @@
 from flask import Blueprint, render_template, flash, url_for
 from flask_login import login_user, login_required, logout_user
 from werkzeug.utils import redirect
-
 from flask_blog_app.auth.forms import LoginForm
 from flask_blog_app.auth.models import User
 

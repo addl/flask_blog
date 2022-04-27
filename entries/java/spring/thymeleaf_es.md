@@ -1,21 +1,22 @@
-## What's thymeleaf
+## Qu&eacute; es Thymeleaf
 
-Thymeleaf is a modern server-side Java template engine for both web and standalone environments.
-Thymeleaf's main goal is to bring elegant natural templates to your development workflow — HTML that can be correctly displayed in browsers and also work as static prototypes, allowing for stronger collaboration in development teams
+Thymeleaf es un moderno motor de plantilla de Java Side Side para ambientes web y independientes.
+El objetivo principal de Thymeleaf es traer plantillas naturales elegantes a su flujo de trabajo de desarrollo: HTML que se pueda mostrar correctamente en los navegadores y tambi&eacute;n trabajar como prototipos est&aacute;ticos, lo que permite una mayor colaboraci&oacute;n en los equipos de desarrollo.
 
-## Goal
+## Objetivo
 
-In this tutorial I will cover the simplest steps to create a Hello World web app example with Spring Boot and Thymeleaf.
+En este tutorial cubrir&eacute; los pasos m&aacute;s simples para crear un ejemplo de aplicaci&oacute;n Web con Spring Boot y Thymeleaf.
 
-## Requirements
+## Requisitos
 
-1. JDK 8+ or OpenJDK 8+ 
-2. Maven installed 3+
-3. Your favorite IDE
+1. JDK 8+ o OpenJDK 8+ 
+2. Maven 3+ instalado
+3. Tu IDE favorito
 
-## Dependencies
+## Dependencias
 
-We only need two dependencies for our example, Web and Thymeleaf, so in **pom.xml** set up the dependencies as:
+Solo necesitamos dos dependencias para nuestro ejemplo: Web y Thymeleaf, por lo que en **pom.xml** configure las siguientes dependencias:
+
 ````commandline
 ...
 <dependencies>
@@ -31,13 +32,13 @@ We only need two dependencies for our example, Web and Thymeleaf, so in **pom.xm
 ...
 ````
 
-## Creating the HTML page
+## Creando el archivo HTML
 
-Thymeleaf is HTML, so let's create an HTML file called: **index.html** inside templates' folder:
+Thymeleaf es HTML, por lo que vamos a crear un archivo HTML llamado: **index.html** dentro de la carpeta "templates":
 
 ![New Project using PyCharm](https://drive.google.com/uc?id=1jxevIMCmWgsIOlzafY-bqiR2UvhsSWd9)
 
-Inside the file, put the following HTML markup:
+Y dentro del archivo "index.html" ponemos el siguiente texto:
 
 ````html
 <!DOCTYPE html>
@@ -53,14 +54,14 @@ Inside the file, put the following HTML markup:
 </html>
 ````
 
-## Creating the controller
+## Creando el controlador
 
-So far we have created our page, but it needs to be served by an Spring's controller, a class annotated with **@Controller** annotation, let's create one.
-First, we create a package called "controllers":
+Hasta ahora, hemos creado nuestra p&aacute;gina, pero tiene que ser servida por un controlador de Spring, una clase anotada con **@Controller**, vamos a crear uno.
+Primero, creamos un paquete llamado "controladores":
 
 ![New Project using PyCharm](https://drive.google.com/uc?id=1Wwl9wVnkXCsf7hJW9qBpGHKJBtYkEORV)
 
-Inside this package we created a class with name "IndexController.java", and append the following content:
+Dentro de este paquete creamos una clase con nombre "IndexController.java", y dentro el siguiente contenido:
 
 ````java
 package com.myrefactor.thymeleaf.controllers;
@@ -79,26 +80,28 @@ public class IndexController {
 }
 ````
 
-Important things to notice here is the annotation **@RequestMapping**, basically we are telling Spring to map the method **index()** to the URL "/" which is the root of our server.
-Another detail is that we return a String, which by default should be the name of the template or HTML file we want to show, in this method we return "index", so Spring will render the file "index.html" located inside the template folder.
+Es importante notar aqu&iacute; el uso de la anotaci&oacute;n **@Requestmapping**, b&aacute;sicamente le estamos diciendo a Spring que asigne el m&eacute;todo **index()** a la url "/" que es la ra&iacute;z de nuestro servidor.
+Otro detalle es que devolvemos una cadena, que de manera predeterminada debe ser el nombre de la plantilla o el archivo HTML que queremos mostrar, en este m&eacute;todo devolvemos "index", por lo que Spring devolver&aacute; el archivo "index.html" ubicado dentro de la carpeta "templates".
 
-## Running the project
+## Ejecutando el proyecto
 
-In the terminal, inside the project's folder run:
+En la terminal, dentro de la carpeta del proyecto, ejecutamos:
 ````commandline
 mvn spring-boot:run
 ````
 
-If everything went ok, you should see something similar to this output:
+Si todo sali&oacute; bien, deber&iacute;a ver algo similar a esta salida:
 
 ````commandline
 2022-04-23 18:46:44.311  ... Tomcat started on port(s): 8080 (http) with context path ''
 2022-04-23 18:46:44.316  ... Started ThymeleafApplication in 0.876 seconds (JVM running for 1.076)
 ````
-Which means the server is lestening in the port 8080, so let's open the browser in
+
+Lo que significa que el servidor est&aacute; escuchando en el puerto 8080, por lo que vamos a abrir el navegador en la siguiente direcci&oacute;n:
 [http://127.0.0.1:8080](http://127.0.0.1:8080)
-The page shoud be as follow:
+
+En pantalla el resultado es el siguiente:
 
 ![New Project using PyCharm](https://drive.google.com/uc?id=18g3m3_dbWkGLBeZ51iV7H5ZZpAssnOsp)
 
-Feel free to edit the HTML at your convenience, in another post we will discuss more Thymeleaf features.
+Si&eacute;ntase libre de editar el HTML a su conveniencia, en otra publicaci&oacute;n discutiremos m&aacute;s caracter&iacute;sticas de Thymeleaf.

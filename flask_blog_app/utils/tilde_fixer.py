@@ -21,6 +21,7 @@ def fix(filename = None):
             basename = os.path.basename(f)
             if '_es.md' in basename:
                 print(f"Processing file: {f}")
+                process_file(f)
 
 
 def process_file(the_file):

@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Login • My refactor</title>
     <meta name="description" content="Beautiful and scalable code">
-    <link rel="shortcut icon" href="https://picocss.com/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='fontawesome/all.min.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.png') }}">
     <link rel="canonical" href="https://picocss.com/examples/sign-in/">
 
     <!-- Pico.css -->
@@ -21,10 +22,7 @@
 <main class="container">
     <article class="grid">
         <div>
-            <hgroup>
-                <h1>Sign in</h1>
-                <h2>A minimalist layout for Login pages</h2>
-            </hgroup>
+            <h1 class="sign_in">Sign in</h1>
             <form method="POST" action="{{ url_for('AUTH_BP.login') }}">
                 {{ form.csrf_token }}
                 {{ form.email.label }} {{ form.email }}
@@ -38,6 +36,14 @@
 
                 <button type="submit">Login</button>
             </form>
+            <div class="social">
+                <a href="{{ url_for('google')}}">
+                    <span class="fab fa-google"></span> Sign in with Google
+                </a>
+                <a href="{{ url_for('linkedin')}}">
+                    <span class="fab fa-linkedin"></span> Sign in with Linkedin
+                </a>
+            </div>
         </div>
         <div></div>
     </article>

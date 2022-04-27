@@ -23,6 +23,7 @@ class Post(Translatable, db.Model):
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     tags = db.relationship("Tag", secondary=post_tags, backref=db.backref('posts', lazy='dynamic'), lazy='dynamic')
+    comments = db.relationship('Comment', backref='post', lazy='dynamic')
 
     def __repr__(self):
         return '<Post {}>'.format(self.title)
@@ -35,3 +36,10 @@ class PostTranslation(translation_base(Post)):
     description = db.Column(db.String())
     human_url = db.Column(db.String(), unique=True, nullable=False)
 
+
+class Comment(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    post_id = db.Column(db.Integer, db.ForeignKey('post.id'))
+    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+    content = db.Column(db.String())

@@ -1,8 +1,8 @@
-## What's Hibernate
+## Que es Hibernate
 
-Hibernate is an Object/Relational Mapper tool. It's very popular among Java applications and implements the Java Persistence API. Hibernate ORM enables developers to more easily write applications whose data outlives the application process. As an Object/Relational Mapping (ORM) framework, Hibernate is concerned with data persistence as it applies to relational databases (via JDBC)
+Hibernate es una herramienta de asignación de objeto / relacional. Es muy popular entre las solicitudes de Java e implementa la API Persistence Java. Hibernate Orm permite a los desarrolladores escribir aplicaciones más fácilmente cuyos datos sobreviven el proceso de solicitud. Como marco de objetos / mapeo relacional (ORM), Hibernate se refiere a la persistencia de datos, ya que se aplica a las bases de datos relacionales (a través de JDBC)
 
-## Dependencies
+## Maven dependencias
 
 ````xml
 <dependencies>
@@ -31,36 +31,43 @@ Hibernate is an Object/Relational Mapper tool. It's very popular among Java appl
 
 </dependencies>
 ````
-I have included **spring-boot-starter-web** so that Spring runs a server and we are going touse it to access/manage the database in memory, we will get to that point.
+He incluido **spring-boot-starter-web** para que Spring ejecute un servidor y podamos acceder a la base de datos en la memoria.
 
-## H2 in memory database
+## Base de datos en memoria con H2
 
-the above dependencies are enough to have an in-memory database, by running the application:
+Las dependencias anteriores son suficientes para tener una base de datos en memoria, al ejecutar la aplicación:
+
 ````commandline
 mvn spring-boot:run
 ````
-We can spot in the console output the following lines:
+
+Podemos detectar en la salida de la consola las siguientes líneas:
+
 ````commandline
 2022-04-25 08:28:26.147  ...    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:49a11a51-3654-4811-b4c4-dc958006f12c'
 2022-04-25 08:28:26.207  ...    : HHH000204: Processing PersistenceUnitInfo [name: default]
 ````
-Which means we can access our database by using the url:
+
+Lo que significa que podemos acceder a nuestra base de datos utilizando la URL:
+
 ````commandline
 jdbc:h2:mem:49a11a51-3654-4811-b4c4-dc958006f12c
 ````
-Open your browser in the url [http://localhost:8080/h2-console](http://localhost:8080/h2-console), and put inside the JDBC URL's box the database's URL, as follows: 
+
+Abre el navegador en la dirección: [http://localhost:8080/h2-console](http://localhost:8080/h2-console), y coloque dentro de la caja de "JDBC URL" la URL de la base de datos, de la siguiente manera:
 
 ![New Project using PyCharm](https://drive.google.com/uc?id=13w3PF0BCd064d8-lelgS3pm_v0Fbe7JE)
 
-Once you click connect, you should see the following interface:
+Una vez que haga clic en el boton "Connect", debe ver la siguiente interfaz:
 
 ![New Project using PyCharm](https://drive.google.com/uc?id=1RJHfQUpD3FpqWiLFSlJIGqN3D4Soq-JN)
 
-> Every time you run execute the application we get different database's URL.
+> Cada vez que ejecuta la aplicación, URL de la base de datos es diferente.
 
-## Creating the model
+## Creando el modelo
 
-Let's define a simple Book class which will represent our database's tables:
+Defina una clase "Book" simple que represente la tabla de nuestra base de datos:
+
 ````java
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -81,29 +88,29 @@ public class Book {
 }
 ````
 
-With the above entity class, Hibernate will create the database's table for us, re-run the application to confirm, and login again into the database:
+Con la clase de entidad anterior, Hibernate creará la tabla de la base de datos para nosotros, ejecute la aplicación nuevamente para confirmar, inicie sesión nuevamente en la base de datos:
 
 ![New Project using PyCharm](https://drive.google.com/uc?id=1_oCn_ZDcLpHv_4-_PJZOCzMmRLMFcxeT)
 
-Notice how the table "BOOK" has been created along with the columns "ID" and "NAME", by clicking over the table's name we can see a simple query to get all the books stored in the database, click in the green arrow button to execute the query, as you can see there is no entries for book.
+Observe cómo se ha creado la tabla "BOOK" junto con las columnas "ID" y "NAME", haciendo clic en el nombre de la tabla, podemos ver una consulta simple para obtener todos los libros almacenados en la base de datos, haga clic en el botón de flecha verde para ejecutar la consulta, como puede ver, no hay resultados, pues la base de datos está vacía:
+## Ejecutar SQL por defecto
 
-## Default SQL
+Cuando Spring se ejecuta, si Hibernate encuentra un archivo "import.sql" en la carpeta de recursos, lo ejecutará para nosotros. Podemos usar este archivo para rellenar la base de datos. Así que vamos a crear un archivo llamado "import.sql" con el siguiente contenido:
 
-When Spring runs, if Hibernate find a file "import.sql" in the resources' folder, it will execute it for us. We can use this file to populate the database. So let's create a file called "import.sql" with the following content:
 ````sql
 insert into book values(1, 'Pride and Prejudice');
 insert into book values(2, 'The Iliad');
 insert into book values(3, 'The Decameron');
 ````
-The above SQL script add three books to our database. Re-run the application to confirm that our database is populated:
+El script de SQL anterior agrega tres libros a nuestra base de datos. Vuelva a ejecutar la consulta SQL para confirmar que nuestra base de datos está poblada:
 
 ![New Project using PyCharm](https://drive.google.com/uc?id=1qyIe13vDG8VZHPQipLTI-3nnMpzfCTEj)
 
-Now, everytime Spring creates a in-memory database will populate it with three books, so we have a database setup to play with.
+Ahora, cada vez que ejecutamos el sistema, Spring crea una base de datos en memoria y agrega tres libros, por lo que tenemos una configuración de base de datos para jugar.
 
-## Creating the repository and the service
+## Creando el repositorio y el servicio
 
-Inside a package called "repository" let's create an interface and extend the **JpaRepository** from Spring Hibernate, I called "BookRepository.java":
+Dentro de un paquete llamado "Repository", creemos una interfaz y extienda **JpaRepository**, he llamado al archivo "BookRepository.java":
 
 ````java
 @Repository
@@ -111,11 +118,10 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 }
 ````
 
-I have used the annotation **@Repository** to indicate Spring this is a component which interacts with datasource and should be loaded into the Spring's context. 
-Although we can use directly the repositories in Spring controllers, it is always a good idea to have a service which uses the repository to access the database. 
-I personally use the service to implement the business logic, for example, the process to lend a book to a user in our system. But for the sake of this tutorial, we will only show all the books in the database.
-Let's create the service layer. Inside a package called "service", create a class "BookService" with the following content:
-
+He usado la anotación **@Repository** para indicarle a Spring que este es un componente que interactúa con la base de datos y debe cargarse en el contexto.
+Aunque podemos utilizar directamente los repositorios en los controladores de Spring, siempre es una buena idea tener un servicio que utiliza el repositorio para acceder a la base de datos.
+Personalmente, utilizo los servicios para implementar la lógica de negocio, por ejemplo, el proceso para prestar un libro a un usuario en nuestro sistema. 
+Pero por el bien de este tutorial, solo mostraremos todos los libros en la base de datos. Vamos a crear la capa de servicio. Dentro de un paquete llamado "service", cree una clase "BookService" con el siguiente contenido:
 ````java
 import com.myrefactor.spring.hibernate.model.Book;
 import com.myrefactor.spring.hibernate.repository.BookRepository;
@@ -140,12 +146,12 @@ public class BookService {
 }
 ````
 
-I have annotated the class using **@Service** to indicate this is a Spring component, in the constructor I have used also **@Autowired** so Spring can satisfy the "bookRepository" dependency.
-We also have "getAllBooks()" method to get all books in the database.
+He anotado la clase usando **@Service** para indicar que este es un componente, en el constructor, también he usado **@Autowired** para que Spring pueda satisfacer la dependencia "BookRepository".
+También tenemos el método "getAllBooks()" para obtener todos los libros en la base de datos utilizando el repositorio de libro "BookRepository".
 
-## Creating the controller
+## Creando el controlador
 
-Now I will create a simple **@RestController** to return all books in JSON format. Inside "controllers" package create a class "BookController.java" and append this content:
+Ahora creará un simple **@RestController** para devolver todos los libros en formato JSON. Cree un paquete de "controllers" y dentro crea una clase "BookController.java" y agrega este contenido:
 
 ````java
 import com.myrefactor.spring.hibernate.model.Book;
@@ -169,21 +175,22 @@ public class BookController {
 }
 ````
 
-By using **@RestController** we are creating a controller for which content will always be parsed to JSON format. Also, I am injecting the "BookService" component by using **@Autowired**in the property. 
-Finally, **@GetMapping** annotation indicate the URL under the which I am returning all books.
+Al usar **@RestController** estamos creando un controlador para el cual el contenido siempre se formateará en JSON. Además, estoy inyectando el componente "BookService" utilizando **@Autowired** en la propiedad.
+Finalmente, la anotación **@GetMapping** indica la URL bajo la cual se puede acceder a todos los libros.
 
 ## Running the application
 
-Let's run our application:
+Vamos a ejecutar nuestro sistema:
+
 ````commandline
 mvn spring-boot:run
 ````
-And open your browser in the URL: [http://127.0.0.1:8080/books](http://127.0.0.1:8080/books)
+Y abra su navegador en la URL: [http://127.0.0.1:8080/books](http://127.0.0.1:8080/books)
 
-You should see all the books:
+Deberías ver todos los libros:
 
 ![New Project using PyCharm](https://drive.google.com/uc?id=1uaE-uj0bULGN0D_1-eqMivtoTdfV8aXO)
 
 ## Conclusion
 
-In this tutorial we have covered the simplest steps to create a Spring Boot application using Hibernate ORM. In subsequent articles we will be covering more advanced features
+En este tutorial, hemos cubierto los pasos más simples para crear una aplicación Spring utilizando Hibernate. En artículos subsiguientes, abordaremos características más avanzadas.

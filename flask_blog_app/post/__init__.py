@@ -8,8 +8,8 @@ from werkzeug.utils import redirect, secure_filename
 
 from flask_blog_app import db, es
 from flask_blog_app.blog.models import Tag
-from flask_blog_app.post.forms import PostForm
-from flask_blog_app.post.models import Post, PostTranslation
+from flask_blog_app.post.forms import PostForm, CommentForm
+from flask_blog_app.post.models import Post, PostTranslation, Comment
 
 post_bp = Blueprint('POST_BP', __name__, url_prefix='/<lang_code>')
 
@@ -93,7 +93,27 @@ def show_post(human_url):
     md_file = os.path.join(current_app.config['UPLOAD_FOLDER'], post.content)
     f = open(md_file, 'r')
     post_markdown = markdown.markdown(f.read(), extensions=['fenced_code', 'codehilite'])
-    return render_template('post/post.html', post=Post.query.get(post.id), post_md=post_markdown)
+    # comment form
+    comment_form = CommentForm()
+    comment_form.post_id.data = post.id
+    return render_template('post/post.html', post=Post.query.get(post.id), post_md=post_markdown, form=comment_form)
+
+
+@post_bp.route('/posts/comment', methods=['POST'])
+@login_required
+def create_comment():
+    comment_form = CommentForm()
+    if comment_form.validate_on_submit():
+        comment = Comment()
+        comment.user_id = current_user.id
+        comment.post_id = comment_form.post_id
+    referrer = request.referrer
+    return redirect(referrer)
+
+
+@post_bp.route('/posts/comments/<post_id>')
+def get_post_comment(post_id):
+    pass
 
 
 @post_bp.route('/posts/search')
