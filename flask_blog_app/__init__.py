@@ -17,7 +17,6 @@ babel_ext = Babel()
 es = Elasticsearch()
 oauth = OAuth()
 
-
 def create_app(test_config=None, get_locale=None):
     # create and configure the app
     app = Flask(__name__, instance_relative_config=True)
@@ -70,18 +69,48 @@ def create_app(test_config=None, get_locale=None):
     # Social login
     oauth.init_app(app)
 
+    @app.route('/twitter')
+    def login_twitter():
+        oauth.register(
+            name='twitter',
+            api_base_url='https://api.twitter.com/1.1/',
+            request_token_url='https://api.twitter.com/oauth/request_token',
+            access_token_url='https://api.twitter.com/oauth/access_token',
+            authorize_url='https://api.twitter.com/oauth/authenticate',
+            client_kwargs={
+                "include_email": True,
+            },
+            fetch_token=lambda: session.get('token'),  # DON'T DO IT IN PRODUCTION
+        )
+        return oauth.twitter.authorize_redirect(url_for('auth_twitter', _external=True))
+
+    @app.route('/tcallback')
+    def auth_twitter():
+        token = oauth.twitter.authorize_access_token()
+        url = 'account/verify_credentials.json'
+        resp = oauth.twitter.get(url, params={'skip_status': True})
+        twitter_user = resp.json()
+        tuser_email = f"{twitter_user.get('screen_name')}@twitter.com"
+        user = User.query.filter_by(email=tuser_email).first()
+        if not user:
+            user = User(name=twitter_user.get('name'), email=tuser_email, picture=twitter_user.get('profile_image_url'))
+            db.session.add(user)
+            db.session.commit()
+        # Login user
+        login_user(user)
+        return redirect('/')
+
     @app.route('/linkedin/')
     def linkedin():
         LINKEDIN_CLIENT_ID = "773gub81e3fli6"
         LINKEDIN_CLIENT_SECRET = "8usba9vBkUsiZttE"
-
-        CONF_URL = 'https://www.linkedin.com/oauth/v2/authorization'
         oauth.register(
             name='linkedin',
             client_id=LINKEDIN_CLIENT_ID,
             client_secret=LINKEDIN_CLIENT_SECRET,
             grant_type='client_credentials',
             access_token_url='https://www.linkedin.com/oauth/v2/accessToken',
+            request_token_url='https://www.linkedin.com/oauth/v2/requestToken',
             authorize_url='https://www.linkedin.com/oauth/v2/authorization',
             access_token_method='POST',
             client_kwargs={
@@ -105,7 +134,6 @@ def create_app(test_config=None, get_locale=None):
         session['linkedin_token'] = (resp['access_token'], '')
         me = linkedin.get('people/~')
         return jsonify(me.data)
-
 
     @app.route('/facebook/')
     def facebook():
@@ -156,7 +184,6 @@ def create_app(test_config=None, get_locale=None):
                 'scope': 'openid email profile'
             }
         )
-
         # Redirect to google_auth function
         redirect_uri = url_for('google_auth', _external=True)
         return oauth.google.authorize_redirect(redirect_uri)
