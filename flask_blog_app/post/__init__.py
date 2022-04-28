@@ -106,7 +106,10 @@ def create_comment():
     if comment_form.validate_on_submit():
         comment = Comment()
         comment.user_id = current_user.id
-        comment.post_id = comment_form.post_id
+        comment.post_id = comment_form.post_id.data
+        comment.content = comment_form.content.data
+        db.session.add(comment)
+        db.session.commit()
     referrer = request.referrer
     return redirect(referrer)
 

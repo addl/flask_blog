@@ -9,8 +9,8 @@ class Config(object):
     SECRET_KEY = 'this-really-needs-to-be-changed'
     SQLALCHEMY_DATABASE_URI = 'postgresql://pguser:pguser@127.0.0.1:5432/flask_blog'
     UPLOAD_FOLDER = 'C:/Users/JoanPablo/Documents/my_refactor/tmp/posts'
-    TWITTER_CLIENT_ID = "GdGOZkOZVQA2PtgwmO68CSE7h"
-    TWITTER_CLIENT_SECRET = "x9ljtGN3NVwD3npoh6aB7KGd2lIBvXUzpMylfCCuSK2eUME1Qc"
+    TWITTER_CLIENT_ID = "EHfW4CbYluj6xOKLp1wNahoyK"
+    TWITTER_CLIENT_SECRET = "Dh2q17PntvO8jIjn8HRAiAb8LnKqPKbeFA5CTa1g0BwlYKyW7e"
 
 
 class ProductionConfig(Config):

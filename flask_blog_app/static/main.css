@@ -232,7 +232,7 @@ header.container {
     padding: 0px 15%;
 }
 
-pre {
+.post-content pre {
     overflow: auto;
     padding: 1em;
     -webkit-box-shadow: 4px 4px 12px -5px rgb(0 0 0 / 70%);
@@ -524,7 +524,7 @@ ul.socials {
 	outline: none;
 }
 
-.form button {
+form button {
     background: var(--contrast-color);
     padding: 10px;
     border: none;
@@ -534,8 +534,78 @@ ul.socials {
     font-size: 18px;
 }
 
-.form button:hover {
+form button:hover {
     background: #36988a;
+}
+
+/* Comments */
+
+.comments {
+    margin: 3em 0;
+}
+
+.comments form {
+    box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
+    padding: 1em;
+}
+
+.comments .comment .comment-header {
+    display: flex;
+}
+
+.comments form .comment-header {
+    display: flex;
+    align-items: center;
+}
+
+.comments form .comment-header img {
+    margin: 0 12px 0 0;
+}
+
+.comments h2 {
+    border-left: none;
+    border-bottom: 1px solid #c1c1c1;
+    padding-bottom: 14px;
+}
+
+.comments .comment {
+    display: flex;
+    margin: 1em 0;
+}
+
+.comments .comment .content {
+    margin-left: 12px;
+    font-size: 16px;
+}
+
+.comments .comment .content p {
+    margin-top: 0;
+}
+
+.comments .comment .content .actions a {
+    font-size: 14px;
+    color: #c1c1c1;
+    cursor: pointer;
+}
+
+.comments .comment .content .comment-header{
+    color: var(--contrast-color);
+    font-size: 18px;
+    text-transform: capitalize;
+}
+
+.comments form .buttons {
+    display: flex;
+    margin: 1em 0;
+}
+
+.comments .CodeMirror, .CodeMirror-scroll {
+	min-height: 200px;
+	max-height: 200px;
+}
+
+.comments form .buttons button {
+    margin-left: auto;
 }
 
 /* Responsive */

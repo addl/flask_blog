@@ -44,6 +44,11 @@ def filter_by_tag(tag):
     return render_template('tag/filter_posts.html', tag=Tag.query.filter_by(name=tag).first_or_404())
 
 
+@blog_bp.route("/terms")
+def show_terms():
+    return render_template('terms.html')
+
+
 @blog_bp.route("/subscribe", methods=['POST'])
 def subscribe():
     email = request.form.get('email')

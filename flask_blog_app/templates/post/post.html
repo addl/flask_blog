@@ -9,6 +9,9 @@
 {% endblock %}
 
 {% block extra_head %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css" />
+<script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+
 <script>
     $(document).ready(function() {
         /* Highlight code */
@@ -28,6 +31,15 @@
         const a = new ImgPreviewer('.post-content', {
             scrollbar: true
         })
+        /* Markdown comment */
+        var sme = new SimpleMDE({status: false, autoDownloadFontAwesome: false, toolbar: false});
+        $("#comment-form").on('submit', function(e){
+            $("#comment-form #content").val((sme.markdown(sme.value())));
+            comment_text = $("#comment-form #content").val();
+            if(comment_text.trim() === ""){
+                return;
+            }
+        });
     });
 </script>
 {% endblock %}
@@ -68,15 +80,42 @@
         {{ post_md | safe }}
     </section>
     <section class="comments">
-        <div id="comments"></div>
-        <form method="POST" action="{{ url_for('POST_BP.create_comment') }}">
-            {{ form.csrf_token }}
-            {{ form.post_id }}
-            <fieldset>
-                {{ form.content.label }} {{ form.content }}
-            </fieldset>
-            <input type="submit" value="Submit">
-        </form>
+        {% if current_user.is_authenticated %}
+            <form method="POST" action="{{ url_for('POST_BP.create_comment') }}" id="comment-form">
+                {{ form.csrf_token }}
+                {{ form.post_id }}
+                <div class="comment-header">
+                    <img src="{{ current_user.picture }}" width="50" height="50" />
+                    <h3>{{ _('Ask me anything') }}</h3>
+                </div>
+                {{ form.content }}
+                <div class="buttons">
+                    <a href="https://www.markdownguide.org/basic-syntax/" target="_blank">
+                        <i class="fab fa-markdown"></i> Use markdown
+                    </a>
+                    <button type="submit">{{ _('Comment') }}</button>
+                </div>
+            </form>
+        {% endif %}
+        <h2><i class="fa fa-comments" aria-hidden="true"></i> {{ _('Comments') }}</h2>
+        <div id="comments">
+            {% for comment in post.comments %}
+                <div class="comment">
+                    <div class="picture">
+                        <img src="{{ comment.user.picture }}" width="50" height="50" />
+                    </div>
+                    <div class="content">
+                        <div class="comment-header">
+                            <span>{{ comment.user.name }}</span>
+                        </div>
+                        <p>{{ comment.content | safe }}</p>
+                        <div class="actions">
+                            <a class="comment-reply">{{ _('Reply') }}</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
     </section>
 </article>
 {% endblock %}
