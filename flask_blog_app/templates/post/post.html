@@ -34,11 +34,11 @@
         /* Markdown comment */
         var sme = new SimpleMDE({status: false, autoDownloadFontAwesome: false, toolbar: false});
         $("#comment-form").on('submit', function(e){
-            $("#comment-form #content").val((sme.markdown(sme.value())));
-            comment_text = $("#comment-form #content").val();
-            if(comment_text.trim() === ""){
-                return;
+            mvalue = sme.value();
+            if(mvalue.trim() === ""){
+                return false;
             }
+            $("#comment-form #content").val(sme.markdown());
         });
     });
 </script>
