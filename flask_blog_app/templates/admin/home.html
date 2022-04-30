@@ -1,0 +1,20 @@
+{% extends 'common/base.html' %}
+
+{% block title %}
+{{ super() }} - {{ _('Home') }}
+{% endblock %}
+
+{% block main_content %}
+<div class="grid-container">
+    <aside>
+        <ul>
+            <li><a href="{{ url_for('.create_post', post_id=x) }}">Create post</a></li>
+            <li><a href="{{ url_for('.all_posts') }}">All posts</a></li>
+        </ul>
+    </aside>
+    <article>
+        {% block admin_content %}
+        {% endblock %}
+    </article>
+</div>
+{% endblock %}

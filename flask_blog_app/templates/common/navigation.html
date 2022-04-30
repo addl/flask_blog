@@ -2,11 +2,13 @@
     <ul>
         <li><a href="{{ url_for('BLOG_BP.home') }}">{{ _('Home') }}</a></li>
         <li><a href="{{ url_for('POST_BP.all_posts') }}">{{ _('Blog') }}</a></li>
-        {% if current_user.is_authenticated %}
-        <li><a href="{{ url_for('POST_BP.create_post') }}">Create post</a></li>
-        <li><a href="{{ url_for('AUTH_BP.logout') }}">{{ _('Logout') }}</a></li>
+        {% if current_user.is_authenticated and current_user.is_admin %}
+            <li><a href="{{ url_for('ADMIN_BP.admin_home') }}">Admin</a></li>
+        {% endif %}
+        {% if current_user.is_authenticated  %}
+            <li><a href="{{ url_for('AUTH_BP.logout') }}">{{ _('Logout') }}</a></li>
         {% else %}
-        <li><a href="{{ url_for('AUTH_BP.login') }}">{{ _('Sign in') }}</a></li>
+            <li><a href="{{ url_for('AUTH_BP.login') }}">{{ _('Sign in') }}</a></li>
         {% endif %}
     </ul>
 </nav>

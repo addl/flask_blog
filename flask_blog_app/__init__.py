@@ -213,9 +213,11 @@ def create_app(test_config=None, get_locale=None):
     from flask_blog_app.blog import blog_bp
     from flask_blog_app.post import post_bp
     from flask_blog_app.auth import auth_bp
+    from flask_blog_app.admin import admin_bp
     app.register_blueprint(blog_bp)
     app.register_blueprint(post_bp)
     app.register_blueprint(auth_bp)
+    app.register_blueprint(admin_bp)
 
     with app.app_context():
         from .post.models import Post

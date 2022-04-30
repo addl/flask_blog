@@ -163,6 +163,7 @@ nav ul li:hover a{
     position: absolute;
     right: 10px;
     font-size: 16px;
+    min-width: unset;
 }
 
 .searchInput {

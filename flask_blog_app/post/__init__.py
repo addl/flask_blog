@@ -1,13 +1,11 @@
 import os
-from datetime import datetime
 
 import markdown
-from flask import Blueprint, render_template, g, url_for, request, current_app
+from flask import Blueprint, render_template, g, request, current_app
 from flask_login import current_user, login_required
-from werkzeug.utils import redirect, secure_filename
+from werkzeug.utils import redirect
 
 from flask_blog_app import db, es
-from flask_blog_app.blog.models import Tag
 from flask_blog_app.post.forms import PostForm, CommentForm
 from flask_blog_app.post.models import Post, PostTranslation, Comment
 
@@ -29,62 +27,6 @@ def pull_lang_code(endpoint, values):
 @post_bp.route('/posts', methods=['GET'])
 def all_posts():
     return render_template('post/all.html', posts=Post.query.all())
-
-
-@post_bp.route('/posts/create', methods=['GET', 'POST'])
-@login_required
-def create_post():
-    post_form = PostForm()
-    post_form.tags.choices = [(t.id, t.name) for t in Tag.query.all()]
-    if post_form.validate_on_submit():
-        post = Post()
-        if 'file_content' not in request.files or 'file_content_es' not in request.files:
-            return redirect(request.url)
-        file_content = request.files['file_content']
-        file_content_es = request.files['file_content_es']
-        if file_content.filename == '' or file_content_es.filename == '':
-            return redirect(request.url)
-        filename = ''
-        filename_es = ''
-        if file_content and file_content_es:
-            filename = secure_filename(file_content.filename)
-            filename_es = secure_filename(file_content_es.filename)
-            file_content.save(os.path.join(current_app.config['UPLOAD_FOLDER'], filename))
-            file_content_es.save(os.path.join(current_app.config['UPLOAD_FOLDER'], filename_es))
-        post.translations['en'].title = post_form.title.data
-        post.translations['es'].title = post_form.title_es.data
-        post.translations['en'].content = filename
-        post.translations['es'].content = filename_es
-        human_url_en = post_form.title.data.replace(' ', '-').lower()
-        human_url_es = post_form.title_es.data.replace(' ', '-').lower()
-        post.translations['en'].human_url = human_url_en
-        post.translations['es'].human_url = human_url_es
-        post.translations['en'].description = post_form.description.data
-        post.translations['es'].description = post_form.description_es.data
-        post.tags = [Tag.query.get(t) for t in post_form.tags.data]
-        post.user_id = current_user.id
-        db.session.add(post)
-        db.session.commit()
-        # ES insert
-
-        body = {
-            'id': human_url_en,
-            'title': post_form.title.data.lower(),
-            'description': post_form.description.data.lower(),
-            'timestamp': datetime.now()
-        }
-
-        body_es = {
-            'id': human_url_es,
-            'title': post_form.title_es.data.lower(),
-            'description': post_form.description_es.data.lower(),
-            'timestamp': datetime.now()
-        }
-
-        es.index(index='post_en', id=human_url_en, body=body)
-        es.index(index='post_es', id=human_url_es, body=body_es)
-        return redirect(url_for('.all_posts'))
-    return render_template('post/form.html', form=post_form)
 
 
 @post_bp.route('/posts/<human_url>')

@@ -1,12 +1,13 @@
-{% extends 'common/base.html' %}
+{% extends 'admin/home.html' %}
 
 {% block title %}
     {{ super() }} create post
 {% endblock %}
 
-{% block main_content %}
-    <form method="POST" action="{{ url_for('POST_BP.create_post') }}" enctype="multipart/form-data">
+{% block admin_content %}
+    <form method="POST" action="{{ url_for('ADMIN_BP.create_post', post_id=None) }}" enctype="multipart/form-data">
         {{ form.csrf_token }}
+        {{ form.post_id }}
         <fieldset>
             {{ form.title.label }} {{ form.title }}
         </fieldset>

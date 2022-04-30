@@ -5,6 +5,7 @@ from wtforms.validators import DataRequired, Length
 
 
 class PostForm(FlaskForm):
+    post_id = HiddenField()
     title = StringField(_('Title EN'), validators=[DataRequired()])
     title_es = StringField('Title ES', validators=[DataRequired()])
     file_content = FileField('Select English MD file')

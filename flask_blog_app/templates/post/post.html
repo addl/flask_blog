@@ -5,11 +5,11 @@
 {% endblock %}
 
 {% block meta_description %}
-    <meta name="description" content="{{ post.description }}">
+<meta name="description" content="{{ post.description }}">
 {% endblock %}
 
 {% block extra_head %}
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css"/>
 <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
 
 <script>
@@ -41,11 +41,12 @@
             $("#comment-form #content").val(sme.markdown());
         });
     });
+
 </script>
 {% endblock %}
 
 {% block language %}
-    <a>ESP</a>
+<a>ESP</a>
 {% endblock %}
 
 {% block sidebar %}
@@ -68,41 +69,42 @@
         <p class="extra-data">
             {{ _('by') }} {{ post.user.email }} | {{ post.timestamp.strftime('%Y-%m-%d') }} |
             {% if g.lang_code == 'en' %}
-                <a href="/es/posts/{{ post.translations.es.human_url }}"><span class="fi fi-es fis"></span></a>
+            <a href="/es/posts/{{ post.translations.es.human_url }}"><span class="fi fi-es fis"></span></a>
             {% endif %}
             {% if g.lang_code == 'es' %}
-                <a href="/en/posts/{{ post.translations.en.human_url }}"><span class="fi fi-gb fis"></span></a>
+            <a href="/en/posts/{{ post.translations.en.human_url }}"><span class="fi fi-gb fis"></span></a>
             {% endif %}
         </p>
-        <span class="divider" />
+        <span class="divider"/>
     </div>
     <section class="post-content">
         {{ post_md | safe }}
     </section>
     <section class="comments">
         {% if current_user.is_authenticated %}
-            <form method="POST" action="{{ url_for('POST_BP.create_comment') }}" id="comment-form">
-                {{ form.csrf_token }}
-                {{ form.post_id }}
-                <div class="comment-header">
-                    <img src="{{ current_user.picture }}" width="50" height="50" />
-                    <h3>{{ _('Ask me anything') }}</h3>
-                </div>
-                {{ form.content }}
-                <div class="buttons">
-                    <a href="https://www.markdownguide.org/basic-syntax/" target="_blank">
-                        <i class="fab fa-markdown"></i> Use markdown
-                    </a>
-                    <button type="submit">{{ _('Comment') }}</button>
-                </div>
-            </form>
+        <form method="POST" action="{{ url_for('POST_BP.create_comment') }}" id="comment-form">
+            {{ form.csrf_token }}
+            {{ form.post_id }}
+            <div class="comment-header">
+                <img src="{{ current_user.picture }}" width="50" height="50"/>
+                <h3>{{ _('Ask me anything') }}</h3>
+            </div>
+            {{ form.content }}
+            <div class="buttons">
+                <a href="https://www.markdownguide.org/basic-syntax/" target="_blank">
+                    <i class="fab fa-markdown"></i> Use markdown
+                </a>
+                <button type="submit">{{ _('Comment') }}</button>
+            </div>
+        </form>
         {% endif %}
-        <h2><i class="fa fa-comments" aria-hidden="true"></i> {{ _('Comments') }}</h2>
-        <div id="comments">
-            {% for comment in post.comments %}
+
+            <h2><i class="fa fa-comments" aria-hidden="true"></i> {{ _('Comments') }}</h2>
+            <div id="comments">
+                {% for comment in post.comments %}
                 <div class="comment">
                     <div class="picture">
-                        <img src="{{ comment.user.picture }}" width="50" height="50" />
+                        <img src="{{ comment.user.picture }}" width="50" height="50"/>
                     </div>
                     <div class="content">
                         <div class="comment-header">
@@ -114,8 +116,11 @@
                         </div>
                     </div>
                 </div>
-            {% endfor %}
-        </div>
+                {% else %}
+                    <p>{{ _('Be the first in commenting on this post!') }}</p>
+                {% endfor %}
+            </div>
+
     </section>
 </article>
 {% endblock %}

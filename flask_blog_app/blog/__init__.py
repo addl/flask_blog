@@ -4,8 +4,8 @@ from werkzeug.utils import redirect
 
 from flask_blog_app import db
 from flask_blog_app.blog.forms import TagForm
-from flask_blog_app.blog.models import Subscriptor
-from flask_blog_app.post import Tag, Post
+from flask_blog_app.blog.models import Subscriptor, Tag
+from flask_blog_app.post import Post
 
 blog_bp = Blueprint('BLOG_BP', __name__, url_prefix='/<lang_code>')
 
