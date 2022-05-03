@@ -1,0 +1,24 @@
+{% macro render_comment(comment) %}
+
+<div class="comment">
+    <div class="picture">
+        <img src="{{ comment.user.picture }}" width="50" height="50"/>
+    </div>
+    <div class="content">
+        <div class="comment-header">
+            <span>{{ comment.user.name }}</span>
+        </div>
+        <p>{{ comment.content | safe }}</p>
+        <div class="actions">
+            <a class="comment-reply" onclick="reply(this, {{comment.id}})">{{ _('Reply') }}</a>
+            <div class="comment-reply-content"></div>
+        </div>
+        <div class="comments">
+            {% for comment in comment.children %}
+                {{ render_comment(comment) }}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endmacro %}

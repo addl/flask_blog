@@ -2,6 +2,7 @@ from datetime import datetime
 
 import sqlalchemy_utils
 from flask_babel import get_locale
+from sqlalchemy.orm import relationship
 
 from flask_blog_app import db
 
@@ -43,3 +44,5 @@ class Comment(db.Model):
     post_id = db.Column(db.Integer, db.ForeignKey('post.id'))
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     content = db.Column(db.String())
+    parent_id = db.Column(db.Integer, db.ForeignKey('comment.id'))
+    parent = relationship("Comment", backref="children", remote_side=[id])

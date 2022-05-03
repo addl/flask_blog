@@ -1,3 +1,5 @@
+{% from "macros/render_comment.html" import render_comment with context %}
+
 {% extends 'common/base.html' %}
 
 {% block title %}
@@ -9,16 +11,13 @@
 {% endblock %}
 
 {% block extra_head %}
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css"/>
-<script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
-
 <script>
     $(document).ready(function() {
         /* Highlight code */
         $('pre').toggleClass('sh_python');
         /* Table Content */
         theUl = $('<ul />');
-        $("article h2").each(function(index, elem) {
+        $("article .post-content h2").each(function(index, elem) {
             /* Set the id*/
             var theId = $(elem).html().replaceAll(' ', '-').toLowerCase()
             $(elem).attr('id', theId);
@@ -30,18 +29,27 @@
         /* Image Viewer */
         const a = new ImgPreviewer('.post-content', {
             scrollbar: true
-        })
-        /* Markdown comment */
-        var sme = new SimpleMDE({status: false, autoDownloadFontAwesome: false, toolbar: false});
-        $("#comment-form").on('submit', function(e){
-            mvalue = sme.value();
-            if(mvalue.trim() === ""){
-                return false;
-            }
-            $("#comment-form #content").val(sme.markdown());
         });
     });
-
+    /* Comment reply */
+    function reply(element, comment_id){
+        reply_form = $("#comment-form");
+        textarea = $('<textarea id="comment-reply-md" />')
+        var sibling = $(element).siblings(".comment-reply-content");
+        reply_box = $(sibling).append(textarea);
+        sbmit_btn = $('<button type="submit" />').html('Reply').on('click', function(e){
+            e.preventDefault();
+            console.log('Submitting...');
+            $("#comment-form #content").val($(textarea).val());
+            $("#comment-form #comment_id").val(comment_id);
+            $("#comment-form").submit();
+        });
+        cancel_btn = $('<button />').html("Cancel").on('click', function(e){
+            $('.comment-reply-content').html('');
+        });
+        $(sibling).append(sbmit_btn);
+        $(sibling).append(cancel_btn);
+    }
 </script>
 {% endblock %}
 
@@ -85,6 +93,7 @@
         <form method="POST" action="{{ url_for('POST_BP.create_comment') }}" id="comment-form">
             {{ form.csrf_token }}
             {{ form.post_id }}
+            {{ form.comment_id }}
             <div class="comment-header">
                 <img src="{{ current_user.picture }}" width="50" height="50"/>
                 <h3>{{ _('Ask me anything') }}</h3>
@@ -98,29 +107,16 @@
             </div>
         </form>
         {% endif %}
-
             <h2><i class="fa fa-comments" aria-hidden="true"></i> {{ _('Comments') }}</h2>
             <div id="comments">
                 {% for comment in post.comments %}
-                <div class="comment">
-                    <div class="picture">
-                        <img src="{{ comment.user.picture }}" width="50" height="50"/>
-                    </div>
-                    <div class="content">
-                        <div class="comment-header">
-                            <span>{{ comment.user.name }}</span>
-                        </div>
-                        <p>{{ comment.content | safe }}</p>
-                        <div class="actions">
-                            <a class="comment-reply">{{ _('Reply') }}</a>
-                        </div>
-                    </div>
-                </div>
+                    {% if not comment.parent %}
+                        {{ render_comment(comment) }}
+                    {% endif %}
                 {% else %}
                     <p>{{ _('Be the first in commenting on this post!') }}</p>
                 {% endfor %}
             </div>
-
     </section>
 </article>
 {% endblock %}

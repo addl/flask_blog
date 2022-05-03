@@ -41,7 +41,7 @@ def create_post():
         post_form.description_es.data = current_post.translations['es'].description
     if post_form.validate_on_submit():
         post = Post()
-        if post_form.post_id:
+        if post_form.post_id.data:
             post = Post.query.get_or_404(int(post_form.post_id.data))
         if 'file_content' not in request.files or 'file_content_es' not in request.files:
             return redirect(request.url)

@@ -33,10 +33,8 @@ def process_file(the_file):
     new_lines = []
     for line in string_list:
         if 'á' in line or 'é' in line or 'í' in line or 'ó' in line or 'ú' in line or 'ñ' in line:
-            print(f"Original Line: {line}")
             trans_table = line.maketrans(trans_dict)
             line = line.translate(trans_table)
-            print(f"Line after: {line}")
         new_lines.append(line)
     # write file
     my_file = open(the_file, "w", encoding='utf-8')

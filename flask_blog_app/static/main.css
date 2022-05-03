@@ -329,6 +329,7 @@ article, aside {
     color: var(--main-color);
     margin: 12px 0;
     transition: 0.3s;
+    text-transform: capitalize;
 }
 
 #table-content li a {
@@ -525,7 +526,7 @@ ul.socials {
 	outline: none;
 }
 
-form button {
+form button, button {
     background: var(--contrast-color);
     padding: 10px;
     border: none;
@@ -535,14 +536,39 @@ form button {
     font-size: 18px;
 }
 
+button:not(:last-child) {
+    margin-right: 1em;
+}
+
+.comment-reply button {
+    margin-top: 1em;
+}
+
 form button:hover {
     background: #36988a;
 }
 
 /* Comments */
 
+textarea {
+    width: 100%;
+    min-height: 160px;
+    max-height: 16px;
+    resize: none;
+}
+
 .comments {
     margin: 3em 0;
+}
+
+.comments img {
+    min-width: 50px;
+    min-height: 50px;
+    border-radius: 5px;
+}
+/* Sub comments */
+.comment .comments {
+    margin: 1em 0;
 }
 
 .comments form {
@@ -577,6 +603,7 @@ form button:hover {
 .comments .comment .content {
     margin-left: 12px;
     font-size: 16px;
+    width: 100%;
 }
 
 .comments .comment .content p {
@@ -607,6 +634,23 @@ form button:hover {
 
 .comments form .buttons button {
     margin-left: auto;
+}
+
+/* Modals */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgb(0 0 0 / 60%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal .modal-content {
+    position: relative;
 }
 
 /* Responsive */

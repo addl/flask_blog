@@ -49,16 +49,13 @@ def create_comment():
         comment = Comment()
         comment.user_id = current_user.id
         comment.post_id = comment_form.post_id.data
-        comment.content = comment_form.content.data
+        if comment_form.comment_id.data:
+            comment.parent_id = comment_form.comment_id.data
+        comment.content = markdown.markdown(comment_form.content.data, extensions=['fenced_code', 'codehilite'])
         db.session.add(comment)
         db.session.commit()
     referrer = request.referrer
     return redirect(referrer)
-
-
-@post_bp.route('/posts/comments/<post_id>')
-def get_post_comment(post_id):
-    pass
 
 
 @post_bp.route('/posts/search')

@@ -25,7 +25,7 @@
         <h2>{{ p.title }}</h2>
         <div class="box_content">
             <p>
-                In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before the final copy is available
+               {{ p.description }}
             </p>
         </div>
         <a href="{{ url_for('POST_BP.show_post', human_url=p.human_url) }}" class="read-more">{{ _('Read More') }}</a>
