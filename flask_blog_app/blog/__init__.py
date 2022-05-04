@@ -35,7 +35,7 @@ def create_tag():
         tag = Tag(name=tag_form.name.data)
         db.session.add(tag)
         db.session.commit()
-        return redirect(url_for('POST_BP.create_post'))
+        return redirect(url_for('ADMIN_BP.create_post'))
     return render_template('tag/form.html', form=tag_form)
 
 
