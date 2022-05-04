@@ -17,6 +17,7 @@ babel_ext = Babel()
 es = Elasticsearch()
 oauth = OAuth()
 
+
 def create_app(test_config=None, get_locale=None):
     # create and configure the app
     app = Flask(__name__, instance_relative_config=True)
@@ -68,20 +69,20 @@ def create_app(test_config=None, get_locale=None):
 
     # Social login
     oauth.init_app(app)
+    oauth.register(
+        name='twitter',
+        api_base_url='https://api.twitter.com/1.1/',
+        request_token_url='https://api.twitter.com/oauth/request_token',
+        access_token_url='https://api.twitter.com/oauth/access_token',
+        authorize_url='https://api.twitter.com/oauth/authenticate',
+        client_kwargs={
+            "include_email": True,
+        },
+        fetch_token=lambda: session.get('token'),  # DON'T DO IT IN PRODUCTION
+    )
 
     @app.route('/twitter')
-    def login_twitter():
-        oauth.register(
-            name='twitter',
-            api_base_url='https://api.twitter.com/1.1/',
-            request_token_url='https://api.twitter.com/oauth/request_token',
-            access_token_url='https://api.twitter.com/oauth/access_token',
-            authorize_url='https://api.twitter.com/oauth/authenticate',
-            client_kwargs={
-                "include_email": True,
-            },
-            fetch_token=lambda: session.get('token'),  # DON'T DO IT IN PRODUCTION
-        )
+    def login_twitter():        
         return oauth.twitter.authorize_redirect(url_for('auth_twitter', _external=True))
 
     @app.route('/tcallback')
@@ -102,8 +103,8 @@ def create_app(test_config=None, get_locale=None):
 
     @app.route('/linkedin/')
     def linkedin():
-        LINKEDIN_CLIENT_ID = "773gub81e3fli6"
-        LINKEDIN_CLIENT_SECRET = "8usba9vBkUsiZttE"
+        LINKEDIN_CLIENT_ID = "7XXXXX3fli6"
+        LINKEDIN_CLIENT_SECRET = "8usbaXXXXXXiZttE"
         oauth.register(
             name='linkedin',
             client_id=LINKEDIN_CLIENT_ID,
@@ -140,8 +141,8 @@ def create_app(test_config=None, get_locale=None):
         # Facebook Oauth Config
         #FACEBOOK_CLIENT_ID = os.environ.get('FACEBOOK_CLIENT_ID')
         #FACEBOOK_CLIENT_SECRET = os.environ.get('FACEBOOK_CLIENT_SECRET')
-        FACEBOOK_CLIENT_ID = "915487802553036"
-        FACEBOOK_CLIENT_SECRET = "1c9237a58fe6ad038cfc635c8a36ff36"
+        FACEBOOK_CLIENT_ID = "9154XXXX6"
+        FACEBOOK_CLIENT_SECRET = "1c9237aXXXXX635c8a36ff36"
         oauth.register(
             name='facebook',
             client_id=FACEBOOK_CLIENT_ID,
@@ -165,25 +166,25 @@ def create_app(test_config=None, get_locale=None):
         print("Facebook User ", profile)
         return redirect('/')
 
+    # Google Oauth Config
+    # Get client_id and client_secret from environment variables
+    # GOOGLE_CLIENT_ID = os.environ.get('GOOGLE_CLIENT_ID')
+    # GOOGLE_CLIENT_SECRET = os.environ.get('GOOGLE_CLIENT_SECRET')
+    GOOGLE_CLIENT_ID = "140728854919-7j25htfcau37o3th1rl72qrejjogtkvj.apps.googleusercontent.com"
+    GOOGLE_CLIENT_SECRET = "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"
+
+    CONF_URL = 'https://accounts.google.com/.well-known/openid-configuration'
+    oauth.register(
+        name='google',
+        client_id=GOOGLE_CLIENT_ID,
+        client_secret=GOOGLE_CLIENT_SECRET,
+        server_metadata_url=CONF_URL,
+        client_kwargs={
+            'scope': 'openid email profile'
+        }
+    )
     @app.route('/google/')
     def google():
-        # Google Oauth Config
-        # Get client_id and client_secret from environment variables
-        # GOOGLE_CLIENT_ID = os.environ.get('GOOGLE_CLIENT_ID')
-        # GOOGLE_CLIENT_SECRET = os.environ.get('GOOGLE_CLIENT_SECRET')
-        GOOGLE_CLIENT_ID = "140728854919-7j25htfcau37o3th1rl72qrejjogtkvj.apps.googleusercontent.com"
-        GOOGLE_CLIENT_SECRET = "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"
-
-        CONF_URL = 'https://accounts.google.com/.well-known/openid-configuration'
-        oauth.register(
-            name='google',
-            client_id=GOOGLE_CLIENT_ID,
-            client_secret=GOOGLE_CLIENT_SECRET,
-            server_metadata_url=CONF_URL,
-            client_kwargs={
-                'scope': 'openid email profile'
-            }
-        )
         # Redirect to google_auth function
         redirect_uri = url_for('google_auth', _external=True)
         return oauth.google.authorize_redirect(redirect_uri)
