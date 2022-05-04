@@ -43,6 +43,7 @@ celerybeat.pid
 env/
 venv/
 ENV/
+flask-env/
 
 # mypy
 .mypy_cache/
