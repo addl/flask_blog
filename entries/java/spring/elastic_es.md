@@ -32,7 +32,7 @@ capaz de abordar un n&uacute;mero creciente de casos de uso. Tambi&eacute;n se p
 
 Estas son mis dependencias de Elasticsearch:
 
-![New Project using PyCharm](https://drive.google.com/uc?id=1YAt89FWXdcH91H2CIdoeg03ovU3IbXWg)
+![Elastic Search dependencies and versions](https://drive.google.com/uc?id=1YAt89FWXdcH91H2CIdoeg03ovU3IbXWg)
 
 Como puede ver, la versi&oacute;n del cliente es **7.15.2** as&iacute; que descargu&eacute; la misma versi&oacute;n de [Elastic Search releases](https://www.elastic.co/downloads/past-releases#elasticsearch).
 

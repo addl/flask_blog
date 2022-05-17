@@ -10,7 +10,7 @@ class Config(object):
     SQLALCHEMY_DATABASE_URI = 'postgresql://pguser:pguser@127.0.0.1:5432/flask_blog'
     TWITTER_CLIENT_ID = "EHfW4CbYluj6xOKLp1wNahoyK"
     TWITTER_CLIENT_SECRET = "Dh2q17PntvO8jIjn8HRAiAb8LnKqPKbeFA5CTa1g0BwlYKyW7e"
-    UPLOAD_FOLDER = '/data/uploads/posts'
+    UPLOAD_FOLDER = 'C:/Users/JoanPablo/Documents/my_refactor/tmp/posts'
 
 
 class ProductionConfig(Config):

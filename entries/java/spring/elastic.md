@@ -32,7 +32,7 @@ capable of addressing a growing number of use cases. It can be used also as NoSq
 
 These are my Elasticsearch dependencies:
 
-![New Project using PyCharm](https://drive.google.com/uc?id=1YAt89FWXdcH91H2CIdoeg03ovU3IbXWg)
+![Elastic Search dependencies and versions](https://drive.google.com/uc?id=1YAt89FWXdcH91H2CIdoeg03ovU3IbXWg)
 
 As you can see the version of the client is **7.15.2** so I downloaded the same version from [Elastic Search releases](https://www.elastic.co/downloads/past-releases#elasticsearch).
 

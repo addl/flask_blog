@@ -34,7 +34,9 @@ def show_post(human_url):
     post = PostTranslation.query.filter_by(human_url=human_url).first_or_404()
     md_file = os.path.join(current_app.config['UPLOAD_FOLDER'], post.content)
     f = open(md_file, 'r')
-    post_markdown = markdown.markdown(f.read(), extensions=['fenced_code', 'codehilite'])
+    md_text = f.read()
+    # post_markdown = markdown.markdown(md_text, extensions=['fenced_code', 'codehilite'])
+    post_markdown = markdown.markdown(f"[TOC]\n{md_text}", extensions=['toc', 'fenced_code', 'codehilite'])
     # comment form
     comment_form = CommentForm()
     comment_form.post_id.data = post.id

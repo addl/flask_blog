@@ -16,6 +16,6 @@ class PostForm(FlaskForm):
 
 
 class CommentForm(FlaskForm):
-    content = TextAreaField()
+    content = TextAreaField(validators=[DataRequired()])
     post_id = HiddenField(validators=[DataRequired()])
     comment_id = HiddenField()

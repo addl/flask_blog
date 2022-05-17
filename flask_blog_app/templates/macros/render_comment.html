@@ -10,8 +10,12 @@
         </div>
         <p>{{ comment.content | safe }}</p>
         <div class="actions">
-            <a class="comment-reply" onclick="reply(this, {{comment.id}})">{{ _('Reply') }}</a>
-            <div class="comment-reply-content"></div>
+            {% if current_user.is_authenticated %}
+                <a class="comment-reply" onclick="reply(this, {{comment.id}})">{{ _('Reply') }}</a>
+                <div class="comment-reply-content"></div>
+            {% else %}
+                <a href="{{ url_for('AUTH_BP.login') }}">{{ _('Please, login to reply') }}</a>
+            {% endif %}
         </div>
         <div class="comments">
             {% for comment in comment.children %}

@@ -15,17 +15,6 @@
     $(document).ready(function() {
         /* Highlight code */
         $('pre').toggleClass('sh_python');
-        /* Table Content */
-        theUl = $('<ul />');
-        $("article .post-content h2").each(function(index, elem) {
-            /* Set the id*/
-            var theId = $(elem).html().replaceAll(' ', '-').toLowerCase()
-            $(elem).attr('id', theId);
-            theLi = $('<li />');
-            theA = $('<a />').html($(elem).html()).attr('href', '#' + theId).appendTo(theLi);
-            $(theUl).append(theLi);
-        });
-        $("#table-content").append(theUl);
         /* Image Viewer */
         const a = new ImgPreviewer('.post-content', {
             scrollbar: true
@@ -39,8 +28,11 @@
         reply_box = $(sibling).append(textarea);
         sbmit_btn = $('<button type="submit" />').html('Reply').on('click', function(e){
             e.preventDefault();
-            console.log('Submitting...');
-            $("#comment-form #content").val($(textarea).val());
+            rtext = $(textarea).val();
+            if(rtext.trim() === ""){
+                return false;
+            }
+            $("#comment-form #content").val(rtext);
             $("#comment-form #comment_id").val(comment_id);
             $("#comment-form").submit();
         });
@@ -58,14 +50,7 @@
 {% endblock %}
 
 {% block sidebar %}
-<aside>
-    <div id="table-content">
-        <h2 class="title">
-            {{ _('Table of Content') }}
-        </h2>
-    </div>
-    <div id="affiliate"></div>
-</aside>
+
 {% endblock %}
 
 {% block main_content %}
@@ -107,7 +92,7 @@
             </div>
         </form>
         {% endif %}
-            <h2><i class="fa fa-comments" aria-hidden="true"></i> {{ _('Comments') }}</h2>
+            <h2 class="comments-header"><i class="fa fa-comments" aria-hidden="true"></i> {{ _('Comments') }}</h2>
             <div id="comments">
                 {% for comment in post.comments %}
                     {% if not comment.parent %}
