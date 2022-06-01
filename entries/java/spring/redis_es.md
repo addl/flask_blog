@@ -5,17 +5,17 @@
 3. Un editor de texto o tu IDE favorito
 
 ## Instalar Redis usando Docker
-Con Docker instalado, ejecute el siguiente comando en la línea de comandos:
+Con Docker instalado, ejecute el siguiente comando en la l&iacute;nea de comandos:
 ````commandline
 docker run --name my-redis -p 6379:6379 -d redis
 ````
 El comando anterior realizar&aacute; lo siguiente:  
 
-* Descargar la última imagen de Redis del repositorio de Docker
+* Descargar la &uacute;ltima imagen de Redis del repositorio de Docker
 * Crear un contenedor llamado "my-redis" y ejecutarlo
-* Enlazar el puerto 6379 en mi computadora portátil al puerto 6379 dentro del contenedor. 6379 es el puerto predeterminado utilizado por Redis
+* Enlazar el puerto 6379 en mi computadora port&aacute;til al puerto 6379 dentro del contenedor. 6379 es el puerto predeterminado utilizado por Redis
 
-Para confirmar que redis se está ejecutando y escuchando en el puerto 6379, ejecute:
+Para confirmar que redis se est&aacute; ejecutando y escuchando en el puerto 6379, ejecute:
 ````commandline
 docker ps
 ````
@@ -25,7 +25,7 @@ C:\Users\MyRefactor>docker ps
 CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS          PORTS                    NAMES
 7a98d474f9b2   redis     "docker-entrypoint.s…"   10 minutes ago   Up 10 minutes   0.0.0.0:6379->6379/tcp   my-redis
 ````
-Ahora que hemos configurado Redis, escribamos nuestra aplicación Spring para conectarse, almacenar y recibir información.
+Ahora que hemos configurado Redis, escribamos nuestra aplicaci&oacute;n Spring para conectarse, almacenar y recibir informaci&oacute;n.
 
 ## dependencias de maven
 ````xml
@@ -40,7 +40,7 @@ Ahora que hemos configurado Redis, escribamos nuestra aplicación Spring para co
 ````
 
 ## Creando el controlador y el DTO
-Crearemos un controlador que recibirá la información que queremos almacenar en Redis. 
+Crearemos un controlador que recibir&aacute; la informaci&oacute;n que queremos almacenar en Redis. 
 Para recibir datos en el controlador, estoy un Objeto de Transferencia de Datos (DTO) que representa a un usuario:
 ````java
 public class User {
@@ -86,20 +86,20 @@ public class CacheController {
 
 }
 ````
-En el código anterior, el controlador es **@RestController** para recibir y devolver datos mediante JSON. Vamos a repasarlo para entenderlo:  
+En el c&oacute;digo anterior, el controlador es **@RestController** para recibir y devolver datos mediante JSON. Vamos a repasarlo para entenderlo:  
 
-* Spring Boot proporciona un RedisTemplate que estamos inyectando en nuestro controlador. Podríamos usar una capa de servicio, pero por simplicidad la estamos usando directamente en el controlador.
-* Hemos declarado un método que recibe un objeto "User" en JSON usando el método POST y **@RequestBody**.
-* Estamos utilizando la operación "opsForList()" y su método "leftPush" para almacenar como clave el nombre de usuario y como valor la URL.
-* También declaramos un método para obtener el valor de una clave pasada como par&aacute;metro usando **@RequestParam**.
-* Finalmente, estamos usando nuevamente la operación "opsForList()", pero esta vez el método es "leftPop" para recuperar el valor de la clave de Redis y eliminarlo al mismo tiempo.
+* Spring Boot proporciona un RedisTemplate que estamos inyectando en nuestro controlador. Podr&iacute;amos usar una capa de servicio, pero por simplicidad la estamos usando directamente en el controlador.
+* Hemos declarado un m&eacute;todo que recibe un objeto "User" en JSON usando el m&eacute;todo POST y **@RequestBody**.
+* Estamos utilizando la operaci&oacute;n "opsForList()" y su m&eacute;todo "leftPush" para almacenar como clave el nombre de usuario y como valor la URL.
+* Tambi&eacute;n declaramos un m&eacute;todo para obtener el valor de una clave pasada como par&aacute;metro usando **@RequestParam**.
+* Finalmente, estamos usando nuevamente la operaci&oacute;n "opsForList()", pero esta vez el m&eacute;todo es "leftPop" para recuperar el valor de la clave de Redis y eliminarlo al mismo tiempo.
 
 ## Running and Testing
-Para probar nuestro código, primero debemos iniciar el servidor Spring:
+Para probar nuestro c&oacute;digo, primero debemos iniciar el servidor Spring:
 ````commandline
 mvn spring-boot:run
 ````
-Si el servidor se está ejecutando, verá en la consola una salida similar a esta:
+Si el servidor se est&aacute; ejecutando, ver&aacute; en la consola una salida similar a esta:
 ````commandline
 Tomcat started on port(s): 8080 (http) with context path ''
 ````
@@ -124,7 +124,7 @@ O en mi caso, estoy usando Postman:
 ![Request to controller using Postman](https://drive.google.com/uc?id=1LfrWyPCuwzcSMEnCUlJbShDOH5wEnhSu)
 
 Como puede ver, la respuesta es "OK", lo que significa que la clave: "myrefactor" y el valor: "http://myrefactor.com/" se almacenaron correctamente en Redis.
-Para confirmarlo, solicitemos el valor mediante la solicitud GET, abra su navegador en la siguiente dirección:
+Para confirmarlo, solicitemos el valor mediante la solicitud GET, abra su navegador en la siguiente direcci&oacute;n:
 
 [http://127.0.0.1:8080/retrieve?username=myrefactor](http://127.0.0.1:8080/retrieve?username=myrefactor)
 
@@ -132,9 +132,9 @@ Si recibe el texto:
 ````json
 http://myrefactor.com/
 ````
-Significa que ha recuperado el valor con éxito. ¡Felicidades!
+Significa que ha recuperado el valor con &eacute;xito. ¡Felicidades!
 
-> Después de recuperar el valor, Redis eliminará automáticamente la clave debido a que estamos usando el método "leftPop", por lo que después de unos segundos ya no podrá recibir el valor.
+> Despu&eacute;s de recuperar el valor, Redis eliminar&aacute; autom&aacute;ticamente la clave debido a que estamos usando el m&eacute;todo "leftPop", por lo que despu&eacute;s de unos segundos ya no podr&aacute; recibir el valor.
 
 ## Resumen
-Hemos desarrollado desde cero una aplicación sencilla utilizando Redis y Spring Boot. Hay mucho que cubrir con respecto a Redis y Spring Data. No obstante, espero que esta guía te haya servido para dar tus primeros pasos.
+Hemos desarrollado desde cero una aplicaci&oacute;n sencilla utilizando Redis y Spring Boot. Hay mucho que cubrir con respecto a Redis y Spring Data. No obstante, espero que esta gu&iacute;a te haya servido para dar tus primeros pasos.
