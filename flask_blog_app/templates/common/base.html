@@ -19,6 +19,16 @@
     <script src="{{ url_for('static', filename='main.js') }}"></script>
     <script src="{{ url_for('static', filename='img-previewer.min.js') }}"></script>
 
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-73Z482JDJG"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-73Z482JDJG');
+    </script>
+
     <title>
         {% block title %}
         My Refactor

@@ -1,7 +1,7 @@
 # Using CSV module
 
 ## DELIMITER:
-Default is ',', but you can specify by the option:
+Default is ',' although you could se another character, for example:
 ```python
 csvreader = csv.reader(file, delimiter=':')
 ```

@@ -1,9 +1,9 @@
-from flask import Blueprint, g, url_for, render_template, request
+from flask import Blueprint, g, url_for, render_template, request, flash
 from flask_login import login_required
 from werkzeug.utils import redirect
 
 from flask_blog_app import db
-from flask_blog_app.blog.forms import TagForm
+from flask_blog_app.blog.forms import TagForm, ContactForm
 from flask_blog_app.blog.models import Subscriptor, Tag
 from flask_blog_app.post import Post
 
@@ -39,6 +39,15 @@ def create_tag():
     return render_template('tag/form.html', form=tag_form)
 
 
+@blog_bp.route("/contact", methods=['GET', 'POST'])
+def contact_us():
+    contact_form = ContactForm(request.form)
+    if request.method == 'POST' and contact_form.validate():
+        # Process the contact information here.
+        flash('Thanks for contact us!')
+    return render_template('contact.html', form=contact_form)
+
+
 @blog_bp.route("<tag>")
 def filter_by_tag(tag):
     return render_template('tag/filter_posts.html', tag=Tag.query.filter_by(name=tag).first_or_404())
@@ -47,6 +56,11 @@ def filter_by_tag(tag):
 @blog_bp.route("/terms")
 def show_terms():
     return render_template('terms.html')
+
+
+@blog_bp.route("/privacy")
+def show_privacy():
+    return render_template('privacy.html')
 
 
 @blog_bp.route("/subscribe", methods=['POST'])

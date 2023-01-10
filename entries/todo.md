@@ -1,3 +1,14 @@
+## Add terms and privacy policy
+
+## make the same th blog and home page, and also the titles shoub be clickable not only the read more button
+
+## put constrains in DB for tags a file names (unique)
+
+## reuse comment bbox research: using disquscdn:
+https://c.disquscdn.com/next/embed/common.bundle.78f08d08ee97a04dc049cbcf3a5ec827.js
+
+## tags are a nightmare to manage (implement autocomplete)
+
 ## inline code inside elements like p and li, doesn't show very well.
 
 ## Fix elastic search
@@ -7,6 +18,8 @@
 ## Larger pictures going out of border in the main blog content
 
 ## Edit article, by removing old file with a new one
+
+## Python script to get the project structure as text
 
 ## PicoCLI website look and feel
 

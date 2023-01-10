@@ -1,0 +1,28 @@
+{% extends 'common/base.html' %}
+
+{% block title %}
+    {{ super() }} create tag
+{% endblock %}
+
+{% block main_content %}
+    <div class="contact_us">
+        <form class="form" method="POST" action="{{ url_for('BLOG_BP.contact_us') }}">
+            {{ form.csrf_token }}
+            {{ form.name.label }} {{ form.name(size=32) }}
+            <br />
+            {{ form.email.label }} {{ form.email(size=32) }}
+            <br />
+            {{ form.message.label }} {{ form.message(cols=50, rows=10) }}
+            <br />
+            {% if form.errors %}
+                <ul class="errors">
+                    {% for error, msg in form.errors.items() %}
+                        <li>{{ error }} : {{ msg[0] }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            <br />
+            <button type="submit">Send</button>
+        </form>
+    </div>
+{% endblock %}

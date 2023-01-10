@@ -33,6 +33,10 @@ h1, h2, h3, h4, h5 {
     text-align: center;
 }
 
+.terms h1, .terms h2, .terms h3, .terms h4, .terms h5 {
+    text-align: left;
+}
+
 h2, article .section-header .post-title {
     font-size: 30px;
     font-weight: 500;
@@ -517,6 +521,10 @@ ul.socials {
 
 .subscribe .form input:focus {
 	outline: none;
+}
+
+.contact_us {
+    padding: 2em;
 }
 
 form button, button {
