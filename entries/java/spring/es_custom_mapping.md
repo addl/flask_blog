@@ -1,5 +1,8 @@
 https://javawithloveblog.wordpress.com/2019/07/01/custom-index-mapping-in-elasticsearch-and-spring/
 
+ver si las anotaciones funcionan
+https://stackoverflow.com/questions/44230228/spring-data-elasticsearch-settings-and-mapping-config-with-annotations-not-work
+
 el problema
 Explicar la razon del problema
 https://www.elastic.co/guide/en/elasticsearch/reference/current/ignore-above.html
