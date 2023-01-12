@@ -1,40 +1,41 @@
 <!-- Footer -->
 <footer>
-    <div class="grid-container">
-        <div class="footer-content grid-item">
-            <div class="subscribe">
-                <h2 class="subscribe-title">{{ _('Keep in touch') }}</h2>
-                <p class="subscribe-text">{{ _('Subscribe to keep up with fresh news and exciting updates. We promise not to
+    <div>
+        <div>
+            <div>
+                <h2>{{ _('Keep in touch') }}</h2>
+                <p>{{ _('Subscribe to keep up with fresh news and exciting updates. We promise not to
                     spam you!') }}</p>
-                <form class="form" id="subscriptionForm" action="{{ url_for('BLOG_BP.subscribe') }}">
-                    <input type="email" name="email" placeholder="{{ _('Enter your email address') }}"/>
-                    <button type="submit">{{ _('Send') }}</button>
-                    <div class="feedback">
-                        <span>{{ _('Thank you for subscribing!') }}</span>
+                <form action="{{ url_for('BLOG_BP.subscribe') }}" class="row">
+                    <div class="col">
+                        <input type="email" name="email" placeholder="{{ _('Enter your email address') }}"/>
+                    </div>
+                    <div class="col">
+                        <button type="submit">{{ _('Send') }}</button>
                     </div>
                 </form>
             </div>
-            <ul class="socials">
-                <li><a href="#"><i class="fab fa-facebook"></i></a></li>
-                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                <li><a href="#"><i class="fab fa-google-plus"></i></a></li>
-                <li><a href="#"><i class="fab fa-youtube"></i></a></li>
-                <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
-            </ul>
+            <dl style="padding-left: 0;">
+                <dd><a href="#"><i class="fab fa-facebook"></i></a></dd>
+                <dd><a href="#"><i class="fab fa-twitter"></i></a></dd>
+                <dd><a href="#"><i class="fab fa-google-plus"></i></a></dd>
+                <dd><a href="#"><i class="fab fa-youtube"></i></a></dd>
+                <dd><a href="#"><i class="fab fa-linkedin"></i></a></dd>
+            </dl>
         </div>
     </div>
     {# Copyright #}
-    <div class="footer-bottom">
-        <div class="copyright">
-            <p class=""><a href="/"><span name="organization">My Refactor</span></a> &copy; copyright</p>
+    <div class="row">
+        <div class="col">
+            <p class=""><a href="/"><span>My Refactor</span></a> &copy;Copyright</p>
         </div>
-        <div class="footer-menu">
-            <ul class="f-menu">
-                <li><a href="{{ url_for('BLOG_BP.home') }}">{{ _('Home') }}</a></li>
-                <li><a href="{{ url_for('POST_BP.all_posts') }}">{{ _('Blog') }}</a></li>
-                <li><a href="{{ url_for('BLOG_BP.show_terms') }}">{{ _('Terms') }}</a></li>
-                <li><a href="{{ url_for('BLOG_BP.show_privacy') }}">{{ _('Privacy policy') }}</a></li>
-            </ul>
+        <div class="col">
+            <dl style="text-align: right;">
+                <dd><a href="{{ url_for('BLOG_BP.home') }}">{{ _('Home') }}</a></dd>
+                <dd><a href="{{ url_for('POST_BP.all_posts') }}">{{ _('Blog') }}</a></dd>
+                <dd><a href="{{ url_for('BLOG_BP.show_terms') }}">{{ _('Terms') }}</a></dd>
+                <dd><a href="{{ url_for('BLOG_BP.show_privacy') }}">{{ _('Privacy policy') }}</a></dd>
+            </dl>
         </div>
     </div>
 </footer>
