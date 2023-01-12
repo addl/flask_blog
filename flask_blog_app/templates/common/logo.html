@@ -1,26 +1,24 @@
-<nav class="upper-nav">
+<div class="row">
 
-    <div class="logo">
-        <a href="{{ url_for('BLOG_BP.home') }}">
-            <img src="{{ url_for('static', filename='log_no_letters_res1.svg') }}" width="50" height="50" />
-             <h1><span>my</span> refactor</h1>
+    <div class="col-6">
+        <a href="{{ url_for('BLOG_BP.home') }}" style="display: flex; align-items: center; text-decoration:none">
+            <img src="{{ url_for('static', filename='log_no_letters_res1.svg') }}" width="50" height="50"/>
+            <h1 style="margin:0; padding-left:4px"><span>My</span> Refactor</h1>
         </a>
     </div>
 
-    <!--<div class="social">
-        <a href="#"><i class="fab fa-facebook"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-google-plus"></i></a>
-        <a href="#"><i class="fab fa-youtube"></i></a>
-        <a href="#"><i class="fab fa-linkedin"></i></a>
-    </div>-->
-
-    <div class="search">
-        <form class="searchBox" id="searchForm" action="{{ url_for('POST_BP.search_posts') }}" method="get">
-            <input class="searchInput" type="text" name="query" placeholder="What do you want to learn..">
-            <button class="searchButton">
-                <i class="fas fa-search"></i>
-            </button>
+    <div class="col-6">
+        <form class="searchBox" action="{{ url_for('POST_BP.search_posts') }}" method="get">
+            <div class="row" style="justify-content: end;">
+                <div class="col-10">
+                    <input type="text" name="query" placeholder="What do you want to learn.." style="margin: 0.5em;">
+                </div>
+                <div class="col-2">
+                    <button>
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
         </form>
     </div>
-</nav>
+</div>

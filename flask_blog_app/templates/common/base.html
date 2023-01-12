@@ -1,8 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme='dark'>
 <head>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='fontawesome/all.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+
+    <link rel="stylesheet" href="https://classless.de/classless.css">
+    <link rel="stylesheet" href="https://classless.de/addons/themes.css">
+
+<!--    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">-->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='codehilite.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='flag-icons.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='sticky.css') }}">
@@ -10,10 +14,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.png') }}">
-
-    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="{{ url_for('static', filename='main.js') }}"></script>
@@ -28,6 +28,16 @@
 
       gtag('config', 'G-73Z482JDJG');
     </script>
+
+    <style>
+        dt, dd {
+          display: inline;
+        }
+
+        footer {
+            overflow: hidden;
+        }
+    </style>
 
     <title>
         {% block title %}
@@ -44,7 +54,7 @@
     {% block extra_head %}{% endblock %}
 </head>
 
-<body>
+<body style="max-width: 70rem;">
 {% include 'common/header.html' %}
 
 <main class="container">
