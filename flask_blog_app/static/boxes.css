@@ -17,18 +17,3 @@
     10px 0 0;
 }
 
-.grid-item a.read-more {
-    background: linen;
-    padding: 8px 14px;
-    color: #363636;
-}
-
-.grid-item a.read-more:hover {
-    background: #363636;
-    color: white;
-}
-
-.grid-item .box_content {
-    padding: 0 0 1em 0;
-}
-

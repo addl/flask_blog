@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block meta_description %}
-    <meta name="description" content="A place where we talk about clean code! How to improve our code skills by applying best practices and
+<meta name="description" content="A place where we talk about clean code! How to improve our code skills by applying best practices and
         most common design patterns in order to get a high scalable code">
 {% endblock %}
 
@@ -21,14 +21,13 @@
 {% block main_content %}
 <div class="grid-container">
     {% for p in posts %}
-    <div class="grid-item feature-box">
-        <h2>{{ p.title }}</h2>
-        <div class="box_content">
-            <p>
-               {{ p.description }}
-            </p>
-        </div>
-        <a href="{{ url_for('POST_BP.show_post', human_url=p.human_url) }}" class="read-more">{{ _('Read More') }}</a>
+    <div class="grid-item card" style="outline: none;">
+        <h4><a href="{{ url_for('POST_BP.show_post', human_url=p.human_url) }}">{{ p.title }}</a></h4>
+        <hr>
+        <p>
+            {{ p.description }}
+        </p>
+        <a href="{{ url_for('POST_BP.show_post', human_url=p.human_url) }}">{{ _('Read More') }}</a>
     </div>
     {% endfor %}
 </div>

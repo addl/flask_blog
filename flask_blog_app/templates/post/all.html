@@ -9,11 +9,6 @@
     {% for p in posts %}
     <div class="grid-item feature-box">
         <h3>{{ p.title }}</h3>
-        <div class="tags">
-            {% for tag in p.tags %}
-            <span class="tag"><a href="{{ url_for('BLOG_BP.filter_by_tag', tag=tag.name) }}">{{ tag.name }}</a></span>
-            {% endfor %}
-        </div>
         <div class="box_content">
             <p>
                 {{ p.description }}

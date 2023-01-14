@@ -12,7 +12,9 @@
             <br />
             {{ form.email.label }} {{ form.email(size=32) }}
             <br />
-            {{ form.message.label }} {{ form.message(cols=50, rows=10) }}
+            {{ form.message.label }}
+            <br />
+            {{ form.message(cols=50, rows=10) }}
             <br />
             {% if form.errors %}
                 <ul class="errors">
