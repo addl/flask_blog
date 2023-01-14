@@ -17,3 +17,8 @@
     10px 0 0;
 }
 
+h4 a[href] {
+    text-decoration: none;
+    text-transform: capitalize;
+}
+
