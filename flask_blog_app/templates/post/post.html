@@ -11,6 +11,7 @@
 {% endblock %}
 
 {% block extra_head %}
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <script>
     $(document).ready(function() {
         /* Highlight code */
@@ -19,29 +20,19 @@
         const a = new ImgPreviewer('.post-content', {
             scrollbar: true
         });
-    });
-    /* Comment reply */
-    function reply(element, comment_id){
-        reply_form = $("#comment-form");
-        textarea = $('<textarea id="comment-reply-md" />')
-        var sibling = $(element).siblings(".comment-reply-content");
-        reply_box = $(sibling).append(textarea);
-        sbmit_btn = $('<button type="submit" />').html('Reply').on('click', function(e){
-            e.preventDefault();
-            rtext = $(textarea).val();
-            if(rtext.trim() === ""){
-                return false;
+        /* Handle submit with reCaptcha*/
+        $("#comment-form").on("submit", function(e) {
+            if($("#glg").val() === "si"){
+                return true;
             }
-            $("#comment-form #content").val(rtext);
-            $("#comment-form #comment_id").val(comment_id);
-            $("#comment-form").submit();
+            console.log("Invalid captcha");
+            return false;
         });
-        cancel_btn = $('<button />').html("Cancel").on('click', function(e){
-            $('.comment-reply-content').html('');
-        });
-        $(sibling).append(sbmit_btn);
-        $(sibling).append(cancel_btn);
-    }
+    });
+    /* reCaptcha callback */
+    var verifyCallback = function(response) {
+        $("#glg").val("si");
+    };
 </script>
 {% endblock %}
 
@@ -73,36 +64,51 @@
     <section class="post-content">
         {{ post_md | safe }}
     </section>
-    <section class="comments">
-        {% if current_user.is_authenticated %}
+    <div class="comments">
         <form method="POST" action="{{ url_for('POST_BP.create_comment') }}" id="comment-form">
+            <input type="hidden" id="glg" value="no" />
             {{ form.csrf_token }}
             {{ form.post_id }}
             {{ form.comment_id }}
             <div class="comment-header">
-                <img src="{{ current_user.picture }}" width="50" height="50"/>
-                <h3>{{ _('Ask me anything') }}</h3>
-            </div>
-            {{ form.content }}
-            <div class="buttons">
-                <a href="https://www.markdownguide.org/basic-syntax/" target="_blank">
-                    <i class="fab fa-markdown"></i> Use markdown
-                </a>
-                <button type="submit">{{ _('Comment') }}</button>
-            </div>
-        </form>
-        {% endif %}
-            <h2 class="comments-header"><i class="fa fa-comments" aria-hidden="true"></i> {{ _('Comments') }}</h2>
-            <div id="comments">
-                {% for comment in post.comments %}
-                    {% if not comment.parent %}
-                        {{ render_comment(comment) }}
-                    {% endif %}
+                {% if not current_user.picture %}
+                    <img src="{{ url_for('static', filename='no_picture.png') }}" width="50" height="50"/>
                 {% else %}
-                    <p>{{ _('Be the first in commenting on this post!') }}</p>
-                {% endfor %}
+                    <img src="{{ current_user.picture }}" width="50" height="50"/>
+                {% endif %}
+                <h4>{{ _('Ask me anything') }}</h4>
             </div>
-    </section>
+            <div class="row">
+                <div class="col">
+                    {{ form.content }}
+                    <a href="https://www.markdownguide.org/basic-syntax/" target="_blank">
+                        <i class="fab fa-markdown"></i> Use markdown
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    {{ form.name.label }} {{ form.name }}
+                </div>
+                <div class="col-6">
+                    {{ form.email.label }} {{ form.email }}
+                </div>
+            </div>
+            <div class="g-recaptcha" data-sitekey="6Lf7QfojAAAAAF2CtqYwsMQ7YsBRkJWvbEqlzx_p" data-callback="verifyCallback"></div>
+            <button style="margin-top: 2em; margin-left: 0;" type="submit">{{ _('Comment') }}</button>
+        </form>
+
+        <h4 class="comments-header"><i class="fa fa-comments" aria-hidden="true"></i> {{ _('Comments') }}</h4>
+        <div id="comments">
+            {% for comment in post.comments %}
+                {% if not comment.parent %}
+                    {{ render_comment(comment) }}git
+                {% endif %}
+            {% else %}
+                <p>{{ _('Be the first in commenting on this post!') }}</p>
+            {% endfor %}
+        </div>
+    </div>
 </article>
 {% endblock %}
 

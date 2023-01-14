@@ -1,22 +1,18 @@
 {% macro render_comment(comment) %}
 
-<div class="comment">
+<div class="comment child">
     <div class="picture">
-        <img src="{{ comment.user.picture }}" width="50" height="50"/>
+        {% if not current_user.picture %}
+            <img src="{{ url_for('static', filename='no_picture.png') }}" width="50" height="50"/>
+        {% else %}
+            <img src="{{ current_user.picture }}" width="50" height="50"/>
+        {% endif %}
     </div>
     <div class="content">
         <div class="comment-header">
             <span>{{ comment.user.name }}</span>
         </div>
         <p>{{ comment.content | safe }}</p>
-        <div class="actions">
-            {% if current_user.is_authenticated %}
-                <a class="comment-reply" onclick="reply(this, {{comment.id}})">{{ _('Reply') }}</a>
-                <div class="comment-reply-content"></div>
-            {% else %}
-                <a href="{{ url_for('AUTH_BP.login') }}">{{ _('Please, login to reply') }}</a>
-            {% endif %}
-        </div>
         <div class="comments">
             {% for comment in comment.children %}
                 {{ render_comment(comment) }}

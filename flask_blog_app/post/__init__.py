@@ -6,6 +6,7 @@ from flask_login import current_user, login_required
 from werkzeug.utils import redirect
 
 from flask_blog_app import db, es
+from flask_blog_app.auth import User
 from flask_blog_app.post.forms import PostForm, CommentForm
 from flask_blog_app.post.models import Post, PostTranslation, Comment
 
@@ -44,12 +45,19 @@ def show_post(human_url):
 
 
 @post_bp.route('/posts/comment', methods=['POST'])
-@login_required
 def create_comment():
     comment_form = CommentForm()
     if comment_form.validate_on_submit():
+        user_email = comment_form.email.data
+        user = User.query.filter_by(email=user_email).first()
+        if not user:
+            user = User(name=comment_form.name.data, email=user_email, picture=None)
+            db.session.add(user)
+            db.session.commit()
+        db.session.flush()
+
         comment = Comment()
-        comment.user_id = current_user.id
+        comment.user_id = user.id
         comment.post_id = comment_form.post_id.data
         if comment_form.comment_id.data:
             comment.parent_id = comment_form.comment_id.data
