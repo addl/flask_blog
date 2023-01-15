@@ -1,45 +1,61 @@
-https://javawithloveblog.wordpress.com/2019/07/01/custom-index-mapping-in-elasticsearch-and-spring/
+## Introducción
+En Elasticsearch, las asignaciones definen cómo se deben indexar y buscar los campos en los documentos. Las asignaciones especifican los tipos de datos de los campos y también pueden incluir configuraciones adicionales, como si un campo debe permitir búsquedas o no, si debe analizarse o no, etc.
 
-## Introduction
-In Elasticsearch, mappings define how fields in documents should be indexed and searched. Mappings specify the data types of fields, and can also include additional settings such as whether a field should be searchable or not, whether it should be analyzed or not, and so on.
+En este blog, aprenderemos cómo definir mapeos personalizados para nuestros índices dentro de Elasticsearch usando Spring Data Elasticsearch.
 
-In this blog we will learn how to define custom mappings for our indexes inside Elasticsearch using Spring Data Elasticsearch.
+## Por qué definir asignaciones personalizadas
+Al definir un mapeo personalizado, puede especificar cómo se deben indexar y buscar los campos en los documentos. De manera predeterminada, Elasticsearch mapeará automáticamente los campos en función de sus tipos de datos, pero el mapeo personalizado le brinda más control sobre cómo se indexan y buscan los campos.
 
-## Why to define custom mappings
-By defining custom mapping you can specify how fields in documents should be indexed and searched. By default, Elasticsearch will automatically map fields based on their data types, but custom mapping gives you more control over how fields are indexed and searched.
+Existen varias razones por las que es posible que desee especificar un mapeo personalizado en Elasticsearch:
 
-There are several reasons why you might want to specify custom mapping in Elasticsearch:
+**Tipos de datos**: puede especificar el tipo de datos para un campo, por ejemplo, un campo de fecha o un campo booleano. Esto puede ayudar a Elasticsearch a comprender mejor los datos y optimizar cómo se indexan y buscan.
 
-**Data types**: You can specify the data type for a field, for example, a date field or a boolean field. This can help Elasticsearch understand the data better and optimize how it is indexed and searched.
+**Analizadores**: puede especificar el analizador que se utilizará para un campo, por ejemplo, un analizador estándar o un analizador de palabras clave. Esto puede ayudar a Elasticsearch a comprender mejor los datos y optimizar cómo se indexan y buscan.
 
-**Analyzers**: You can specify the analyzer to be used for a field, for example, a standard analyzer or a keyword analyzer. This can help Elasticsearch understand the data better and optimize how it is indexed and searched.
+**Opciones de indexación**: puede especificar si un campo debe indexarse, almacenarse y buscarse. Por ejemplo, es posible que desee indexar un campo para que se pueda buscar, pero no almacenarlo para ahorrar espacio.
 
-**Indexing options**: You can specify whether a field should be indexed, stored, and searched. For example, you might want to index a field so it can be searched, but not store it to save space.
+**Seguridad a nivel de campo**: puede usar el mapeo personalizado para definir la seguridad a nivel de campo, por ejemplo, para hacer que ciertos campos solo sean accesibles para ciertos usuarios o roles.
 
-**Field-level security**: You can use custom mapping to define field-level security, for example, to make certain fields only accessible to certain users or roles.
+**Rendimiento**: la asignación personalizada se puede utilizar para optimizar el rendimiento de la indexación y la búsqueda. Por ejemplo, puede configurar la cantidad de fragmentos y réplicas para un índice o habilitar el uso de valores de documentos para los campos.
 
-**Performance**: Custom mapping can be used to optimize the performance of indexing and searching. For example, you can configure the number of shards and replicas for an index, or enable the use of doc values for fields.
+## Requisitos
+1. Cartero, [descárguelo aquí] (https://dl.pstmn.io/download/latest/win64)
+2. Elasticsearch [Elastic Search versión 7.15](https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.15.0-windows-x86_64.zip).
 
-## Requirements
-1. Postman, [download it here](https://dl.pstmn.io/download/latest/win64)
-2. Elasticsearch [Elastic Search version 7.15](https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.15.0-windows-x86_64.zip).
+### Dependencias de Maven
+````xml
+<dependencies>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+    </dependency>
+</dependencies>
+````
 
-## Case of study
-Our application has the following diagram:
+## Caso de estudio
+Nuestra aplicación tiene el siguiente diagrama:
 
 ![Elastic Search Custom Mapping](https://drive.google.com/uc?id=1LOG-pE2TP-3srUHDOLpA5bpRu4NGhxla)
 
-The main components are:
-* **Blog entity**: Our model representing the data to be stored in Elasticsearch.
-* **BlogRepository**: Spring Data normal repository interface.
-* **BlogService**: The service where the logic to process and store the information is implemented.
+Los componentes principales son:
+* **Entidad de blog**: Nuestro modelo representa los datos que se almacenarán en Elasticsearch.
+* **BlogRepository**: interfaz de repositorio normal de Spring Data.
+* **BlogService**: El servicio donde se implementa la lógica para procesar y almacenar la información.
 
-## The limitations of default mappings
-Now, let's imagine we have our index `blog_index` populated with two documents as follows:
+## Las limitaciones de las asignaciones predeterminadas
+Ahora, imaginemos que tenemos nuestro índice `blog_index` poblado con dos documentos de la siguiente manera:
 
 ![Elastic Search Custom Mapping](https://drive.google.com/uc?id=1cp56efSlvU5eiEIdsK9FkPDH9lZw_TDy)
 
-Then let's fetch the data using the property `url`, here is the query:
+Luego busquemos los datos usando la propiedad `url`, aquí está la consulta:
 ````json
 {
     "query": {
@@ -53,7 +69,7 @@ Then let's fetch the data using the property `url`, here is the query:
     }
 }
 ````
-The result of this query is:
+El resultado de esta consulta es:
 ````json
 "hits": [
     {
@@ -70,13 +86,13 @@ The result of this query is:
     }
 ]
 ````
-This is expected as Elastic finds a matching for the url:
+Esto se espera ya que Elastic encuentra una coincidencia para la URL:
 ````
 http://myrefactor.com/es/posts/primeros-pasos-con-spring-boot-y-elasticsearch
 ````
 
-### The problem
-Now I want to perform the same query but using the URL of the second blog entry:
+### El problema
+Ahora quiero realizar la misma consulta pero usando la URL de la segunda entrada del blog:
 ````json
 {
     "query": {
@@ -90,7 +106,7 @@ Now I want to perform the same query but using the URL of the second blog entry:
     }
 }
 ````
-And the output is:
+Y la salida es:
 ````json
 {
   "hits": {
@@ -103,11 +119,10 @@ And the output is:
   }
 }
 ````
-Not results! Elastic is unable to find the second document, what happened?
+¡No resultados! Elastic no puede encontrar el segundo documento, ¿qué pasó?
 
-### Checking the mappings
-The first thing we will do is to check the mappings defined for the 'blog_index' index. By using Postman or your browser go to [http://127.0.0.1:9200/blog_index/_mappings](http://127.0.0.1:9200/blog_index/_mappings). This query will show the mappings, give especial attention to the `url` property's mapping:
-
+### Comprobando el mapeo
+Lo primero que haremos será comprobar el `mapping` definido para el índice 'blog_index'. Usando Postman o su navegador, vaya a [http://127.0.0.1:9200/blog_index/_mappings](http://127.0.0.1:9200/blog_index/_mappings). Esta consulta mostrará las propiedades y como se mapean, preste especial atención a la `url`:
 ````json
 {
   "url": {
@@ -121,13 +136,13 @@ The first thing we will do is to check the mappings defined for the 'blog_index'
   }
 }
 ````
-The key in the above definition is `ignore_above` property, which value is **256**. The [Documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/ignore-above.html) says:
-> Strings longer than the `ignore_above` setting will not be indexed or stored.
+La clave en la definición anterior es la propiedad `ignore_above`, cuyo valor es **256**. La [Documentación](https://www.elastic.co/guide/en/elasticsearch/reference/current/ignore-above.html) dice:
+> Las cadenas más largas que la configuración `ignore_above` no se indexarán ni almacenarán.
 
-To be more precise:
-> It will index only **256** characters of the string.
+Siendo más preciso:
+> Indexará solo **256** caracteres de la cadena.
 
-We could try to fetch the document using another query, for ex:
+Podríamos intentar recuperar el documento usando otra consulta, por ejemplo:
 ````json
 {
     "query": {
@@ -141,7 +156,9 @@ We could try to fetch the document using another query, for ex:
     }
 }
 ````
-And the output is, indeed:
+
+Y la salida es, de hecho:
+
 ````json
 {
   "hits": [
@@ -164,12 +181,12 @@ And the output is, indeed:
 ]
 }
 ````
-Notice how Elastic is indicating that `url.keyword` is being ignored. So in order to solve this issue we have to define our custom mapping.
+Observe cómo Elastic indica que `url.keyword` se está ignorando. Entonces, para resolver este problema, debemos definir nuestro mapeo personalizado.
 
-## Defining custom mappings
+## Definición de mapeo personalizado
 
-### Configuration
-We have to define a bean of type `RestHighLevelClient` as follows:
+### Configuración
+Tenemos que definir un bean de tipo `RestHighLevelClient` de la siguiente manera:
 
 ````java
 @Configuration
@@ -184,9 +201,8 @@ public class ElasticConfig {
 }
 ````
 
-### Creating the mapping file
-Inside the resource folder create a file, name it as `blog_mappings.json` and inside the content is:
-
+### Creando el archivo de mapeo
+Dentro de la carpeta de recursos, cree un archivo, asígnele el nombre `blog_mappings.json` y dentro del archivo defina el mapeo:
 ````json
 {
    "properties":{
@@ -220,10 +236,10 @@ Inside the resource folder create a file, name it as `blog_mappings.json` and in
    }
 }
 ````
-Note how we have defined `"ignore_above":1024`, so that large URL are indexed.
+Tenga en cuenta cómo hemos definido `"ignore_above":1024`, para que se indexen las URL grandes.
 
-### Changes in the blog service
-Then we need to inject the Elasticsearch client
+### Cambios en el servicio de blog
+Luego necesitamos inyectar el cliente de Elasticsearch definido en la configuración:
 ````java
 public class BlogService {
 
@@ -268,16 +284,15 @@ public class BlogService {
         }
     }
 ````
-This code is using the Elasticsearch Java API to create an index if it does not already exist. The main method in this code is the **initializeIndex()** method, which is annotated with `@PostConstruct`, indicating that it should be run automatically after the bean is created.
+Este código usa la API Java de Elasticsearch para crear un índice si aún no existe. El método principal en este código es el método **initializeIndex()**, que está anotado con `@PostConstruct`, lo que indica que debe ejecutarse automáticamente después de crear el bean.
 
-In general, it ensures that the index `blog_index` is created if it does not already exist, using the mapping specified in the `resourceMapping` variable.
+En general, asegura que el índice `blog_index` se crea si aún no existe, usando el mapeo especificado en la variable `resourceMapping`.
 
-## Conclusion
-In conclusion, custom mapping in Elasticsearch provides a way to specify how fields in documents should be indexed and searched. The default mappings provided by Elasticsearch may not always be suitable for a particular use case, and custom mapping allows for more control over how data is indexed and searched.
+## Conclusión
+En conclusión, el mapeo personalizado en Elasticsearch proporciona una forma de especificar cómo se deben indexar y buscar los campos en los documentos. Es posible que las asignaciones predeterminadas proporcionadas por Elasticsearch no siempre sean adecuadas para un caso de uso particular, y la asignación personalizada permite un mayor control sobre cómo se indexan y buscan los datos.
+También resolvimos nuestro caso de estudio implementando un mapeo personalizado usando Spring Data.
 
-We also looked at how custom mapping can be implemented using Spring Data, to solve a specific problem that cannot be solved with default mappings.
+## Código fuente
+Como de costumbre, puede descargar el código fuente asociado a este proyecto desde [My Refactor - GitHub](https://github.com/addl/my_refactor/tree/main/mr_es_spring_custom_mapping)
 
-## Sourcecode
-As usual you can download the sourcecode associatted to this project from [My Refactor - GitHub](https://github.com/addl/my_refactor/tree/main/mr_es_spring_custom_mapping)
-
-Happy Code!
+¡Happy code!

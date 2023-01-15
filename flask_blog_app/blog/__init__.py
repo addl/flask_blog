@@ -1,8 +1,9 @@
-from flask import Blueprint, g, url_for, render_template, request, flash
+from flask import Blueprint, g, url_for, render_template, request, flash, current_app
+from flask_mail import Mail, Message
 from flask_login import login_required
 from werkzeug.utils import redirect
 
-from flask_blog_app import db
+from flask_blog_app import db, mail
 from flask_blog_app.blog.forms import TagForm, ContactForm
 from flask_blog_app.blog.models import Subscriptor, Tag
 from flask_blog_app.post import Post
@@ -44,7 +45,14 @@ def contact_us():
     contact_form = ContactForm(request.form)
     if request.method == 'POST' and contact_form.validate():
         # Process the contact information here.
-        flash('Thanks for contact us!')
+        msg = Message("Message from " + contact_form.name.data,
+                      sender=("My Refactor", current_app.config['MAIL_USERNAME']),
+                      recipients=[current_app.config['MAIL_ADMIN']])
+        msg.body = contact_form.message.data if contact_form.message.data else "Hello,from Flask and Gmail SMTP server."
+        msg.reply_to = contact_form.email.data
+        mail.send(msg)
+        flash('Thanks for contact us! We will message you soon.')
+        return redirect(url_for('.contact_us'))
     return render_template('contact.html', form=contact_form)
 
 

@@ -4,27 +4,75 @@
     {{ super() }} create tag
 {% endblock %}
 
+{% block extra_head %}
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script>
+    $(document).ready(function() {
+        /* Handle submit with reCaptcha*/
+        $("#contact-us").on("submit", function(e) {
+            if($("#glgctc").val() === "sip"){
+                return true;
+            }
+            console.log("Invalid captcha");
+            return false;
+        });
+    });
+    /* reCaptcha callback */
+    var verifyCallback = function(response) {
+        $("#glgctc").val("sip");
+    };
+</script>
+{% endblock %}
+
 {% block main_content %}
-    <div class="contact_us">
-        <form class="form" method="POST" action="{{ url_for('BLOG_BP.contact_us') }}">
-            {{ form.csrf_token }}
-            {{ form.name.label }} {{ form.name(size=32) }}
-            <br />
-            {{ form.email.label }} {{ form.email(size=32) }}
-            <br />
-            {{ form.message.label }}
-            <br />
-            {{ form.message(cols=50, rows=10) }}
-            <br />
-            {% if form.errors %}
-                <ul class="errors">
-                    {% for error, msg in form.errors.items() %}
-                        <li>{{ error }} : {{ msg[0] }}</li>
-                    {% endfor %}
-                </ul>
+    <section class="contact_us">
+        <h2>Contact My Refactor</h2>
+        <p>Let's explore how can I help you. Please fill out this form</p>
+        <hr />
+        <br />
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="card info">
+                        <p>Message sent</p>
+                        <p>{{ message }}</p>
+                    </div>
+                {% endfor %}
             {% endif %}
-            <br />
-            <button type="submit">Send</button>
+        {% endwith %}
+        <form class="form" id="contact-us" method="POST" action="{{ url_for('BLOG_BP.contact_us') }}">
+            <input type="hidden" id="glgctc" value="nope" />
+            {{ form.csrf_token }}
+            <div class="row">
+                <div class="col-6">{{ form.name.label }} {{ form.name(size=32) }}</div>
+                <div class="col-6">{{ form.email.label }} {{ form.email(size=32) }}</div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    {{ form.message.label }}
+                    <br />
+                    {{ form.message(cols=50, rows=10) }}
+                </div>
+            </div>
+
+            {% if form.errors %}
+                <div class="row">
+                    <div class="col">
+                        <ul class="errors">
+                            {% for error, msg in form.errors.items() %}
+                                <li>{{ error }} : {{ msg[0] }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            {% endif %}
+            <div class="row">
+                <div class="col">
+                    <div class="g-recaptcha" data-sitekey="6Lf7QfojAAAAAF2CtqYwsMQ7YsBRkJWvbEqlzx_p" data-callback="verifyCallback"></div>
+                <button style="margin-top: 2em; margin-left: 0;" type="submit">Send</button>
+                </div>
+            </div>
         </form>
-    </div>
+    </section>
 {% endblock %}

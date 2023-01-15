@@ -4,6 +4,7 @@ from elasticsearch import Elasticsearch
 from flask import Flask, render_template, g, request, send_from_directory, url_for, session, jsonify
 from flask_babel import Babel
 from flask_login import LoginManager, login_user
+from flask_mail import Mail
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.utils import redirect
@@ -16,6 +17,7 @@ migrate = Migrate()
 babel_ext = Babel()
 es = Elasticsearch()
 oauth = OAuth()
+mail = Mail()
 
 
 def create_app(test_config=None, get_locale=None):
@@ -29,6 +31,7 @@ def create_app(test_config=None, get_locale=None):
 
     db.init_app(app)
     migrate.init_app(app, db)
+    mail.init_app(app)
 
     # Login
     login_manager = LoginManager()

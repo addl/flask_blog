@@ -7,6 +7,7 @@ from werkzeug.exceptions import abort
 from werkzeug.utils import redirect, secure_filename
 
 from flask_blog_app import db, es
+from flask_blog_app.auth import User
 from flask_blog_app.blog.models import Tag
 from flask_blog_app.post.models import Post
 from flask_blog_app.post import PostForm
@@ -97,6 +98,12 @@ def create_post():
 @login_required
 def all_posts():
     return render_template('admin/all_posts.html', posts=Post.query.all())
+
+
+@admin_bp.route('/admin/users/all', methods=['GET'])
+@login_required
+def all_users():
+    return render_template('admin/all_users.html', users=User.query.all())
 
 
 @admin_bp.route('/admin/posts/delete/<post_id>', methods=['GET'])

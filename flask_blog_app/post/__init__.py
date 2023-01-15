@@ -2,7 +2,6 @@ import os
 
 import markdown
 from flask import Blueprint, render_template, g, request, current_app
-from flask_login import current_user, login_required
 from werkzeug.utils import redirect
 
 from flask_blog_app import db, es

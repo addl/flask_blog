@@ -1,17 +1,17 @@
-## Introduction
+## Introducción
 
-Spring Data is a collection of libraries that make it easy to work with data in Spring Framework-based applications. One of the key features of Spring Data is its support for repositories, which provide a way to interact with data sources using a consistent, simple API.
+Spring Data es una colección de bibliotecas que facilitan el trabajo con datos en aplicaciones basadas en Spring Framework. Una de las características clave de Spring Data es su soporte para repositorios, que brindan una forma de interactuar con fuentes de datos utilizando una API simple y consistente.
 
-One of its big advantages is that it integrates easily with many kind of solution such as Databases(MySql, PostgreSql), caching solution(Redis) and indexing engines, for example Elasticsearch. Always providing a simple way for accessing the data source and making migrations seamless.
+Una de sus ventajas significativas es que se integra fácilmente con cualquier tipo de solución, como bases de datos (MySql, PostgreSql), soluciones de almacenamiento en caché (Redis) y motores de indexación, por ejemplo, Elasticsearch. Siempre brindando una forma simple de acceder a la fuente de datos y realizar migraciones sin inconvenientes.
 
-In this article I will walk you through the process of creating custom repositories taking Elasticsearch as data, although the same methodology works perfectly for others solutions.
+En este artículo, lo guiaré a través del proceso de creación de repositorios personalizados que toman Elasticsearch como datos, aunque la misma metodología funciona perfectamente para otras soluciones.
 
-## Why to implement custom repositories
-When working with JPA repositories is very unlikely for you to create custom repositories unless you need to create dynamic queries based in several parameters, or using a custom mapper for your entities, in such cases you can not rely on Spring repository or annotated queries.
+## Por qué implementar repositorios personalizados
+Cuando trabaja con repositorios JPA, es muy poco probable que cree repositorios personalizados a menos que necesite crear consultas dinámicas basadas en varios parámetros, o usar un mapeador personalizado para sus entidades, en tales casos, no puede confiar en el repositorio de Spring o consultas anotadas.
 
-In the case of Elasticsearch the situation differ, since Elastic search provides a lot of different queries for searching and indexing, in this case using repositories will generate queries by default that in many cases don't fulfill the requirements. 
+En el caso de Elasticsearch, la situación es diferente, ya que Elastic search proporciona muchas consultas diferentes para buscar e indexar, en este caso, el uso de repositorios generará consultas por defecto que en muchos casos no cumplen con los requisitos.
 
-Imagine we have the following entity:
+Imagina que tenemos la siguiente entidad:
 ````java
 @Data
 @Document(indexName = "job_posting", type = "doc")
@@ -28,13 +28,12 @@ public class JobPostingEntity {
 
 }
 ````
-Now we want to query Elasticsearch in order to filter documents based on all its properties, we want to specify the range of `createdDate`, we also want to filter by `source` being LinkedIn, Indeed, etc. Finally, we want to search fragments of strings based on the `title` for example we want all job postings having the text **developer** inside its `title`.
+Ahora queremos consultar Elasticsearch para filtrar documentos en función de todas sus propiedades, queremos especificar el rango de `createdDate`, también queremos filtrar por `fuente` que sea LinkedIn, Indeed, etc. Finalmente, queremos buscar fragmentos de cadenas basadas en el `título`, por ejemplo, queremos que todas las ofertas de trabajo tengan el texto **desarrollador** dentro de su `título`.
 
-As you can imagine, we will generate different types of queries like **Range query** for the dates, we could use to match the source **Terms Query** or **Match Query** or more, finally to look for substrings we will use **Wildcard Queries** or **Query String**. This is very difficult to achieve with the default repository.
+Como puede imaginar, generaremos diferentes tipos de consultas como **Consulta de rango** para las fechas, que podríamos usar para hacer coincidir la fuente **Consulta de términos** o **Consulta de coincidencia** o más, finalmente, para busque subcadenas, usaremos **Consultas comodín** o **Cadena de consulta**. Esto es muy difícil de lograr con el repositorio predeterminado.
 
-## The traditional repository
-Before proceeding with our custom implementation, lets take a look at a common Spring Data Elasticsearch repository:
-
+## El repositorio tradicional
+Antes de continuar con nuestra implementación personalizada, echemos un vistazo a un repositorio común de Spring Data Elasticsearch:
 ````java
 public interface JobPostingRepository
     extends ElasticsearchRepository<JobPostingEntity, String> {
@@ -44,36 +43,26 @@ public interface JobPostingRepository
 
 }
 ````
-We simply create an interface and extend `ElasticsearchRepository`. The method **findByUrl** is an example of how to define a custom method following Spring Data name conventions annotated with `@Query` class from Elasticsearch.
+Simplemente creamos una interfaz y extendemos `ElasticsearchRepository`. El método **findByUrl** es un ejemplo de cómo definir un método personalizado siguiendo las convenciones de nombres de Spring Data anotadas con la clase `@Query` de Elasticsearch.
 
-The above code is enough to perform CRUD operations supporting pagination and sorting as well, but we have already discussed some of its limitations
+El código anterior es suficiente para realizar operaciones CRUD que también admitan la paginación y la clasificación, pero ya hemos discutido algunas de sus limitaciones.
 
-## Custom repository: Interface declaration
+## Repositorio personalizado: Declaración de interfaz
 
-First, we need to define an interface and declare all the custom methods we need in our repository:
+Primero, necesitamos definir una interfaz y declarar todos los métodos personalizados que necesitamos en nuestro repositorio:
 
 ````java
 public interface CustomJobPostingRepository {
 
-  static final int EXTERNAL_JOB_POSTING_PAGE_SIZE = 2500;
-
-  public static final String EXTERNAL_JOBPOSTING_INDEX_NAME = "external_job_posting";
-
-  void updateProperties(Map<String, Object> values, String jobPostingId);
-
   Page<JobPostingEntity> search(JobPostingScrappedSearchDto searchDto, Pageable page);
-
-  public Page<JobPostingEntity> findAllVisible(Pageable page);
-
-  List<JobPostingEntity> findJobPostingIdsByPropertyAndValue(String fieldName, String value);
 
   void setVisivilityToFalseBySource(String source);
 
 }
 ````
 
-## Custom repository: Implementation
-Below we are implementing a full search method, based on the properties present in a Search DTO object:
+## Repositorio personalizado: Implementación
+A continuación, implementamos un método de búsqueda completo, basado en las propiedades presentes en un objeto DTO:
 
 ````java
 public class CustomJobPostingRepositoryImpl implements CustomJobPostingRepository {
@@ -113,18 +102,19 @@ public class CustomJobPostingRepositoryImpl implements CustomJobPostingRepositor
 }
 ````
 
-The method starts by creating a `BoolQueryBuilder` object, which is used to construct the search query. 
+El método comienza creando un objeto `BoolQueryBuilder`, que se usa para construir la consulta de búsqueda.
 
-1. The method then checks the title field in the JobPostingScrappedSearchDto object, and if it is not empty, it adds a should clause to the query to look for the title.
-2. It then checks the searchQuery field in the JobPostingScrappedSearchDto object, and if it is not empty, it adds a should clause to the query to support text query search using `QueryString`.
-3. Then, it adds a must clause to the query to ensure that only visible job postings are returned using `MatchQuery`.
-4. Then it checks the created date range, if both `fromDate` and `toDate` are not null, it adds a range query to the bool query.
-5. Finally, the method uses the **template.queryForPage()** method to execute the search query and return a `Page` object containing the search results.
+1. Luego, el método verifica el campo de título en el objeto JobPostingScrappedSearchDto y, si no está vacío, agrega una cláusula should a la consulta para buscar el título.
+2. Luego verifica el campo searchQuery en el objeto JobPostingScrappedSearchDto y, si no está vacío, agrega una cláusula should a la consulta para respaldar la búsqueda de consulta de texto usando `QueryString`.
+3. Luego, agrega una cláusula obligatoria a la consulta para garantizar que solo se devuelvan las ofertas de trabajo visibles mediante `MatchQuery`.
+4. Luego verifica el rango de fechas creado, si `fromDate` y `toDate` no son nulos, agrega una consulta de rango a la consulta bool.
+5. Finalmente, el método utiliza el método **template.queryForPage()** para ejecutar la consulta de búsqueda y devolver un objeto `Página` que contiene los resultados de la búsqueda.
 
-> Make sure the implementation name ends in `Impl`
+> Asegúrate de que el nombre de la implementación termine en `Impl`
 
-## Extending our custom repository
-Now we only need to extend our repository from the default/traditional repository we covered before:
+## Extendiendo nuestro repositorio personalizado
+Ahora solo necesitamos extender nuestro repositorio desde el repositorio predeterminado/tradicional que cubrimos antes:
+
 ````java
 public interface JobPostingRepository
     extends ElasticsearchRepository<JobPostingEntity, String>, CustomJobPostingRepository {
@@ -135,7 +125,7 @@ public interface JobPostingRepository
 }
 ````
 
-Here is an example using the repository in a service:
+Aquí hay un ejemplo usando el repositorio en un servicio:
 
 ````java
 @Service
@@ -159,8 +149,10 @@ public class JobPostingService {
 }
 ````
 
-## Conclusion
-Spring Data repositories are a powerful and convenient way to work with data in Spring-based applications. They provide a consistent, simple API for performing CRUD operations and can be easily extended to add custom logic for more complex queries.
+## Conclusión
+Los repositorios Spring Data son una forma poderosa y conveniente de trabajar con datos en aplicaciones basadas en Spring. Proporcionan una API simple y consistente para realizar operaciones CRUD y se pueden ampliar fácilmente para agregar lógica personalizada para consultas más complejas.
 
 ## References
+[Spring Data Elasticsearch](https://docs.spring.io/spring-data/elasticsearch/docs/current/reference/html/)
+
 [Custom Spring Data Repository](https://vladmihalcea.com/custom-spring-data-repository/)

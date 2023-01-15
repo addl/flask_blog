@@ -1,0 +1,25 @@
+{% extends 'admin/home.html' %}
+
+{% block title %}
+    {{ super() }} create post
+{% endblock %}
+
+{% block admin_content %}
+    <table style="width:100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for u in users %}
+                <tr>
+                    <td>{{ u.name }}</td>
+                    <td>{{ u.email }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
