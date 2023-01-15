@@ -8,13 +8,13 @@ class Config(object):
     CSRF_ENABLED = True
     SECRET_KEY = 'this-really-needs-to-be-changed'
     SQLALCHEMY_DATABASE_URI = 'postgresql://pguser:pguser@127.0.0.1:5432/flask_blog'
-    TWITTER_CLIENT_ID = "EHfW4CbYluj6xOKLp1wNahoyK"
-    TWITTER_CLIENT_SECRET = "Dh2q17PntvO8jIjn8HRAiAb8LnKqPKbeFA5CTa1g0BwlYKyW7e"
+    TWITTER_CLIENT_ID = "EHfW4CbwNahoyK"
+    TWITTER_CLIENT_SECRET = "Dh2q17Pntva1g0BwlYKyW7e"
     UPLOAD_FOLDER = '/data/uploads/posts'
     MAIL_SERVER = 'smtp.gmail.com'
     MAIL_PORT = 465
     MAIL_USERNAME = 'andrydaniel88@gmail.com'
-    MAIL_PASSWORD = 'jgkvnvjkmbwoifoy'
+    MAIL_PASSWORD = 'secret'
     MAIL_ADMIN = 'elion0075@yahoo.com'
     MAIL_USE_TLS = False
     MAIL_USE_SSL = True
