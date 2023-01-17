@@ -21,13 +21,27 @@
 {% block main_content %}
 <div class="grid-container">
     {% for p in posts %}
-    <div class="grid-item card" style="outline: none;">
-        <h4><a href="{{ url_for('POST_BP.show_post', human_url=p.human_url) }}">{{ p.title }}</a></h4>
-        <hr>
-        <p>
-            {{ p.description }}
-        </p>
-        <a href="{{ url_for('POST_BP.show_post', human_url=p.human_url) }}">{{ _('Read More') }}</a>
+    <div class="grid-item">
+        <div class="blog-card spring-fever">
+            <div class="title-content">
+                <h3><a href="{{ url_for('POST_BP.show_post', human_url=p.human_url) }}">{{ p.title }}</h3>
+                <div class="intro"><a href="#">Inspiration</a></div>
+            </div>
+            <div class="card-info">
+                {{ p.description }}
+                <a href="{{ url_for('POST_BP.show_post', human_url=p.human_url) }}">{{ _('Read More') }}
+                    <span class="licon icon-arr icon-black"></span>
+                </a>
+            </div>
+            <div class="utility-info">
+                <ul class="utility-list">
+                    <li><span class="licon icon-com"></span><a href="#">{{ p.comments | length }}</a></li>
+                    <li><span class="licon icon-dat"></span>{{ p.timestamp.strftime('%m / %Y')}}</li>
+                </ul>
+            </div>
+            <div class="gradient-overlay"></div>
+            <div class="color-overlay"></div>
+        </div><!-- /.blog-card -->
     </div>
     {% endfor %}
 </div>

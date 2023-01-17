@@ -24,7 +24,7 @@ class Post(Translatable, db.Model):
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     tags = db.relationship("Tag", secondary=post_tags, backref=db.backref('posts', lazy='dynamic'), lazy='dynamic')
-    comments = db.relationship('Comment', backref='post', lazy='dynamic')
+    comments = db.relationship('Comment', backref='post', lazy='select')
 
     def __repr__(self):
         return '<Post {}>'.format(self.title)
