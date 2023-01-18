@@ -19,10 +19,10 @@
 {% endblock %}
 
 {% block main_content %}
-<div class="grid-container">
+<div class="grid-container container">
     {% for p in posts %}
-    <div class="grid-item">
-        <div class="blog-card spring-fever">
+    <div class="grid-item ">
+        <!--<div class="blog-card spring-fever">
             <div class="title-content">
                 <h3><a href="{{ url_for('POST_BP.show_post', human_url=p.human_url) }}">{{ p.title }}</h3>
                 <div class="intro"><a href="#">Inspiration</a></div>
@@ -41,7 +41,32 @@
             </div>
             <div class="gradient-overlay"></div>
             <div class="color-overlay"></div>
-        </div><!-- /.blog-card -->
+        </div> -->
+        <div class="card">
+            <div class="face face1 {{p.category.name}}">
+                <div class="cat">
+                    {% if p.category.name == 'design' %}
+                        <img src="https://github.com/Jhonierpc/WebDevelopment/blob/master/CSS%20Card%20Hover%20Effects/img/design_128.png?raw=true">
+                    {% endif %}
+                    {% if p.category.name == 'spring' %}
+                        <img src="https://github.com/Jhonierpc/WebDevelopment/blob/master/CSS%20Card%20Hover%20Effects/img/code_128.png?raw=true">
+                    {% endif %}
+                    {% if p.category.name == 'python' %}
+                        <img src="https://github.com/Jhonierpc/WebDevelopment/blob/master/CSS%20Card%20Hover%20Effects/img/launch_128.png?raw=true">
+                    {% endif %}
+                    <span style="text-transform: lowercase">{{ p.category.name }}</span>
+                </div>
+                <div class="content">
+                    <h3 style="text-transform: capitalize">{{ p.title }}</h3>
+                </div>
+            </div>
+            <div class="face face2 {{p.category.name}}">
+                <div class="content">
+                    <p>{{ p.description }}</p>
+                    <a href="{{ url_for('POST_BP.show_post', human_url=p.human_url) }}">{{ _('Read More') }}</a>
+                </div>
+            </div>
+        </div>
     </div>
     {% endfor %}
 </div>

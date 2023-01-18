@@ -8,7 +8,7 @@ from werkzeug.utils import redirect, secure_filename
 
 from flask_blog_app import db, es
 from flask_blog_app.auth import User
-from flask_blog_app.blog.models import Tag
+from flask_blog_app.blog.models import Tag, Category
 from flask_blog_app.post.models import Post
 from flask_blog_app.post import PostForm
 
@@ -32,6 +32,7 @@ def admin_home():
 def create_post():
     post_form = PostForm()
     post_form.tags.choices = [(t.id, t.name) for t in Tag.query.all()]
+    post_form.category.choices = [(cat.id, cat.name) for cat in Category.query.all()]
     post_id = request.args.get('post_id')
     if post_id:
         current_post = Post.query.get_or_404(post_id)
@@ -71,6 +72,7 @@ def create_post():
         post.translations['en'].description = post_form.description.data
         post.translations['es'].description = post_form.description_es.data
         post.tags = [Tag.query.get(t) for t in post_form.tags.data]
+        post.category_id = post_form.category.data
         post.user_id = current_user.id
         db.session.add(post)
         db.session.commit()

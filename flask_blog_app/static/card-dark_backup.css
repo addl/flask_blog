@@ -26,18 +26,6 @@
     transform: translateY(0);
 }
 
-.container .card .face.face1.design {
-    border-bottom: 2px solid #1C82AD;
-}
-
-.container .card .face.face1.spring {
-    border-bottom: 2px solid #03C988;
-}
-
-.container .card .face.face1.python {
-    border-bottom: 2px solid #FF9F29;
-}
-
 .container .card:hover .face.face1.design {
     background: #1C82AD;
 }
@@ -51,23 +39,16 @@
 }
 
 .container .card .face.face1 .content{
-    opacity: 0.4;
+    opacity: 0.2;
     transition: 0.5s;
-    padding: 0 10px;
 }
 
 .container .card:hover .face.face1 .content{
     opacity: 1;
 }
 
-.container .card .face.face1 .cat {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-}
-
-.container .card .face.face1 .cat img {
-    max-width: 40px;
+.container .card .face.face1 .content img{
+    max-width: 100px;
 }
 
 .container .card .face.face1 .content h3{
@@ -75,11 +56,12 @@
     padding: 0;
     color: #fff;
     text-align: center;
-    font-size: 1.4em;
+    font-size: 1.5em;
 }
 
 .container .card .face.face2{
     position: relative;
+    background: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -103,20 +85,12 @@
     display:  inline-block;
     text-decoration: none;
     font-weight: 900;
-}
-
-.container .card .face.face2.design .content a{
-    color: #1C82AD;
-}
-
-.container .card .face.face2.spring .content a{
-    color: #03C988;
-}
-
-.container .card .face.face2.python .content a{
-    color: #FF9F29;
+    color: #333;
+    padding: 5px;
+    border: 1px solid #333;
 }
 
 .container .card .face.face2 .content a:hover{
-    text-decoration: underline;
+    background: #333;
+    color: #fff;
 }

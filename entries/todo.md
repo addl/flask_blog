@@ -1,5 +1,8 @@
 ## make the same th blog and home page, and also the titles shoub be clickable not only the read more button
 
+## Check style:
+https://www.nansen.ai/alpha-articles/osmosis-protocol
+
 ## put constrains in DB for tags a file names (unique)
 
 ## reuse comment bbox research: using disquscdn:

@@ -21,6 +21,9 @@
             <p><a href="{{ url_for('BLOG_BP.create_tag')}}">Create tag</a></p>
         </fieldset>
         <fieldset>
+            {{ form.category.label }} {{ form.category }}
+        </fieldset>
+        <fieldset>
             {{ form.description.label }} {{ form.description }}
         </fieldset>
         <fieldset>

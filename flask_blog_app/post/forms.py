@@ -1,6 +1,6 @@
 from flask_babel import lazy_gettext as _
 from flask_wtf import FlaskForm
-from wtforms import StringField, FileField, SelectMultipleField, TextAreaField, HiddenField, EmailField
+from wtforms import StringField, FileField, SelectMultipleField, TextAreaField, HiddenField, EmailField, SelectField
 from wtforms.validators import DataRequired, Length
 
 
@@ -13,6 +13,7 @@ class PostForm(FlaskForm):
     description = TextAreaField('Description EN', validators=[Length(max=180)])
     description_es = TextAreaField('Description ES', validators=[Length(max=180)])
     tags = SelectMultipleField('Tags', coerce=int, validators=[DataRequired()])
+    category = SelectField('Category', coerce=int)
 
 
 class CommentForm(FlaskForm):

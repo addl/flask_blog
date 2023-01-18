@@ -7,6 +7,13 @@ class Tag(db.Model):
     name = db.Column(db.String())
 
 
+class Category(db.Model):
+    __tablename__ = 'category'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String())
+    posts = db.relationship('Post', backref='category', lazy='select')
+
+
 class Subscriptor(db.Model):
     __tablename__ = 'subscriptor'
     id = db.Column(db.Integer, primary_key=True)

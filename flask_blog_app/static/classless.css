@@ -15,9 +15,9 @@ Table of Contents:
 	--rem: 12pt;
 	--width: 50rem;
 	--navpos: absolute;  /* fixed | absolute */
-	--font-p: 1em/1.7  'abril-fatface', 'DejaVu Sans', FreeSans, Helvetica, sans-serif;
-	--font-h: .9em/1.5 '', 'DejaVu Sans', FreeSans, Helvetica, sans-serif;
-	--font-c: .9em/1.4 'anonymous-pro', monospace;
+	--font-p: 1em/1.7  'consolas', 'DejaVu Sans', FreeSans, Helvetica, sans-serif;
+	--font-h: .9em/1.5 'chivo', 'DejaVu Sans', FreeSans, Helvetica, sans-serif;
+	--font-c: .9em/1.4 'consolas', monospace;
 	--border: 1px solid var(--cmed);
 	--ornament: "‹‹‹ ›››";
 	/* foreground   | background color */
@@ -247,16 +247,16 @@ nav ul > li:hover > ul { display: block; }
 
 /* details/cards */
 summary>* { display: inline; }
-.card, details {
+details {
 	display: block;
 	margin: 0.5rem 0rem 1rem;
 	padding: 0 .6rem;
 	border-radius: 4px;
 	overflow: hidden;
 }
-.card, details[open] { outline: 1px solid var(--cmed); }
-.card>img:first-child { margin: -3px -.6rem; max-width: calc(100% + 1.2rem); }
-summary:hover, details[open] summary, .card>p:first-child {
+details[open] { outline: 1px solid var(--cmed); }
+
+summary:hover, details[open] summary {
 	box-shadow: inset 0 0 0 2em var(--clight), 0 -.8rem 0 .8rem var(--clight); 
 }
 .hint { --cmed: var(--cemph); --clight: var(--cemphbg); background-color: var(--clight); }
