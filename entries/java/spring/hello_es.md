@@ -1,6 +1,9 @@
-Vamos a visitar la p&aacute;gina:
+## Introducción
+Spring es un marco de código abierto para crear aplicaciones Java. Proporciona un modelo integral de programación y configuración para aplicaciones empresariales modernas basadas en Java. Spring es conocido por su capacidad para simplificar el desarrollo de aplicaciones complejas de nivel empresarial y su enfoque en proporcionar un marco cohesivo para todos los aspectos del ciclo de vida de una aplicación.
+En esta entrada de blog, aprenderá cómo comenzar a crear una API simple.
 
-[https://start.spring.io/](https://start.spring.io/)
+## Generar proyecto
+Lo primero es generar un proyecto. Para hacerlo, vaya a: [https://start.spring.io/](https://start.spring.io/)
 
 Aqu&iacute; podemos generar un projecto b&aacute;sico, como ver&aacute;s vamos a usar Maven y Java y para este tutorial y usaremos como grupo "com.myrefactor.spring":
 

@@ -1,7 +1,9 @@
-## Generate Project
-Go to:
+## Introduction
+Spring is an open-source framework for building Java applications. It provides a comprehensive programming and configuration model for modern Java-based enterprise applications. Spring is known for its ability to simplify the development of complex, enterprise-level applications and its focus on providing a cohesive framework for all aspects of an application's lifecycle.
+In this blog entry you will learn how to get started by creating a simple API.
 
-[https://start.spring.io/](https://start.spring.io/)
+## Generate Project
+The first thing is to generate a project. To do that go to: [https://start.spring.io/](https://start.spring.io/)
 
 On this page we can generate a prototype project to work with, as you can see we are creating a project using Maven and Java and for the sake of this tutorial I am entering in te group "com.myrefactor.spring":
 

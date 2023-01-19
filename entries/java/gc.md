@@ -164,8 +164,8 @@ Finally, we learned the different ways in which GC runs.
 
 ## reference
 
-[https://www.oracle.com/webfolder/technetwork/tutorials/obe/java/gc01/index.html](https://www.oracle.com/webfolder/technetwork/tutorials/obe/java/gc01/index.html)
+[Webfolder technetwork in Oracle](https://www.oracle.com/webfolder/technetwork/tutorials/obe/java/gc01/index.html)
 
-[https://docs.oracle.com/javase%2F8%2Fdocs%2Ftechnotes%2Fguides%2Fvm%2Fgctuning%2F%2F/sizing.html#heap_parameters](https://docs.oracle.com/javase%2F8%2Fdocs%2Ftechnotes%2Fguides%2Fvm%2Fgctuning%2F%2F/sizing.html#heap_parameters)
+[Java technotes](https://docs.oracle.com/javase%2F8%2Fdocs%2Ftechnotes%2Fguides%2Fvm%2Fgctuning%2F%2F/sizing.html#heap_parameters)
 
-[https://docs.oracle.com/javase%2F8%2Fdocs%2Ftechnotes%2Fguides%2Fvm%2Fgctuning%2F%2F/collectors.html](https://docs.oracle.com/javase%2F8%2Fdocs%2Ftechnotes%2Fguides%2Fvm%2Fgctuning%2F%2F/collectors.html)
+[Docs Oracle Collectors](https://docs.oracle.com/javase%2F8%2Fdocs%2Ftechnotes%2Fguides%2Fvm%2Fgctuning%2F%2F/collectors.html)

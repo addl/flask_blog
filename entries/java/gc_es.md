@@ -163,12 +163,10 @@ En esta entrada, hemos aprendido los fundamentos de la recolección de basura de
 También explicamos el proceso de marcado y la clasificación de generaciones dentro del *heap*. Hemos visto VisualVM, una herramienta importante para monitorear la ejecución de aplicaciones Java.
 Finalmente, aprendimos las diferentes formas en que se ejecuta la recolección de basura.
 
-
-
 ## reference
 
-[https://www.oracle.com/webfolder/technetwork/tutorials/obe/java/gc01/index.html](https://www.oracle.com/webfolder/technetwork/tutorials/obe/java/gc01/index.html)
+[Webfolder technetwork in Oracle](https://www.oracle.com/webfolder/technetwork/tutorials/obe/java/gc01/index.html)
 
-[https://docs.oracle.com/javase%2F8%2Fdocs%2Ftechnotes%2Fguides%2Fvm%2Fgctuning%2F%2F/sizing.html#heap_parameters](https://docs.oracle.com/javase%2F8%2Fdocs%2Ftechnotes%2Fguides%2Fvm%2Fgctuning%2F%2F/sizing.html#heap_parameters)
+[Java technotes](https://docs.oracle.com/javase%2F8%2Fdocs%2Ftechnotes%2Fguides%2Fvm%2Fgctuning%2F%2F/sizing.html#heap_parameters)
 
-[https://docs.oracle.com/javase%2F8%2Fdocs%2Ftechnotes%2Fguides%2Fvm%2Fgctuning%2F%2F/collectors.html](https://docs.oracle.com/javase%2F8%2Fdocs%2Ftechnotes%2Fguides%2Fvm%2Fgctuning%2F%2F/collectors.html)
+[Docs Oracle Collectors](https://docs.oracle.com/javase%2F8%2Fdocs%2Ftechnotes%2Fguides%2Fvm%2Fgctuning%2F%2F/collectors.html)
