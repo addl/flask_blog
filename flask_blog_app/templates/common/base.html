@@ -36,6 +36,11 @@
     </script>
 
     <style>
+
+        body {
+            max-width: 100%;
+        }
+
         dt, dd {
           display: inline;
         }
@@ -57,6 +62,35 @@
             border-radius: 50%;
         }
 
+        .banner {
+            height: 300px;
+            margin-top: -15px;
+            padding-top: 35px;
+            background-size: cover;
+        }
+
+        .container {
+            margin: 0 auto;
+            width: 95%;
+            max-width: 70rem;
+          }
+
+        @media (max-width: 700px) {
+          .container {
+            width: 98%;
+          }
+        }
+
+        .wrapper {
+            background: linear-gradient(45deg,#F17C58, #E94584, #24AADB , #27DBB1,#FFDC18, #FF3706);
+            animation: gradient 16s linear infinite;
+            animation-direction: alternate;
+        }
+        @keyframes gradient {
+            0% {background-position: 0%}
+            100% {background-position: 100%}
+        }
+
     </style>
 
     <title>
@@ -74,8 +108,13 @@
     {% block extra_head %}{% endblock %}
 </head>
 
-<body style="max-width: 70rem;">
-{% include 'common/header.html' %}
+<body>
+
+<main class="banner wrapper">
+    <div class="container">
+        {% include 'common/header.html' %}
+    </div>
+</main>
 
 <main class="container">
     {% block welcome %}
@@ -90,7 +129,9 @@
     </div>
 </main>
 
-{% include 'common/footer.html' %}
+<main class="container">
+    {% include 'common/footer.html' %}
+</main>
 
 </body>
 </html>

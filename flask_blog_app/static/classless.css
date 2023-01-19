@@ -55,7 +55,6 @@ body {
 	max-width: var(--width);
 	font: var(--font-p);
 	color: var(--cfg);
-	padding: 3.0rem 0.6rem 0;
 	overflow-x: hidden;
 }
 body > footer { margin: 10rem 0rem 0rem; font-size: 90%; }
@@ -127,7 +126,7 @@ kbd { border: 1px solid var(--cmed); }
 blockquote { border-left: 0.4rem solid var(--cmed); padding: 0 0 0 1rem;  }
 time{ color: var(--cdark); }
 hr { border: 0; border-top: 0.1rem solid var(--cmed); }
-nav { width: 100%; background-color: var(--clight); }
+
 ::selection, mark { background: var(--clink); color: var(--cbg); }
 
 

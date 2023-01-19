@@ -8,6 +8,24 @@
     </div>
 
     <div class="col-6">
+        <nav>
+            <ul style="text-align: right;">
+<!--                <li><a href="{{ url_for('BLOG_BP.home') }}">{{ _('Home') }}</a></li>-->
+                <li><a href="{{ url_for('POST_BP.all_posts') }}">{{ _('Blog') }}</a></li>
+                {% if current_user.is_authenticated and current_user.is_admin %}
+                <li><a href="{{ url_for('ADMIN_BP.admin_home') }}">Admin</a></li>
+                {% endif %}
+                {% if current_user.is_authenticated %}
+                <li><a href="{{ url_for('AUTH_BP.logout') }}">{{ _('Logout') }}</a></li>
+                {% else %}
+                <li><a href="{{ url_for('AUTH_BP.login') }}">{{ _('Sign in') }}</a></li>
+                {% endif %}
+                <li><a href="{{ url_for('BLOG_BP.contact_us') }}">{{ _('Contact Us') }}</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- <div class="col-4">
         <form class="searchBox" action="{{ url_for('POST_BP.search_posts') }}" method="get">
             <div class="row" style="justify-content: end;">
                 <div class="col-10">
@@ -20,5 +38,5 @@
                 </div>
             </div>
         </form>
-    </div>
+    </div> -->
 </div>
