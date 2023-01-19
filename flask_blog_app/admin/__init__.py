@@ -36,7 +36,7 @@ def create_post():
     post_form.category.choices = [(cat.id, cat.name) for cat in Category.query.all()]
     current_post = Post.query.get_or_404(post_id) if post_id else None
     if current_post:
-        # post_form.post_id.data = post_id
+        post_form.post_id.data = post_id
         post_form.title.data = current_post.translations['en'].title
         post_form.title_es.data = current_post.translations['es'].title
         post_form.description.data = current_post.translations['en'].description
