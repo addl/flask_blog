@@ -2,10 +2,11 @@
 .container .card{
     position: relative;
     cursor: pointer;
+    overflow: hidden;
 }
 
 .container .card .face{
-    width: 300px;
+    width: 100%;
     height: 200px;
     transition: 0.5s;
 }
@@ -17,36 +18,35 @@
     justify-content: center;
     align-items: center;
     z-index: 1;
-    transform: translateY(100px);
 }
 
 
 .container .card:hover .face.face1{
-    background: #ff0057;
-    transform: translateY(0);
+    /*background: #ff0057;*/
+    transform: translateX(100%);
 }
 
 .container .card .face.face1.design {
-    border-bottom: 2px solid #1C82AD;
+    border-left: 4px solid #1C82AD;
 }
 
 .container .card .face.face1.spring {
-    border-bottom: 2px solid #03C988;
+    border-left: 4px solid #03C988;
 }
 
 .container .card .face.face1.python {
-    border-bottom: 2px solid #FF9F29;
+    border-left: 4px solid #FF9F29;
 }
 
-.container .card:hover .face.face1.design {
+.container .card:hover .face.face2.design {
     background: #1C82AD;
 }
 
-.container .card:hover .face.face1.spring {
+.container .card:hover .face.face2.spring {
     background: #03C988;
 }
 
-.container .card:hover .face.face1.python {
+.container .card:hover .face.face2.python {
     background: #FF9F29;
 }
 
@@ -64,10 +64,16 @@
     position: absolute;
     top: 10px;
     left: 10px;
+    display: flex;
+    align-items: center;
 }
 
-.container .card .face.face1 .cat img {
-    max-width: 40px;
+.container .card .face.face1 .cat i {
+    font-size: 2.2em;
+}
+
+.container .card .face.face1 .cat span {
+    margin-left: 8px;
 }
 
 .container .card .face.face1 .content h3{
@@ -79,19 +85,20 @@
 }
 
 .container .card .face.face2{
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px;
     box-sizing: border-box;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
-    transform: translateY(-100px);
     overflow: hidden;
 }
 
 .container .card:hover .face.face2{
-    transform: translateY(0);
+    /*transform: translateY(0);*/
 }
 
 .container .card .face.face2 .content p{
@@ -99,23 +106,28 @@
     padding: 0;
 }
 
-.container .card .face.face2 .content a{
+.container .card .face.face2 .content a {
     margin: 15px 0 0;
     display:  inline-block;
     text-decoration: none;
     font-weight: 900;
+    color: white;
+}
+
+.container .card .face.face2 .content p {
+    color: white;
 }
 
 .container .card .face.face2.design .content a{
-    color: #1C82AD;
+    /*color: #1C82AD;*/
 }
 
 .container .card .face.face2.spring .content a{
-    color: #03C988;
+    /*color: #03C988;*/
 }
 
 .container .card .face.face2.python .content a{
-    color: #FF9F29;
+    /*color: #FF9F29;*/
 }
 
 .container .card .face.face2 .content a:hover{
