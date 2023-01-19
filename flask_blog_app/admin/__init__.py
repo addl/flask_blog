@@ -47,14 +47,15 @@ def create_post():
         post = Post()
         if post_form.post_id.data:
             post = Post.query.get_or_404(int(post_form.post_id.data))
-        if 'file_content' not in request.files or 'file_content_es' not in request.files:
+        if ('file_content' not in request.files or 'file_content_es' not in request.files) \
+                and not post_form.post_id.data:
             return redirect(request.url)
         file_content = request.files['file_content']
         file_content_es = request.files['file_content_es']
-        if file_content.filename == '' or file_content_es.filename == '':
+        if (file_content.filename == '' or file_content_es.filename == '') \
+                and not post_form.post_id.data:
             return redirect(request.url)
-        filename = ''
-        filename_es = ''
+        # file processing
         if file_content and file_content_es:
             # when updating delete old files
             if post.id and file_content and file_content_es:
@@ -63,10 +64,11 @@ def create_post():
             filename_es = secure_filename(file_content_es.filename)
             file_content.save(os.path.join(current_app.config['UPLOAD_FOLDER'], filename))
             file_content_es.save(os.path.join(current_app.config['UPLOAD_FOLDER'], filename_es))
+            post.translations['en'].content = filename
+            post.translations['es'].content = filename_es
+        # remaining properties
         post.translations['en'].title = post_form.title.data
         post.translations['es'].title = post_form.title_es.data
-        post.translations['en'].content = filename
-        post.translations['es'].content = filename_es
         human_url_en = post_form.title.data.replace(' ', '-').lower()
         human_url_es = post_form.title_es.data.replace(' ', '-').lower()
         post.translations['en'].human_url = human_url_en
