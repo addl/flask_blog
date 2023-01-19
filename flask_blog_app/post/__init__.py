@@ -26,7 +26,7 @@ def pull_lang_code(endpoint, values):
 
 @post_bp.route('/posts', methods=['GET'])
 def all_posts():
-    return render_template('post/all.html', posts=Post.query.all().order_by("timestamp"))
+    return render_template('post/all.html', posts=Post.query.order_by("timestamp").all())
 
 
 @post_bp.route('/posts/<human_url>')
