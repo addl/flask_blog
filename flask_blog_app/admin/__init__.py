@@ -30,17 +30,19 @@ def admin_home():
 @admin_bp.route('/admin/posts/create', methods=['GET', 'POST'])
 @login_required
 def create_post():
+    post_id = request.args.get('post_id')
     post_form = PostForm()
     post_form.tags.choices = [(t.id, t.name) for t in Tag.query.all()]
     post_form.category.choices = [(cat.id, cat.name) for cat in Category.query.all()]
-    post_id = request.args.get('post_id')
-    if post_id:
-        current_post = Post.query.get_or_404(post_id)
-        post_form.post_id.data = post_id
+    current_post = Post.query.get_or_404(post_id) if post_id else None
+    if current_post:
+        # post_form.post_id.data = post_id
         post_form.title.data = current_post.translations['en'].title
         post_form.title_es.data = current_post.translations['es'].title
         post_form.description.data = current_post.translations['en'].description
         post_form.description_es.data = current_post.translations['es'].description
+        post_form.tags.data = [t.id for t in current_post.tags]
+        post_form.category.data = current_post.category_id
     if post_form.validate_on_submit():
         post = Post()
         if post_form.post_id.data:
