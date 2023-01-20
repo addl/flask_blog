@@ -1,5 +1,9 @@
 ## make the same th blog and home page, and also the titles shoub be clickable not only the read more button
 
+## have 4 cat, java, python, design, misc: one article per week in each of them
+
+## about us: hello i am a full stack dev, button linkind to lined in profile "developer journey"
+
 ## Check style:
 https://www.nansen.ai/alpha-articles/osmosis-protocol
 
