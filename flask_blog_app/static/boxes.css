@@ -8,6 +8,8 @@ dt, dd {
 
 footer {
     overflow: hidden;
+    margin-top: 6rem;
+    padding: 0 20px;
 }
 
 textarea {
@@ -75,5 +77,19 @@ textarea {
 h4 a[href] {
     text-decoration: none;
     text-transform: capitalize;
+}
+
+.divheader {
+    padding: 0 20px;
+    margin: 4em 0 2em 0;
+    color: var(--cspring);
+}
+
+.divheader::after {
+    content: '';
+    display: block;
+    width: 40px;
+    border-bottom: 2px solid var(--cspring);
+    margin-top: 8px;
 }
 

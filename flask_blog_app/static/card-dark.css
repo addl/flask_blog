@@ -11,7 +11,15 @@
     transition: 0.5s;
 }
 
-.container .card .face.face1{
+.container .card.box .face {
+    height: 230px;
+}
+
+.container .card.box .face.face2 .content {
+    margin-top: 15px;
+}
+
+.container .card .face.face1 {
     position: relative;
     /*background: #333;*/
     display: flex;
@@ -61,22 +69,6 @@ article.python a, article.python button, article.python select, article.python s
     /*transform: translateX(100%);*/
 }
 
-.container .card .face.face1 .cat img {
-        width: 50px;
-}
-
-.container .card .face.face1.design .cat img {
-    color: var(--cdesign);
-}
-
-.container .card .face.face1.spring .cat img {
-    color: var(--cspring);
-}
-
-.container .card .face.face1.python .cat img {
-    color: var(--cpython);
-}
-
 .container .card .face.face2.design {
     background: var(--cdesign);
 }
@@ -102,16 +94,6 @@ article.python a, article.python button, article.python select, article.python s
     position: absolute;
     top: 10px;
     left: 10px;
-    display: flex;
-    align-items: center;
-}
-
-.container .card .face.face1 .cat i {
-    font-size: 2.2em;
-}
-
-.container .card .face.face1 .cat span {
-    margin-left: 8px;
 }
 
 .container .card .face.face1 .content h3{
@@ -136,8 +118,48 @@ article.python a, article.python button, article.python select, article.python s
     transform: translateY(100%);
 }
 
+.container .card.box .face.face2 {
+    box-shadow: 0 20px 50px rgb(0 0 0 / 80%);
+    position: relative;
+    transform: translateY(0);
+    display: block;
+}
+
 .container .card:hover .face.face2{
     transform: translateY(0);
+}
+
+.container .card.box {
+    overflow: inherit;
+}
+
+.container .card.box .face.face2 .cat {
+    display: flex;
+    align-items: center;
+}
+
+.container .card.box .face.face2 .cat p {
+    margin-left: 8px;
+    text-transform: capitalize;
+    font-weight: bolder;
+    letter-spacing: 1px;
+}
+
+.container .card.box svg path {
+    fill: #fff;
+    max-width: 40px;
+}
+
+.container .card.box .face.face2.design {
+    background: var(--cdesign);
+}
+
+.container .card.box .face.face2.spring {
+    background: var(--cspring);
+}
+
+.container .card.box .face.face2.python {
+    background: var(--cpython);
 }
 
 .container .card .face.face2 .content p{
@@ -157,14 +179,6 @@ article.python a, article.python button, article.python select, article.python s
     color: white;
 }
 
-.container .card .face.face2.design .content a{
-    /*color: #1C82AD;*/
-}
-
-.container .card .face.face2.spring .content a{
-    /*color: #03C988;*/
-}
-
-.container .card .face.face2.python .content a{
-    /*color: #FF9F29;*/
+a, button, select, summary {
+    letter-spacing: 1px;
 }

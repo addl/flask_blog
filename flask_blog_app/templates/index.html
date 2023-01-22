@@ -17,41 +17,73 @@
 
 {% block main_content %}
 <div class="grid-container">
+    <div class="grid-item ">
+        <div class="card box">
+            <div class="face face2 design">
+                <div class="cat">
+                    {% include 'svg/design_icon.html' %}
+                    <p>{{ _('design') }}</p>
+                </div>
+                <div class="content">
+                    <p>
+                        {{ _('Design patterns are a powerful tool for solving common software design problems') }}
+                    </p>
+                    <a href="#">{{ _('Learn patterns') }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="grid-item ">
+        <div class="card box">
+            <div class="face face2 spring">
+                <div class="cat">
+                    {% include 'svg/java_icon.html' %}
+                    <p>{{ _('java') }}</p>
+                </div>
+                <div class="content">
+                    <p>
+                        {{ _('Java is a widely-used for developing a wide range of applications, from mobile apps to
+                        enterprise software.') }}</p>
+                    <a href="#">{{ _('Get started') }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="grid-item ">
+        <div class="card box">
+            <div class="face face2 python">
+                <div class="cat">
+                    {% include 'svg/python_icon.html' %}
+                    <p>{{ _('python') }}</p>
+                </div>
+                <div class="content">
+                    <p style="text-transform: capitalize">{{ _('Python is a versatile and powerful used from web
+                        development to machine learning.') }}</p>
+                    <a href="#">{{ _('Discover Python') }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h2 class="divheader">{{ _('Recent posts') }}</h2>
+
+<div class="grid-container">
     {% for p in posts %}
     <div class="grid-item ">
-        <!--<div class="blog-card spring-fever">
-            <div class="title-content">
-                <h3><a href="{{ url_for('POST_BP.show_post', human_url=p.human_url) }}">{{ p.title }}</h3>
-                <div class="intro"><a href="#">Inspiration</a></div>
-            </div>
-            <div class="card-info">
-                {{ p.description }}
-                <a href="{{ url_for('POST_BP.show_post', human_url=p.human_url) }}">{{ _('Read More') }}
-                    <span class="licon icon-arr icon-black"></span>
-                </a>
-            </div>
-            <div class="utility-info">
-                <ul class="utility-list">
-                    <li><span class="licon icon-com"></span><a href="#">{{ p.comments | length }}</a></li>
-                    <li><span class="licon icon-dat"></span>{{ p.timestamp.strftime('%m / %Y')}}</li>
-                </ul>
-            </div>
-            <div class="gradient-overlay"></div>
-            <div class="color-overlay"></div>
-        </div> -->
         <div class="card">
             <div class="face face1 {{p.category.name}}">
                 <div class="cat">
                     {% if p.category.name == 'design' %}
-                        {% include 'svg/design_icon.html' %}
+                    {% include 'svg/design_icon.html' %}
                     {% endif %}
                     {% if p.category.name == 'spring' %}
-                        {% include 'svg/java_icon.html' %}
+                    {% include 'svg/java_icon.html' %}
                     {% endif %}
                     {% if p.category.name == 'python' %}
-                        {% include 'svg/python_icon.html' %}
+                    {% include 'svg/python_icon.html' %}
                     {% endif %}
-<!--                    <span style="text-transform: lowercase">{{ p.category.name }}</span>-->
+                    <!--                    <span style="text-transform: lowercase">{{ p.category.name }}</span>-->
                 </div>
                 <div class="content">
                     <h4 style="text-transform: capitalize">{{ p.title }}</h4>
