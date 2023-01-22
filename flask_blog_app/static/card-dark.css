@@ -13,45 +13,83 @@
 
 .container .card .face.face1{
     position: relative;
-    background: #333;
+    /*background: #333;*/
     display: flex;
-    justify-content: center;
     align-items: center;
     z-index: 1;
-}
-
-
-.container .card:hover .face.face1{
-    /*background: #ff0057;*/
-    transform: translateX(100%);
+    /*border-bottom: 1px solid #ccc;*/
 }
 
 .container .card .face.face1.design {
-    border-left: 4px solid #1C82AD;
+    border-bottom: 2px solid var(--cdesign);
 }
 
 .container .card .face.face1.spring {
-    border-left: 4px solid #03C988;
+    border-bottom: 2px solid var(--cspring);
 }
 
 .container .card .face.face1.python {
-    border-left: 4px solid #FF9F29;
+    border-bottom: 2px solid var(--cpython);
 }
 
-.container .card:hover .face.face2.design {
-    background: #1C82AD;
+article.design h1, article.design h2, article.design h3, article.design h4, article.design h5 {
+    color: var(--cdesign);
 }
 
-.container .card:hover .face.face2.spring {
-    background: #03C988;
+article.design a, article.design button, article.design select, article.design summary {
+    color: var(--cdesign);
 }
 
-.container .card:hover .face.face2.python {
-    background: #FF9F29;
+article.spring h1, article.spring h2, article.spring h3, article.spring h4, article.spring h5 {
+    color: var(--cspring);
 }
 
-.container .card .face.face1 .content{
-    opacity: 0.4;
+article.spring a, article.spring button, article.spring select, article.spring summary {
+    color: var(--cspring);
+}
+
+article.python h1, article.python h2, article.python h3, article.python h4, article.python h5 {
+    color: var(--cpython);
+}
+
+article.python a, article.python button, article.python select, article.python summary {
+    color: var(--cpython);
+}
+
+.container .card:hover .face.face1{
+    /*background: #ff0057;*/
+    /*transform: translateX(100%);*/
+}
+
+.container .card .face.face1 .cat img {
+        width: 50px;
+}
+
+.container .card .face.face1.design .cat img {
+    color: var(--cdesign);
+}
+
+.container .card .face.face1.spring .cat img {
+    color: var(--cspring);
+}
+
+.container .card .face.face1.python .cat img {
+    color: var(--cpython);
+}
+
+.container .card .face.face2.design {
+    background: var(--cdesign);
+}
+
+.container .card .face.face2.spring {
+    background: var(--cspring);
+}
+
+.container .card .face.face2.python {
+    background: var(--cpython);
+}
+
+.container .card .face.face1 .content {
     transition: 0.5s;
     padding: 0 10px;
 }
@@ -89,16 +127,17 @@
     top: 0;
     left: 0;
     display: flex;
-    justify-content: center;
     align-items: center;
     padding: 20px;
     box-sizing: border-box;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+    /*box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);*/
+    z-index: 10;
     overflow: hidden;
+    transform: translateY(100%);
 }
 
 .container .card:hover .face.face2{
-    /*transform: translateY(0);*/
+    transform: translateY(0);
 }
 
 .container .card .face.face2 .content p{
@@ -128,8 +167,4 @@
 
 .container .card .face.face2.python .content a{
     /*color: #FF9F29;*/
-}
-
-.container .card .face.face2 .content a:hover{
-    text-decoration: underline;
 }

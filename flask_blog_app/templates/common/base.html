@@ -5,14 +5,16 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Chivo:wght@200&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://classless.de/addons/themes.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap" rel="stylesheet">
+
+<!--    <link rel="stylesheet" href="https://classless.de/addons/themes.css">-->
 
     <!--    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">-->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='classless.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='boxes.css') }}">
-<!--    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='cards.css') }}">-->
+    <!--    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='cards.css') }}">-->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='card-dark.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='codehilite.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='flag-icons.css') }}">
@@ -32,66 +34,8 @@
       gtag('js', new Date());
 
       gtag('config', 'G-73Z482JDJG');
-
     </script>
 
-    <style>
-
-        body {
-            max-width: 100%;
-        }
-
-        dt, dd {
-          display: inline;
-        }
-
-        footer {
-            overflow: hidden;
-        }
-
-        textarea {
-            width: 100%;
-            height: 6em;
-        }
-
-        .comment.child {
-            margin-left: 2em;
-        }
-
-        .comment-header img {
-            border-radius: 50%;
-        }
-
-        .banner {
-            height: 300px;
-            margin-top: -15px;
-            padding-top: 35px;
-            background-size: cover;
-        }
-
-        .container {
-            margin: 0 auto;
-            width: 95%;
-            max-width: 70rem;
-          }
-
-        @media (max-width: 700px) {
-          .container {
-            width: 98%;
-          }
-        }
-
-        .wrapper {
-            background: linear-gradient(45deg,#F17C58, #E94584, #24AADB , #27DBB1,#FFDC18, #FF3706);
-            animation: gradient 16s linear infinite;
-            animation-direction: alternate;
-        }
-        @keyframes gradient {
-            0% {background-position: 0%}
-            100% {background-position: 100%}
-        }
-
-    </style>
 
     <title>
         {% block title %}
@@ -110,7 +54,13 @@
 
 <body>
 
-<main class="banner wrapper">
+<main class="top-bar">
+    <div class="container">
+        {% include 'common/logo.html' %}
+    </div>
+</main>
+
+<main class="banner">
     <div class="container">
         {% include 'common/header.html' %}
     </div>

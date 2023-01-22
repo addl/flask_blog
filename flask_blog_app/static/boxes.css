@@ -1,3 +1,58 @@
+body {
+    max-width: 100%;
+}
+
+dt, dd {
+  display: inline;
+}
+
+footer {
+    overflow: hidden;
+}
+
+textarea {
+    width: 100%;
+    height: 6em;
+}
+
+.comment.child {
+    margin-left: 2em;
+}
+
+.comment-header img {
+    border-radius: 50%;
+}
+
+.banner {
+    margin: 5em 0;
+}
+
+.logo {
+    font-size: 2em;
+}
+
+.logo span {
+    color: var(--cspring);
+}
+
+.top-bar a[href] {
+    color: var(--cfg);
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.container {
+    margin: 0 auto;
+    width: 95%;
+    max-width: 70rem;
+  }
+
+@media (max-width: 700px) {
+  .container {
+    width: 98%;
+  }
+}
+
 .grid-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -10,11 +65,11 @@
 
 .grid-item {
   padding: 20px;
-  text-align: center;
 }
 
-.grid-item h3 {
-    10px 0 0;
+.top-bar {
+    background: #1c1f2f;
+    padding: 0.5em 0;
 }
 
 h4 a[href] {
