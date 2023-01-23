@@ -2,7 +2,7 @@
 
 1. Instalar extension flask-babel extension
 
-2. To notice that flask-bable is just an extension, the package Babel is an standalone module to work with i18n
+2. To notice that flask-babel is just an extension, the package Babel is an standalone module to work with i18n
 
 3. Creating Babel config file
 

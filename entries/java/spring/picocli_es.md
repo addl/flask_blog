@@ -15,6 +15,9 @@ To create a simple CLI application using Spring and PicoCli we need basically th
 * A Runner: A CommandLineRunner that will be used as a bridge to pass all parameters, options and values to PicoCli's command.
 * A PicoCli's command: This is our actual command, having options, subcommands and values.
 
+### Dependencies
+
+
 ### Application file
 The application file looks like any other you might have seen before:
 ```java

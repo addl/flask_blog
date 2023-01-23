@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-01-20 07:48+0200\n"
+"POT-Creation-Date: 2023-01-23 15:20+0200\n"
 "PO-Revision-Date: 2022-01-20 07:48+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: es\n"
@@ -18,38 +18,114 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
 
-#: flask_blog_app/post/forms.py:8
+#: flask_blog_app/post/forms.py:9
 msgid "Title EN"
 msgstr ""
 
-#: flask_blog_app/templates/404.html:4
+#: flask_blog_app/templates/404.html:4 flask_blog_app/templates/privacy.html:4
+#: flask_blog_app/templates/terms.html:4
 msgid "Not found"
 msgstr "No encontrado"
 
-#: flask_blog_app/templates/404.html:9
+#: flask_blog_app/templates/404.html:13
 msgid "Ooops! 404 Status"
 msgstr "Ooops! Estado 404"
 
-#: flask_blog_app/templates/404.html:10
+#: flask_blog_app/templates/404.html:14
 msgid "We are sorry, it seems your page is not found"
 msgstr "Lo sentimos, no hemos encontrado esta pagina"
 
-#: flask_blog_app/templates/404.html:21
-msgid "We are sorry, the page you requested was not found"
+#: flask_blog_app/templates/404.html:25
+#, fuzzy
+msgid "we are sorry, the page you requested was not found"
 msgstr "Lo sentimos, la pagina solicitada no se encuentra"
 
-#: flask_blog_app/templates/common/footer.html:33
+#: flask_blog_app/templates/500.html:4
+msgid "Internal Server Error"
+msgstr "Error Interno"
+
+#: flask_blog_app/templates/500.html:9
+msgid "Ooops! Is not your fault"
+msgstr "¡Uy! No es tu culpa"
+
+#: flask_blog_app/templates/500.html:10
+msgid "It's ours. Internal server error"
+msgstr "Es nuestro. Error del servidor"
+
+#: flask_blog_app/templates/500.html:21
+msgid "we are sorry, we have encountered an unexpected problem"
+msgstr "lo sentimos, nos hemos encontrado con un problema inesperado"
+
+#: flask_blog_app/templates/admin/home.html:4
+#: flask_blog_app/templates/common/footer.html:34
+#: flask_blog_app/templates/common/logo.html:13
 #: flask_blog_app/templates/common/navigation.html:3
 #: flask_blog_app/templates/index.html:4
 msgid "Home"
 msgstr "Inicio"
 
-#: flask_blog_app/templates/index.html:36
-#: flask_blog_app/templates/post/all.html:22
+#: flask_blog_app/templates/index.html:25
+msgid "design"
+msgstr "diseño"
+
+#: flask_blog_app/templates/index.html:29
+msgid ""
+"Design patterns are a powerful tool for solving common software design "
+"problems"
+msgstr ""
+"Los patrones de diseño son una herramienta poderosa para resolver problemas comunes de diseño"
+
+#: flask_blog_app/templates/index.html:31
+msgid "Learn patterns"
+msgstr "Aprende patrones"
+
+#: flask_blog_app/templates/index.html:41
+msgid "java"
+msgstr "java"
+
+#: flask_blog_app/templates/index.html:45
+msgid ""
+"Java is a widely-used for developing from mobile applications to enterprise software."
+msgstr "Java es ampliamente utilizado para desarrollar desde aplicaciones móviles hasta software empresarial."
+
+#: flask_blog_app/templates/index.html:47
+msgid "Get started"
+msgstr "Comenzar"
+
+#: flask_blog_app/templates/index.html:57
+msgid "python"
+msgstr "python"
+
+#: flask_blog_app/templates/index.html:60
+msgid ""
+"Python is a versatile and powerful used from web\n"
+"                        development to machine learning."
+msgstr ""
+"Python es versátil y potente y se utiliza en el desarrollo web para el aprendizaje automático."
+
+#: flask_blog_app/templates/index.html:62
+msgid "Discover Python"
+msgstr "Descubre Python"
+
+#: flask_blog_app/templates/index.html:69
+msgid "Recent posts"
+msgstr "Art&iacute;culos recientes"
+
+#: flask_blog_app/templates/category/filter_posts.html:37
+#: flask_blog_app/templates/index.html:94
+#: flask_blog_app/templates/post/all.html:16
 #: flask_blog_app/templates/search/result.html:33
-#: flask_blog_app/templates/tag/filter_posts.html:28
 msgid "Read More"
-msgstr "Leer mas"
+msgstr "Leer m&aacute;s"
+
+#: flask_blog_app/templates/category/filter_posts.html:4
+msgid "All posts with tag: "
+msgstr "Todas los art&iacute;culos con etiqueta: "
+
+#: flask_blog_app/templates/category/filter_posts.html:9
+#, fuzzy
+msgid "List of posts: "
+msgstr "Lista de articulos con etiqueta: "
 
 #: flask_blog_app/templates/common/footer.html:6
 msgid "Keep in touch"
@@ -60,51 +136,88 @@ msgid ""
 "Subscribe to keep up with fresh news and exciting updates. We promise not"
 " to\n"
 "                    spam you!"
-msgstr ""
-"Subscribite para recibir las actualizaciones . Odiamos los spanes como tu"
+msgstr "Subscribite para recibir las actualizaciones . Odiamos los spanes como tu"
 
-#: flask_blog_app/templates/common/footer.html:10
+#: flask_blog_app/templates/common/footer.html:11
 msgid "Enter your email address"
 msgstr "Tu direccion de correo"
 
-#: flask_blog_app/templates/common/footer.html:11
+#: flask_blog_app/templates/common/footer.html:14
 msgid "Send"
 msgstr "Enviar"
 
-#: flask_blog_app/templates/common/footer.html:13
-msgid "Thank you for subscribing!"
-msgstr "Gracias por subscribirte!"
-
-#: flask_blog_app/templates/common/footer.html:34
+#: flask_blog_app/templates/common/footer.html:35
+#: flask_blog_app/templates/common/logo.html:14
 #: flask_blog_app/templates/common/navigation.html:4
 msgid "Blog"
 msgstr "Bitacora"
 
-#: flask_blog_app/templates/common/header.html:7
+#: flask_blog_app/templates/common/footer.html:36
+msgid "Terms"
+msgstr "Términos"
+
+#: flask_blog_app/templates/common/footer.html:37
+msgid "Privacy policy"
+msgstr "Política de privacidad"
+
+#: flask_blog_app/templates/common/header.html:5
+msgid "Hello, My name is"
+msgstr "Hola, me llamo"
+
+#: flask_blog_app/templates/common/header.html:6
+msgid "Andry, I am a backend developer"
+msgstr "Andry, soy desarrollador backend"
+
+#: flask_blog_app/templates/common/header.html:8
+msgid "See developer journey"
+msgstr "Ver evoluci&oacute;n"
+
+#: flask_blog_app/templates/common/header.html:12
 msgid ""
 "The most damaging phrase in the language is.. it's always been done this "
 "way."
-msgstr "La frase mas perjudicial en el lenguaje es.. siempre se hacho de esta forma"
+msgstr ""
+"La frase mas perjudicial en el lenguaje es.. siempre se hacho de esta "
+"forma"
 
-#: flask_blog_app/templates/common/navigation.html:7
+#: flask_blog_app/templates/common/logo.html:19
+#: flask_blog_app/templates/common/navigation.html:9
 msgid "Logout"
 msgstr "Salir"
 
-#: flask_blog_app/templates/common/navigation.html:9
+#: flask_blog_app/templates/common/logo.html:21
+#: flask_blog_app/templates/common/navigation.html:11
 msgid "Sign in"
 msgstr "Entrar"
+
+#: flask_blog_app/templates/common/logo.html:23
+#: flask_blog_app/templates/common/navigation.html:13
+msgid "Contact Us"
+msgstr "Contacto"
 
 #: flask_blog_app/templates/post/all.html:4
 msgid "All Posts"
 msgstr "Todos los articulos"
 
-#: flask_blog_app/templates/post/post.html:41
-msgid "Table of Content"
-msgstr "Contenido"
-
-#: flask_blog_app/templates/post/post.html:56
+#: flask_blog_app/templates/post/post.html:54
 msgid "by"
 msgstr "por"
+
+#: flask_blog_app/templates/post/post.html:79
+msgid "Ask me anything"
+msgstr "Tienes preguntas?"
+
+#: flask_blog_app/templates/post/post.html:98
+msgid "Comment"
+msgstr "Comenta"
+
+#: flask_blog_app/templates/post/post.html:101
+msgid "Comments"
+msgstr "Comentarios"
+
+#: flask_blog_app/templates/post/post.html:108
+msgid "Be the first in commenting on this post!"
+msgstr "¡Sé el primero en comentar en esta publicación!"
 
 #: flask_blog_app/templates/search/result.html:4
 msgid "Search results for: "
@@ -114,11 +227,9 @@ msgstr "Resultados de busqueda para: "
 msgid "Search results for query:"
 msgstr "Resultados de busqueda para: "
 
-#: flask_blog_app/templates/tag/filter_posts.html:4
-msgid "All posts with tag: "
-msgstr "Todas los articulos con etiqueta: "
+#~ msgid "Thank you for subscribing!"
+#~ msgstr "Gracias por subscribirte!"
 
-#: flask_blog_app/templates/tag/filter_posts.html:9
-msgid "List of posts with tag: "
-msgstr "Lista de articulos con etiqueta: "
+#~ msgid "Table of Content"
+#~ msgstr "Contenido"
 

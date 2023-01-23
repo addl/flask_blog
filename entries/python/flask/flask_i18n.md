@@ -2,7 +2,7 @@
 
 1. Install flask-babel extension
 
-2. To notice that flask-bable is just an extension, the package Babel is an standalone module to work with i18n
+2. To notice that flask-babel is just an extension, the package Babel is an standalone module to work with i18n
 
 3. Creating Babel config file
 
@@ -25,8 +25,8 @@ pip3 install Flask-Babel
 
 ## About the difference between Babel and Flask Babel
 
-## Create 'babel.cfg' inside project directory, next to application directory, put this inside:
-
+## Babel settings
+Create `babel.cfg` inside project directory, next to application directory, put this inside:
 
 ```
 [python: **.py]
@@ -34,9 +34,10 @@ pip3 install Flask-Babel
 extensions=jinja2.ext.autoescape,jinja2.ext.with_
 ```
 
-## Generating (only .pot) files, norice this file is a  placeholder, the actual translation cames later (.po files).
+## Extracting translatable texts 
+The `.pot` files are placeholder, the actual translation comes later (.po files).
 
-By default Babel uses English (en) and when generating files the English is the base, so generating a file for Spanish, will generated a file with the par EN-ES.
+By default, Babel uses English (en) and when generating files the English is the base, so generating a file for Spanish, will generate a file with the par EN-ES.
 
 ```commandline
 pybabel extract -F babel.cfg -o messages.pot .
@@ -47,12 +48,12 @@ pybabel extract -F babel.cfg -o messages.pot .
 -o output file location 'messages.pot'
 
 . scan from this path on (more in a sec)
+
 ALternative you can pass the actual directory you want to scan to look for translatable text:
 ```commandline
 pybabel extract -F babel.cfg -o messages.pot flask_app
 ```
-
-The reult of above oprtation is a file 'messages.pot'
+This will use the mapping from the babel.cfg file and store the generated template in `messages.pot`:
 
 ```
 # Translations template for PROJECT.
@@ -74,10 +75,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
 ```
-Now we are going to include some text inside this file.
 
 
-## Configure project and flask-babel extension, the followingcode inside 'app.__init__.py' within create_app, in case you are using 'application factory'
+## Configuration
+The following code inside `app.__init__.py` within create_app, in case you are using 'application factory'
 ```python
 @babel.localeselector
     def get_locale():
@@ -91,7 +92,7 @@ Now we are going to include some text inside this file.
         return request.accept_languages.best_match(['en', 'es'])
 ```
 
-Initilizing extension, inside create_app or in __init__.py:
+Initializing extension, inside create_app or in `__init__.py`:
 ```python
 babel_ext = Babel()
 ...
@@ -104,7 +105,7 @@ create_app():
 
 The idea of gettext is that you can mark certain strings as translatable and a tool will pick all those up, collect them in a separate file for you to translate. At runtime the original strings (which should be English) will be replaced by the language you selected.
 
-### Inside python files and Jinja templates
+### Inside Python files
 
 Import lazy_text:
 ```
@@ -122,13 +123,22 @@ class PostForm(FlaskForm):
     title = StringField(_('Name'), validators=[DataRequired()])
     content = TextAreaField(_('Content'), validators=[DataRequired()])
 ```
+The above code defines a class called `PostForm` that inherits from the "FlaskForm" class. The class has two attributes, "title" and "content".
+
+The `_` function is a shortcut for `lazy_gettext`, which is a function that allows you to mark strings for translation. Instead of returning the translation immediately, it returns a proxy object that will be translated when needed.
+
+In the above code snippet, the `_` function is used to mark the string fields `Name` and `Content` for translation. So, these fields will be translated based on the user's preferred language.
+
+### Marking Jinja templates texts
 Mark texts in Jinja template:
 ```html
 ...
 <li><a href="/">{{ _('Home') }}</a></li>
 ...
 ```
+This code snippet is a Jinja template, and it is used to create an HTML element that represents a link to the homepage of the application. The link text is "Home" and it is marked for translation using the "_" function, similar to how it was used in the previous Python code snippet.
 
+## Extracting translatable strings
 Let's extract the text by generating again 'messages.pot' file, execute in console:
 ```commandline
 pybabel extract -F babel.cfg -o messages.pot flask_app
@@ -150,12 +160,17 @@ msgid "Home"
 msgstr ""
 ...
 ```
-Now we are ready to create the '.po' translation files:
+
+## Generating translations
+Now we are ready to create translations, for example to generate a translation for Spanish we could execute:
 ```commandline
 pybabel init -i messages.pot -d flask_app/translations -l es
 ```
-The pybabel init command takes the messages.pot file as input and writes a new language catalog to the directory given in the -d option for the language specified in the -l option. I'm going to be installing all the translations in the app/translations directory, because that is where Flask-Babel will expect translation files to be by default. The command will create a es subdirectory inside this directory for the Spanish data files. In particular, there will be a new file named app/translations/es/LC_MESSAGES/messages.po, that is where the translations need to be made.
-Now we just need to modify the file by providing actual translation to Spanish:
+The pybabel init command takes the `messages.pot` file as input and writes a new language catalog to the directory `flask_app/translations` given in the `-d` option for the language `es` specified in the `-l` option. 
+
+The default folder where **Flask-Babel** will look for translations is `your_app/translations` directory. In my case is `flask_app/translations`, so the command will create a `es` subdirectory inside this directory for the Spanish data files.
+Look for the file`flask_app/translations/es/LC_MESSAGES/messages.po`. Now we just need to modify the file by providing actual translation to Spanish:
+
 ```
 #: flask_blog_app/post/forms.py:8
 msgid "Name"
@@ -171,9 +186,12 @@ msgstr "Inicio"
 ...
 ```
 
-'.po' files is like a source of translations, while '.pot' is like a template, we need to compile '.po' fies to create '.mo', '.mo' files are compiled version, means to be used by a computer, this is the actual file used by flask-babel to load translations.
-Keep in mind we need to update sometimes
-> Look for update solution so that .po files is not created again
+The `.po` files is like a source of translations, while `.pot` is like a template, we need to compile `.po` fies to create  `.mo`, `.mo` files are compiled version, means to be used by a computer, this is the actual file used by **Flask-Babel** to load translations.
+Keep in mind we need to update sometimes. What if you add more strings or they change?
+
+````commandline
+pybabel update -i messages.pot -d flask_app/translations -l es
+````
 
 Let's compile the .po into .mo
 ```
@@ -182,7 +200,7 @@ pybabel compile -d flask_app/translations
 This command will generate a '.mo' file just next to the '.po' file
 
 ## Running the application
-Set default locale to "es", just to test:
+Set default locale to `es`, just to test:
 ```python
 @babel_ext.localeselector
 def get_locale():

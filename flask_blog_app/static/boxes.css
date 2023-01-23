@@ -97,11 +97,6 @@ h4 a[href] {
     margin-top: 8px;
 }
 
-blockquote {
-    font-family: 'Dancing Script';
-    font-size: 1.4em;
-}
-
 .banner h1 {
     margin-top: 0.5em;
 }
@@ -109,6 +104,8 @@ blockquote {
 .banner blockquote {
     color: var(--cdark);
     border-left: none;
+    font-family: 'Dancing Script';
+    font-size: 1.4em;
 }
 
 a.filled {
