@@ -28,7 +28,7 @@
                     <p>
                         {{ _('Design patterns are a powerful tool for solving common software design problems') }}
                     </p>
-                    <a href="#">{{ _('Learn patterns') }}</a>
+                    <a href="{{ url_for('BLOG_BP.filter_by_category', category='design') }}">{{ _('Learn patterns') }}</a>
                 </div>
             </div>
         </div>
@@ -44,7 +44,7 @@
                     <p>
                         {{ _('Java is a widely-used for developing a wide range of applications, from mobile apps to
                         enterprise software.') }}</p>
-                    <a href="#">{{ _('Get started') }}</a>
+                    <a href="{{ url_for('BLOG_BP.filter_by_category', category='spring') }}">{{ _('Get started') }}</a>
                 </div>
             </div>
         </div>
@@ -59,7 +59,7 @@
                 <div class="content">
                     <p style="text-transform: capitalize">{{ _('Python is a versatile and powerful used from web
                         development to machine learning.') }}</p>
-                    <a href="#">{{ _('Discover Python') }}</a>
+                    <a href="{{ url_for('BLOG_BP.filter_by_category', category='python') }}">{{ _('Discover Python') }}</a>
                 </div>
             </div>
         </div>
@@ -83,7 +83,6 @@
                     {% if p.category.name == 'python' %}
                     {% include 'svg/python_icon.html' %}
                     {% endif %}
-                    <!--                    <span style="text-transform: lowercase">{{ p.category.name }}</span>-->
                 </div>
                 <div class="content">
                     <h4 style="text-transform: capitalize">{{ p.title }}</h4>

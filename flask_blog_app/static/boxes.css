@@ -17,6 +17,10 @@ textarea {
     height: 6em;
 }
 
+header {
+    overflow: hidden;
+}
+
 .comment.child {
     margin-left: 2em;
 }
@@ -26,7 +30,7 @@ textarea {
 }
 
 .banner {
-    margin: 5em 0;
+    margin: 2.5em 0;
 }
 
 .logo {
@@ -93,3 +97,26 @@ h4 a[href] {
     margin-top: 8px;
 }
 
+blockquote {
+    font-family: 'Dancing Script';
+    font-size: 1.4em;
+}
+
+.banner h1 {
+    margin-top: 0.5em;
+}
+
+.banner blockquote {
+    color: var(--cdark);
+    border-left: none;
+}
+
+a.filled {
+    background-color: var(--cspring);
+    padding: 0.8em;
+    color: var(--cfg);
+    font-weight: 700;
+    margin: 2em 0;
+    display: inline-block;
+    text-decoration: none;
+}

@@ -5,7 +5,7 @@ from werkzeug.utils import redirect
 
 from flask_blog_app import db, mail
 from flask_blog_app.blog.forms import TagForm, ContactForm
-from flask_blog_app.blog.models import Subscriptor, Tag
+from flask_blog_app.blog.models import Subscriptor, Tag, Category
 from flask_blog_app.post import Post
 
 blog_bp = Blueprint('BLOG_BP', __name__, url_prefix='/<lang_code>')
@@ -56,9 +56,9 @@ def contact_us():
     return render_template('contact.html', form=contact_form)
 
 
-@blog_bp.route("<tag>")
-def filter_by_tag(tag):
-    return render_template('tag/filter_posts.html', tag=Tag.query.filter_by(name=tag).first_or_404())
+@blog_bp.route("<category>")
+def filter_by_category(category):
+    return render_template('category/filter_posts.html', category=Category.query.filter_by(name=category).first_or_404())
 
 
 @blog_bp.route("/terms")

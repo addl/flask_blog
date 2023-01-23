@@ -1,11 +1,17 @@
-<!-- Hero -->
-<div class="container">
-    <header class="container">
-        <hgroup>
-            <blockquote>
-                <p>{{ _("The most damaging phrase in the language is.. it's always been done this way.") }}</p>
-                <cite><a>- Grace Hopper</a></cite>
-            </blockquote>
-        </hgroup>
-    </header>
-</div><!-- ./ Hero -->
+<header>
+    <div class="">
+
+        {% if not post %}
+            <h1>{{ _('Hello, My name is') }}</h1>
+            <h1>{{ _('Andry, I am a backed developer') }}</h1>
+            <a class="filled" target="_blank" href="https://www.linkedin.com/in/diazleon/">
+                {{ _('See developer journey') }}
+            </a>
+        {% endif %}
+        <blockquote>
+            <p>{{ _("The most damaging phrase in the language is.. it's always been done this way.") }}</p>
+            <cite>- Grace Hopper</cite>
+        </blockquote>
+
+    </div>
+</header>

@@ -1,0 +1,44 @@
+{% extends 'common/base.html' %}
+
+{% block title %}
+{{ super() }} - {{_('All posts with tag: ')}} {{ category.name }}
+{% endblock %}
+
+{% block welcome %}
+<section class="welcome">
+    <h3>{{ _('List of posts: ') }} <label class="tags"><span class="tag">{{ category.name }}</span></label></h3>
+</section>
+{% endblock %}
+
+{% block main_content %}
+<div class="grid-container">
+    {% for p in category.posts %}
+    <div class="grid-item ">
+        <div class="card">
+            <div class="face face1 {{p.category.name}}">
+                <div class="cat">
+                    {% if p.category.name == 'design' %}
+                    {% include 'svg/design_icon.html' %}
+                    {% endif %}
+                    {% if p.category.name == 'spring' %}
+                    {% include 'svg/java_icon.html' %}
+                    {% endif %}
+                    {% if p.category.name == 'python' %}
+                    {% include 'svg/python_icon.html' %}
+                    {% endif %}
+                </div>
+                <div class="content">
+                    <h4 style="text-transform: capitalize">{{ p.title }}</h4>
+                </div>
+            </div>
+            <div class="face face2 {{p.category.name}}">
+                <div class="content">
+                    <p>{{ p.description }}</p>
+                    <a href="{{ url_for('POST_BP.show_post', human_url=p.human_url) }}">{{ _('Read More') }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
