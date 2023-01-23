@@ -14,6 +14,8 @@
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <script>
     $(document).ready(function() {
+        /*TOC*/
+        $(".toc").appendTo("#mr_toc");
         /* Highlight code */
         $('pre').toggleClass('sh_python');
         /* Image Viewer */
@@ -41,7 +43,7 @@
 {% endblock %}
 
 {% block sidebar %}
-
+<aside id="mr_toc"></aside>
 {% endblock %}
 
 {% block main_content %}

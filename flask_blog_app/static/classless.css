@@ -296,8 +296,11 @@ section:after {
 /* side menu (aside is not intended for use in a paragraph!) */
 main aside {
 	position: absolute;
-	width: 8rem;      right: -8.6rem;
-	font-size: 0.8em; line-height: 1.4em;
+    width: 10%;
+    font-size: 0.8em;
+    line-height: 1.4em;
+    transform: translateX(-110%);
+    text-transform: capitalize;
 }
 @media (max-width: 70rem) { main aside { display: none; } }
 

@@ -1,13 +1,9 @@
-## In this post
+## Introduction
+Internationalization (i18n) and localization (l10n) allow your application to support multiple languages, so that users can interact with your application in their preferred language. Flask-Babel is a Flask extension that can be used to easily add i18n and l10n support to a Flask application. It provides a set of decorators and functions to translate strings in the source code and templates, and also provides support for managing translation catalogs. It is built on top of the Babel library, which provides a set of utilities for internationalizing and localizing Python applications.
 
-1. Babel is an standalone module to work with i18n
-2. Install Flask-Babel extension
-3. Creating Babel config file
-4. Generating files using Babel
-5. Configure project
-6. Marking translatable texts
+In this post I will explain how to get started with i18n and l10n by creating static translation in Flask application using Flask-Babel extension and Babel library.
 
-## About the difference between Babel and Flask-Babel
+## Babel and Flask-Babel
 Babel and Flask-Babel are both related to internationalization (i18n) and localization (l10n) of applications, but they are different libraries.
 
 Babel is a generic internationalization library for Python. It provides a set of utilities for internationalizing and localizing Python applications. It includes functionality for extracting messages from source code, compiling message catalogs, and managing translations. The core functionality of Babel can be used in any Python application, and it is not limited to web applications.
