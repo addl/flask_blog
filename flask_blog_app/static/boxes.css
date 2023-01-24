@@ -117,3 +117,31 @@ a.filled {
     display: inline-block;
     text-decoration: none;
 }
+
+/* TOC */
+.toc {
+    overflow: hidden;
+    position: fixed;
+}
+
+.toc ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    font-size: 1em;
+    font-family: 'Poppins';
+    font-weight: 900;
+}
+
+.toc ul li {
+    margin-bottom: 20px;
+}
+
+.toc ul li a {
+    color: var(--cdark);
+}
+
+.toc ul li:hover a {
+    color: var(--cfg);
+}
+
