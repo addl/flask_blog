@@ -9,12 +9,9 @@ https://www.nansen.ai/alpha-articles/osmosis-protocol
 
 ## put constrains in DB for tags a file names (unique)
 
-## reuse comment bbox research: using disquscdn:
-https://c.disquscdn.com/next/embed/common.bundle.78f08d08ee97a04dc049cbcf3a5ec827.js
-
 ## tags are a nightmare to manage (implement autocomplete)
 
-## Fix elastic search
+## Uninstall elastic search
 
 ## Links color are undistinguished
 
