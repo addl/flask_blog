@@ -94,8 +94,8 @@ def create_post():
             'description': post_form.description_es.data.lower(),
             'timestamp': datetime.now()
         }
-        es.index(index='post_en', id=human_url_en, body=body)
-        es.index(index='post_es', id=human_url_es, body=body_es)
+        # es.index(index='post_en', id=human_url_en, body=body)
+        # es.index(index='post_es', id=human_url_es, body=body_es)
         return redirect(url_for('.all_posts'))
     return render_template('admin/post_form.html', form=post_form)
 
