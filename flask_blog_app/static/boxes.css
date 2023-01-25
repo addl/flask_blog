@@ -138,6 +138,10 @@ a.filled {
     display: none;
 }
 
+.toc ul li ul {
+    display: none;
+}
+
 .toc ul li {
     margin-bottom: 20px;
 }
