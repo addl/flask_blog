@@ -122,6 +122,7 @@ a.filled {
 .toc {
     overflow: hidden;
     position: fixed;
+    margin-top: 7em;
 }
 
 .toc ul {
@@ -131,6 +132,14 @@ a.filled {
     font-size: 1em;
     font-family: 'Poppins';
     font-weight: 900;
+}
+
+.toc ul li:first-child,  .post-content h2:first-child {
+    display: none;
+}
+
+.toc ul li ul {
+    display: none;
 }
 
 .toc ul li {
