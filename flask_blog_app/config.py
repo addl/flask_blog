@@ -14,7 +14,7 @@ class Config(object):
     MAIL_SERVER = 'smtp.gmail.com'
     MAIL_PORT = 465
     MAIL_USERNAME = 'andrydaniel88@gmail.com'
-    MAIL_PASSWORD = 'secret'
+    MAIL_PASSWORD = os.environ['GMAIL_SECRET']
     MAIL_ADMIN = 'elion0075@yahoo.com'
     MAIL_USE_TLS = False
     MAIL_USE_SSL = True

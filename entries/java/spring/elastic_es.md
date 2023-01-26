@@ -1,10 +1,13 @@
-## Introducci&oacute;n
-En este tutorial cubriremos los pasos m&aacute;s simples para integrar Spring Boot y
-Elasticsearch usando Spring Data.
+## poster
+![Elastic Search dependencies and versions](https://drive.google.com/uc?id=17_2QmtKal_qLw366Y1UKj8SBLvAbMCE3)
+
+## Introducción
+Spring Data Elasticsearch es un módulo Spring Data para integrar Elasticsearch en una aplicación Spring. Proporciona una interfaz simple y consistente para interactuar con Elasticsearch y le permite usar el modelo de programación Spring para trabajar con el motor de búsqueda.
+
+En este tutorial, cubriremos los pasos más simples para integrar Spring Boot y Elastic Search usando Spring Data.
 
 ## Acerca de Elasticsearch
-Elasticsearch es un motor de an&aacute;lisis y b&uacute;squeda RESTful distribuido
-capaz de abordar un n&uacute;mero creciente de casos de uso. Tambi&eacute;n se puede utilizar como base de datos NoSql.
+Elasticsearch es un popular motor de búsqueda de código abierto basado en la biblioteca Lucene. Se puede usar para indexar, buscar y analizar grandes volúmenes de datos rápidamente en tiempo real.
 
 ## requisitos
 1. Java 11 instalado
