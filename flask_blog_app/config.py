@@ -10,7 +10,7 @@ class Config(object):
     SQLALCHEMY_DATABASE_URI = 'postgresql://pguser:pguser@127.0.0.1:5432/flask_blog'
     TWITTER_CLIENT_ID = "EHfW4CbwNahoyK"
     TWITTER_CLIENT_SECRET = "Dh2q17Pntva1g0BwlYKyW7e"
-    UPLOAD_FOLDER = 'C:/Users/andry.diaz/Documents/lion/my_refactor/tmp/posts'
+    UPLOAD_FOLDER = '/data/uploads/posts'
     MAIL_SERVER = 'smtp.gmail.com'
     MAIL_PORT = 465
     MAIL_USERNAME = 'andrydaniel88@gmail.com'
