@@ -8,6 +8,8 @@
 
 {% block meta_description %}
 <meta name="description" content="{{ post.description }}">
+<meta prefix="og: http://ogp.me/ns#" property='og:title' content="{{ post.title }}"/>
+<meta prefix="og: http://ogp.me/ns#" property='og:description' content="{{ post.description }}"/>
 {% endblock %}
 
 {% block extra_head %}
@@ -35,6 +37,7 @@
     var verifyCallback = function(response) {
         $("#glg").val("si");
     };
+
 </script>
 {% endblock %}
 
@@ -68,15 +71,15 @@
     </section>
     <div class="comments">
         <form method="POST" action="{{ url_for('POST_BP.create_comment') }}" id="comment-form">
-            <input type="hidden" id="glg" value="no" />
+            <input type="hidden" id="glg" value="no"/>
             {{ form.csrf_token }}
             {{ form.post_id }}
             {{ form.comment_id }}
             <div class="comment-header">
                 {% if not current_user.picture %}
-                    <img src="{{ url_for('static', filename='no_picture.png') }}" width="50" height="50"/>
+                <img src="{{ url_for('static', filename='no_picture.png') }}" width="50" height="50"/>
                 {% else %}
-                    <img src="{{ current_user.picture }}" width="50" height="50"/>
+                <img src="{{ current_user.picture }}" width="50" height="50"/>
                 {% endif %}
                 <h4>{{ _('Ask me anything') }}</h4>
             </div>
@@ -96,18 +99,19 @@
                     {{ form.email.label }} {{ form.email }}
                 </div>
             </div>
-            <div class="g-recaptcha" data-sitekey="6Lf7QfojAAAAAF2CtqYwsMQ7YsBRkJWvbEqlzx_p" data-callback="verifyCallback"></div>
+            <div class="g-recaptcha" data-sitekey="6Lf7QfojAAAAAF2CtqYwsMQ7YsBRkJWvbEqlzx_p"
+                 data-callback="verifyCallback"></div>
             <button style="margin-top: 2em; margin-left: 0;" type="submit">{{ _('Comment') }}</button>
         </form>
 
         <h4 class="comments-header"><i class="fa fa-comments" aria-hidden="true"></i> {{ _('Comments') }}</h4>
         <div id="comments">
             {% for comment in post.comments %}
-                {% if not comment.parent %}
-                    {{ render_comment(comment) }}git
-                {% endif %}
+            {% if not comment.parent %}
+            {{ render_comment(comment) }}git
+            {% endif %}
             {% else %}
-                <p>{{ _('Be the first in commenting on this post!') }}</p>
+            <p>{{ _('Be the first in commenting on this post!') }}</p>
             {% endfor %}
         </div>
     </div>
