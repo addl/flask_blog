@@ -25,7 +25,7 @@ def pull_lang_code(endpoint, values):
 
 @blog_bp.route('/')
 def home():
-    return render_template('index.html', posts=Post.query.order_by("timestamp").all())
+    return render_template('index.html', posts=Post.query.order_by("timestamp").all()[:6])
 
 
 @blog_bp.route("/tag/create", methods=['GET', 'POST'])

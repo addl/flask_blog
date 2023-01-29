@@ -3,41 +3,12 @@
     position: relative;
     cursor: pointer;
     overflow: hidden;
-}
-
-.container .card .face{
-    width: 100%;
-    height: 200px;
-    transition: 0.5s;
-}
-
-.container .card.box .face {
-    height: 230px;
+    box-shadow: 0 20px 50px rgb(0 0 0 / 80%);
+    background-color: #2b2d41;
 }
 
 .container .card.box .face.face2 .content {
     margin-top: 15px;
-}
-
-.container .card .face.face1 {
-    position: relative;
-    /*background: #333;*/
-    display: flex;
-    align-items: center;
-    z-index: 1;
-    /*border-bottom: 1px solid #ccc;*/
-}
-
-.container .card .face.face1.design {
-    border-bottom: 2px solid var(--cdesign);
-}
-
-.container .card .face.face1.spring {
-    border-bottom: 2px solid var(--cspring);
-}
-
-.container .card .face.face1.python {
-    border-bottom: 2px solid var(--cpython);
 }
 
 article.design h1, article.design h2, article.design h3, article.design h4, article.design h5 {
@@ -64,26 +35,26 @@ article.python a, article.python button, article.python select, article.python s
     color: var(--cpython);
 }
 
-.container .card:hover .face.face1{
+.container .card:hover .face.face1 {
     /*background: #ff0057;*/
     /*transform: translateX(100%);*/
 }
 
 .container .card .face.face2.design {
-    background: var(--cdesign);
+    /*background: var(--cdesign);*/
 }
 
 .container .card .face.face2.spring {
-    background: var(--cspring);
+    /*background: var(--cspring);*/
 }
 
 .container .card .face.face2.python {
-    background: var(--cpython);
+    /*background: var(--cpython);*/
 }
 
 .container .card .face.face1 .content {
-    transition: 0.5s;
-    padding: 0 10px;
+    padding: 0px 20px;
+    margin-top: 90px;
 }
 
 .container .card:hover .face.face1 .content{
@@ -104,18 +75,9 @@ article.python a, article.python button, article.python select, article.python s
     font-size: 1.4em;
 }
 
-.container .card .face.face2{
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: flex;
-    align-items: center;
+.container .card .face.face2 {
     padding: 20px;
     box-sizing: border-box;
-    /*box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);*/
-    z-index: 10;
-    overflow: hidden;
-    transform: translateY(100%);
 }
 
 .container .card.box .face.face2 {
@@ -165,18 +127,33 @@ article.python a, article.python button, article.python select, article.python s
 .container .card .face.face2 .content p{
     margin: 0;
     padding: 0;
+    color: white;
 }
 
 .container .card .face.face2 .content a {
-    margin: 15px 0 0;
-    display:  inline-block;
-    text-decoration: none;
-    font-weight: 900;
-    color: white;
+    margin: 20px 0 0;
+    display: inline-block;
+    text-align: right;
+    width: 100%;
 }
 
-.container .card .face.face2 .content p {
-    color: white;
+.container .card.box .face.face2.python .content a,
+.container .card.box .face.face2.spring .content a,
+.container .card.box .face.face2.design .content a{
+    color: var(--cfg);
+    text-decoration: none;
+}
+
+.container .card .face.face2.python .content a {
+    color: var(--cpython);
+}
+
+.container .card .face.face2.spring .content a {
+    color: var(--cspring);
+}
+
+.container .card .face.face2.design .content a {
+    color: var(--cdesign);
 }
 
 a, button, select, summary {
