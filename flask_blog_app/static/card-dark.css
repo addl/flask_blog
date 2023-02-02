@@ -35,26 +35,9 @@ article.python a, article.python button, article.python select, article.python s
     color: var(--cpython);
 }
 
-.container .card:hover .face.face1 {
-    /*background: #ff0057;*/
-    /*transform: translateX(100%);*/
-}
-
-.container .card .face.face2.design {
-    /*background: var(--cdesign);*/
-}
-
-.container .card .face.face2.spring {
-    /*background: var(--cspring);*/
-}
-
-.container .card .face.face2.python {
-    /*background: var(--cpython);*/
-}
-
 .container .card .face.face1 .content {
     padding: 0px 20px;
-    margin-top: 90px;
+    margin-top: 100px;
 }
 
 .container .card:hover .face.face1 .content{
@@ -63,8 +46,8 @@ article.python a, article.python button, article.python select, article.python s
 
 .container .card .face.face1 .cat {
     position: absolute;
-    top: 10px;
-    left: 10px;
+    top: 20px;
+    left: 20px;
 }
 
 .container .card .face.face1 .content h3{
@@ -81,14 +64,9 @@ article.python a, article.python button, article.python select, article.python s
 }
 
 .container .card.box .face.face2 {
-    box-shadow: 0 20px 50px rgb(0 0 0 / 80%);
     position: relative;
     transform: translateY(0);
     display: block;
-}
-
-.container .card:hover .face.face2{
-    transform: translateY(0);
 }
 
 .container .card.box {
@@ -135,6 +113,7 @@ article.python a, article.python button, article.python select, article.python s
     display: inline-block;
     text-align: right;
     width: 100%;
+    text-decoration: revert;
 }
 
 .container .card.box .face.face2.python .content a,

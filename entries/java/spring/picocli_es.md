@@ -1,25 +1,30 @@
-## What is a command-line interface?
-A command-line interface (CLI) is a text-based user interface (UI) used to run programs, manage computer files and interact with the computer. Command-line interfaces are also called command-line user interfaces, console user interfaces and character user interfaces. 
-CLIs accept as input commands that are entered by keyboard; the commands invoked at the command prompt are then run by the computer.
+## Poster
+![Project Structure](https://drive.google.com/uc?id=1v8gSY2EchU_R73c9IZWHGugxlWwmA86r) 
 
-## What is PicoCLI
-Picocli is a one-file framework for creating CLIs applications using Java with almost zero code. Picocli aims to be the easiest way to create rich command line applications that can run on and off the JVM.
+## Introducción
+Escribir aplicaciones de línea de comandos usando Spring es cada vez más necesario para automatizar tareas en el desarrollo de aplicaciones Java. Si bien Spring es un marco de aplicación completo, las bibliotecas como PicoCLI están especializadas en la creación de aplicaciones de línea de comandos. 
 
-## Spring's Command Line Runner
-CommandLineRunner is a simple Spring Boot interface with a run method. Spring Boot will automatically call the run method of all beans implementing this interface after the application context has been loaded.  
-Although you can create a CLIs using CommandLineRunner, the cost to parse, maintain and adding new options or subcommands is high, on the other hand the developer should take care of every single parameter and values. With PicoCli the option and its value is automatically parsed and available for use.
+En este blog, discutiremos las características clave y los beneficios de usar PicoCLI dentro del marco Spring y comprenderemos cómo se complementan entre sí para crear aplicaciones CLI sólidas y fáciles de usar.
 
-## The Spring application
-To create a simple CLI application using Spring and PicoCli we need basically three components:  
-* Spring Boot application file: This file is common for all SpringBoot applications.
-* A Runner: A CommandLineRunner that will be used as a bridge to pass all parameters, options and values to PicoCli's command.
-* A PicoCli's command: This is our actual command, having options, subcommands and values.
+## ¿Qué es un CLI?
+Una interfaz de línea de comandos (CLI) es una interfaz de usuario (UI) basada en texto que se utiliza para ejecutar programas, administrar archivos de computadora e interactuar con la computadora. Las interfaces de línea de comandos también se denominan interfaces de usuario de línea de comandos, interfaces de usuario de consola e interfaces de usuario de caracteres.
+Las CLI aceptan como comandos de entrada que se ingresan por teclado; los comandos invocados en el símbolo del sistema luego son ejecutados por la computadora.
 
-### Dependencies
+## ¿Qué es PicoCLI?
+Picocli es un marco de trabajo de un solo archivo para crear aplicaciones CLI usando Java con código casi nulo. Picocli pretende ser la forma más fácil de crear aplicaciones de línea de comandos enriquecidas que puedan ejecutarse dentro y fuera de la JVM.
 
+## Using Command Line Runner
+CommandLineRunner es una interfaz Spring Boot simple con un método de ejecución. Spring Boot llamará automáticamente al método de ejecución de todos los beans que implementan esta interfaz después de que se haya cargado el contexto de la aplicación.
+Aunque puede crear una CLI usando CommandLineRunner, el costo de analizar, mantener y agregar nuevas opciones o subcomandos es alto; por otro lado, el desarrollador debe cuidar cada parámetro y valor. Con PicoCli, la opción y su valor se analizan automáticamente y están disponibles para su uso.
 
-### Application file
-The application file looks like any other you might have seen before:
+## La aplicación Spring
+Para crear una aplicación CLI simple usando Spring y PicoCli, necesitamos básicamente tres componentes:
+* Archivo de aplicación Spring Boot: este archivo es común para todas las aplicaciones SpringBoot.
+* Un Runner: Un CommandLineRunner que se utilizará como puente para pasar todos los parámetros, opciones y valores al comando de PicoCli.
+* Un comando de PicoCli: Este es nuestro comando real, tiene opciones, subcomandos y valores.
+
+El archivo de la aplicación se parece a cualquier otro que haya visto antes:
+
 ```java
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -34,8 +39,8 @@ public class PicocliApplication {
 }
 ```
 
-### The command line runner
-Create another file and calle it "Runner", insidepaste this content:
+### El ejecutor de la línea de comandos
+Crea otro archivo y llámalo `Runner`, dentro pega este contenido:
 
 ```java
 import org.springframework.boot.CommandLineRunner;
@@ -70,17 +75,19 @@ public class Runner implements CommandLineRunner, ExitCodeGenerator {
   }
 }
 ```
-Let's try to understand the implementation.  
+Repasemos el código anterior:
 
-1. The first thing we need to notice is that it is a Spring component, that's why we used **@Controller**.  
-2. Then we make this class to implement **CommandLineRunner**, thus we specify Spring that this a command line application.  
-3. We also implement **ExitCodeGenerator**. most CLI applications return codes to indicate whether an error was thrown during execution. basically if CLI return 0 means that the execution was ok and 1 when unexpected error occurs.
-4. We have declared a factory: "IFactory", this comes handy from PicoCli to bind options and values.
-5. We have declared also a command: "myCommand" of "Command" type, we will implement it in the next step.
-6. Finally, inside the run method, we have created a new command and tell it to execute passing all arguments received.
+1. Lo primero que debemos notar es que es un componente Spring, por lo que usamos **@Controller**.
+2. Luego hacemos que esta clase implemente **CommandLineRunner**, por lo que especificamos Spring como una aplicación de línea de comandos.
+3. También implementamos **ExitCodeGenerator**. La mayoría de las aplicaciones CLI devuelven códigos, básicamente, si CLI devuelve 0 significa que la ejecución fue correcta y 1 cuando ocurre un error inesperado.
+4. Hemos declarado una fábrica: "IFactory", esto viene muy bien desde PicoCli para enlazar opciones y valores.
+5. Hemos declarado también un comando: "myCommand" del tipo "Command", y lo implementaremos en el siguiente paso.
+6. Finalmente, dentro del método de ejecución, hemos creado un nuevo comando y le hemos dicho que se ejecute pasando todos los argumentos recibidos.
 
-### Writing the command
-Now we are going to implement our actual command, create a new file, i called it "Command", the content is:
+### Escribiendo el comando
+
+Ahora vamos a implementar nuestro comando real y crear un nuevo archivo, lo llamé "Comando", el contenido es:
+
 ```java
 import java.util.concurrent.Callable;
 import org.springframework.stereotype.Component;
@@ -106,17 +113,21 @@ public class Command implements Callable<Integer> {
 
 }
 ```
-Splitting up the code, this is what we need to know:  
-1. We have used the annotation **@CommandLine.Command** from PicoCli and specified several parameters like the name, description and version of the command
-2. We have declared an attribute and annotated it using **@Option**, we have specified the option's name and description, we will see now how we can use our CLI.
-3. Finally, inside **call()** method, we are just printing the value of the "a/address" option.
 
-## compiling and running
-now what we want to do is to compile and execute our CLI program, to compile runs the following command inside the project's folder:
+Dividiendo el código anterior, esto es lo que necesitamos saber:
+
+1. Usamos la anotación **@CommandLine.Command** de PicoCli y especificamos varios parámetros como el nombre, la descripción y la versión del comando.
+2. Hemos declarado un atributo y lo hemos anotado usando **@Option**, hemos especificado el nombre y la descripción de la opción, y ahora veremos cómo podemos usar nuestra CLI.
+3. Finalmente, dentro del método **call()**, implementamos la lógica, en este caso, solo imprime el valor de la opción `a/address`.
+
+## Compilando y ejecutando
+Necesitamos compilar nuestra aplicación en un archivo `jar` ejecutable, para hacerlo, ejecute el siguiente comando dentro de la carpeta del proyecto:
 ```commandline
 mvn clean install
 ```
-If it succeeds, you will see this output:
+
+Si tiene éxito, verá un resultado similar a este:
+
 ```commandline
 ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
@@ -125,24 +136,32 @@ If it succeeds, you will see this output:
 [INFO] Finished at: 2022-05-04T17:23:15+03:00
 [INFO] ------------------------------------------------------------------------
 ```
-Which means the project has been compiled into a **jar** file, located inside "target" folder, following is the project structure and the resulting compiled jar file:
-![New Project using PyCharm](https://drive.google.com/uc?id=1DfB0SB0T33HjrMtT5EPwWEEtKK7twzRM)
-In my case, the filename is: "picocli-0.0.1-SNAPSHOT.jar".  
-Let's execute the file by using the options indicates by PicoCli:
+Esto significa que el proyecto ha sido compilado en un archivo **jar**, ubicado dentro de la carpeta "objetivo". En la siguiente imagen se muestra la estructura del proyecto y el archivo `jar` compilado resultante: 
+
+![Estructura del proyecto](https://drive.google.com/uc?id=1DfB0SB0T33HjrMtT5EPwWEEtKK7twzRM) 
+
+En mi caso, el nombre del archivo es: `picocli-0.0.1-SNAPSHOT.jar`. Ejecutemos el archivo usando las opciones indicadas por PicoCli: 
+
 ```commandline
 java -jar .\target\picocli-0.0.1-SNAPSHOT.jar -a 10.0.0.0
 ```
-And the result is the following:
+
+Y la salida es la siguiente:
+
 ```commandline
 ...
 Executing option -a: 10.0.0.0
 ...
 ```
-Alternative if you use an option not specified, automatically PicoCli will show the usage instructions, for instance let's execute:
+
+Alternativamente, si intenta especificar una opción no declarada en el `Comando`, automáticamente PicoCli mostrará las instrucciones de uso, por ejemplo, ejecutemos: 
+
 ```commandline
 java -jar .\target\picocli-0.0.1-SNAPSHOT.jar -h no_defined_option
 ```
-Since "h" is not a defined option, we will get:
+
+Dado que `h` no es una opción definida, obtendremos:
+
 ```commandline
 Unknown options: '-h', 'no_defined_otion'
 Usage: MyRefactorCLI [-a=API_ADDRESS]
@@ -150,5 +169,7 @@ CLI Project
   -a, --address=API_ADDRESS
          The address you want to connect to
 ```
-Now you can understand a bit better the usage of the **@Command** and **@Option** annotations.  
-Congratulations, now you can write CLI applications and get advantage og the Spring framework capabilities.
+Y así es como funcionan las anotaciones **@Command** y **@Option**.
+
+## Conclusión:
+Spring y PicoCLI son herramientas esenciales para el desarrollo de aplicaciones Java. Spring proporciona un marco completo para crear aplicaciones a gran escala, mientras que PicoCLI proporciona una forma flexible e intuitiva de crear aplicaciones de línea de comandos. Al combinar estas tecnologías, puede crear aplicaciones CLI, ya sea un script simple o una aplicación empresarial a gran escala.

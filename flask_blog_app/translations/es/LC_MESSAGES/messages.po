@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-01-23 15:20+0200\n"
+"POT-Creation-Date: 2023-01-29 08:45+0200\n"
 "PO-Revision-Date: 2022-01-20 07:48+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: es\n"
@@ -73,7 +73,8 @@ msgid ""
 "Design patterns are a powerful tool for solving common software design "
 "problems"
 msgstr ""
-"Los patrones de diseño son una herramienta poderosa para resolver problemas comunes de diseño"
+"Los patrones de diseño son una herramienta poderosa para resolver "
+"problemas comunes de diseño"
 
 #: flask_blog_app/templates/index.html:31
 msgid "Learn patterns"
@@ -84,9 +85,14 @@ msgid "java"
 msgstr "java"
 
 #: flask_blog_app/templates/index.html:45
+#, fuzzy
 msgid ""
-"Java is a widely-used for developing from mobile applications to enterprise software."
-msgstr "Java es ampliamente utilizado para desarrollar desde aplicaciones móviles hasta software empresarial."
+"Java is a widely-used for developing a wide range of applications, from "
+"mobile apps to\n"
+"                        enterprise software."
+msgstr ""
+"Java es ampliamente utilizado para desarrollar desde aplicaciones móviles"
+" hasta software empresarial."
 
 #: flask_blog_app/templates/index.html:47
 msgid "Get started"
@@ -101,7 +107,8 @@ msgid ""
 "Python is a versatile and powerful used from web\n"
 "                        development to machine learning."
 msgstr ""
-"Python es versátil y potente y se utiliza en el desarrollo web para el aprendizaje automático."
+"Python es versátil y potente y se utiliza en el desarrollo web para el "
+"aprendizaje automático."
 
 #: flask_blog_app/templates/index.html:62
 msgid "Discover Python"
@@ -165,8 +172,9 @@ msgid "Hello, My name is"
 msgstr "Hola, me llamo"
 
 #: flask_blog_app/templates/common/header.html:6
-msgid "Andry, I am a backend developer"
-msgstr "Andry, soy desarrollador backend"
+#, fuzzy
+msgid "Andry, I am a full-stack developer"
+msgstr "Andry, soy desarrollador full-stack"
 
 #: flask_blog_app/templates/common/header.html:8
 msgid "See developer journey"
@@ -199,23 +207,23 @@ msgstr "Contacto"
 msgid "All Posts"
 msgstr "Todos los articulos"
 
-#: flask_blog_app/templates/post/post.html:54
+#: flask_blog_app/templates/post/post.html:59
 msgid "by"
 msgstr "por"
 
-#: flask_blog_app/templates/post/post.html:79
+#: flask_blog_app/templates/post/post.html:84
 msgid "Ask me anything"
 msgstr "Tienes preguntas?"
 
-#: flask_blog_app/templates/post/post.html:98
+#: flask_blog_app/templates/post/post.html:104
 msgid "Comment"
 msgstr "Comenta"
 
-#: flask_blog_app/templates/post/post.html:101
+#: flask_blog_app/templates/post/post.html:107
 msgid "Comments"
 msgstr "Comentarios"
 
-#: flask_blog_app/templates/post/post.html:108
+#: flask_blog_app/templates/post/post.html:114
 msgid "Be the first in commenting on this post!"
 msgstr "¡Sé el primero en comentar en esta publicación!"
 

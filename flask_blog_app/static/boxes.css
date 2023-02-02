@@ -106,6 +106,7 @@ h4 a[href] {
     border-left: none;
     font-family: 'Dancing Script';
     font-size: 1.4em;
+    max-width: 75%;
 }
 
 .section-header {
@@ -127,6 +128,7 @@ a.filled {
 .toc {
     overflow: hidden;
     position: fixed;
+    margin-top: 12px;
 }
 
 .toc ul {
@@ -156,5 +158,11 @@ a.filled {
 
 .toc ul li:hover a {
     color: var(--cfg);
+}
+
+article p.extra-data {
+    margin: 0 1em 1em 1em;
+    font-style: italic;
+    color: var(--cdark);
 }
 

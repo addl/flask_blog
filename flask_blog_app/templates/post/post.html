@@ -51,12 +51,12 @@
 
 {% block main_content %}
 <article class="{{ post.category.name }}">
-    <div class="section-header">
-        <h1 class="post-title">
+    <div>
+        <h1 class="section-header post-title">
             {{ post.title }}
         </h1>
         <p class="extra-data">
-            {{ _('by') }} {{ post.user.email }} | {{ post.timestamp.strftime('%Y-%m-%d') }} |
+            {{ _('by') }} Myrefactor | {{ post.timestamp.strftime('%Y-%m-%d') }} |
             {% if g.lang_code == 'en' %}
             <a href="/es/posts/{{ post.translations.es.human_url }}"><span class="fi fi-es fis"></span></a>
             {% endif %}
