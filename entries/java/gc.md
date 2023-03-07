@@ -1,3 +1,6 @@
+## Poster
+![Object Usage over time in JVMs](https://drive.google.com/uc?id=15aT8u3J5tmB31HVNbEfbtE8JMa55_se2) 
+
 ## Introduction
 In this article, you will learn the fundamental concepts of Garbage Collection in Java. 
 I will explain what is garbage collection and its importance for the health of Java applications. 
@@ -35,7 +38,7 @@ This process of 'marking' can be very time-consuming and become inefficient as o
 ## Object generation classification
 Empirical analysis of applications has shown that most objects are short-lived, take a look at the following chart:
 
-![Object Usage over time in JVMs](https://www.oracle.com/webfolder/technetwork/tutorials/obe/java/gc01/images/ObjectLifetime.gif)
+![Object Usage over time in JVMs](https://drive.google.com/uc?id=1-G4_WAp_fqXi1unUXS3pLUQ-jqM0m7r3)
 
 As you can see, fewer objects remain referenced over time. In fact, most objects have a very short life as shown by the higher values on the left side of the graph.
 

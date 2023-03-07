@@ -1,3 +1,6 @@
+## Poster
+![Object Usage over time in JVMs](https://drive.google.com/uc?id=15aT8u3J5tmB31HVNbEfbtE8JMa55_se2) 
+
 ## Introducción
 En este artículo, aprenderá los conceptos fundamentales de la recolección de basura en Java (aka GC, del ingl&eacute;s Garbage Collector).
 Explicaré qué es la recolección de basura y su importancia para la salud de las aplicaciones Java.
@@ -35,7 +38,7 @@ Este proceso de 'marcar' puede consumir mucho tiempo y volverse ineficiente a me
 ## Clasificación de generación de objetos
 El análisis empírico de las aplicaciones ha demostrado que la mayoría de los objetos son de corta duración, eche un vistazo al siguiente gráfico:
 
-![Object Usage over time in JVMs](https://www.oracle.com/webfolder/technetwork/tutorials/obe/java/gc01/images/ObjectLifetime.gif)
+![Object Usage over time in JVMs](https://drive.google.com/uc?id=1-G4_WAp_fqXi1unUXS3pLUQ-jqM0m7r3) 
 
 Como puede ver, quedan menos objetos referenciados a lo largo del tiempo. De hecho, la mayoría de los objetos tienen una vida muy corta, como lo muestran los valores más altos en el lado izquierdo del gráfico.
 
