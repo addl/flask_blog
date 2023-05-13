@@ -14,7 +14,7 @@
 <div class="grid-container">
     {% for p in category.posts %}
     <div class="grid-item ">
-        <div class="card">
+        <div class="card" onclick="window.location='{{ url_for('POST_BP.show_post', human_url=p.human_url) }}'">
             <div class="face face1 {{p.category.name}}">
                 <div class="cat">
                     {% if p.category.name == 'design' %}
