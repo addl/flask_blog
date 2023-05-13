@@ -16,18 +16,20 @@
         </thead>
         <tbody>
             {% for c in comments %}
-                <tr>
-                    <td>{{ c.user.email }}</td>
-                    <td><a target="_blank" href="{{ url_for('POST_BP.show_post', human_url=c.post.human_url) }}">
-                        {{ c.post.content }}</a>
-                    </td>
-                    <td style="max-width: 690px; overflow: hidden;">{{ c.content }}</td>
-                    <td>
-                        {% if not c.approved %}
-                            <a href="{{ url_for('.approve_comment', comment_id=c.id)}}"><i class="fas fa-check"></i></a>
-                        {% endif %}
-                    </td>
-                </tr>
+                {% if not c.approved %}
+                    <tr>
+                        <td>{{ c.user.email }}</td>
+                        <td><a target="_blank" href="{{ url_for('POST_BP.show_post', human_url=c.post.human_url) }}">
+                            {{ c.post.content }}</a>
+                        </td>
+                        <td style="max-width: 690px; overflow: hidden;">{{ c.content }}</td>
+                        <td>
+                            {% if not c.approved %}
+                                <a href="{{ url_for('.approve_comment', comment_id=c.id)}}"><i class="fas fa-check"></i></a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endif%}
             {% endfor %}
         </tbody>
     </table>
