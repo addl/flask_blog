@@ -17,7 +17,10 @@ admin_bp = Blueprint('ADMIN_BP', __name__)
 
 @admin_bp.before_request
 def intercept():
-    if not current_user.is_admin:
+    if current_user.is_authenticated:
+        if not current_user.is_admin:
+            return abort(404)
+    else:
         return abort(404)
 
 

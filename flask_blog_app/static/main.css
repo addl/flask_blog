@@ -684,3 +684,16 @@ textarea {
     }
 }
 
+/* Table */
+table.admin {
+    display: table;
+    border-collapse: separate;
+    table-layout: fixed
+}
+
+table.admin td {
+    display: table-cell;
+    vertical-align: inherit;
+    word-wrap: break-word;
+}
+

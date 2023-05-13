@@ -65,13 +65,23 @@ def create_comment():
         comment.content = markdown.markdown(comment_form.content.data, extensions=['fenced_code', 'codehilite'])
         db.session.add(comment)
         db.session.commit()
-        # send email
-        msg = Message("Thanks for your comment, it will be published in short",
+        # send email to the user
+        msg = Message("Thanks for your comment " + comment_form.name.data,
                       sender=("My Refactor", current_app.config['MAIL_USERNAME']),
                       recipients=[user_email])
         get_post = Post.query.get(comment.post_id)
-        msg.body = "Thanks for your interest in our blog " + get_post.title + ". Your comment will be published in short"
+        msg.html = """<p>Thanks for your interest in our blog:</p> 
+        <a href='{post_url}'>{post_title}</a>. 
+        <p>Your comment will be published in short.</p>""".\
+            format(post_url="http://myrefactor.com/en/posts/"+get_post.human_url, post_title=get_post.title)
         msg.reply_to = "no-reply"
+        mail.send(msg)
+        # send email to admin
+        msg = Message("New comment from " + user_email,
+                      sender=("My Refactor", current_app.config['MAIL_USERNAME']),
+                      recipients=[current_app.config['MAIL_ADMIN']])
+        msg.html = "<p>Comment</p><p>{comment}</p><a href='http://myrefactor.com/login'>Approve</a>"\
+            .format(comment=comment.content)
         mail.send(msg)
     referrer = request.referrer
     return redirect(referrer)
