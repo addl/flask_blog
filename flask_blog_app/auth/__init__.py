@@ -16,6 +16,8 @@ def login():
             flash('Invalid username or password')
             return redirect(url_for('.login'))
         login_user(existing_user, remember=login_form.remember_me.data)
+        if existing_user.is_admin:
+            return redirect(url_for('ADMIN_BP.admin_home'))
         return redirect('/')
     return render_template('auth/login.html', form=login_form)
 
