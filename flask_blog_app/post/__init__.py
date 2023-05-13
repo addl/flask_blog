@@ -2,9 +2,11 @@ import os
 
 import markdown
 from flask import Blueprint, render_template, g, request, current_app
+from flask_mail import Message
+from sqlalchemy import desc
 from werkzeug.utils import redirect
 
-from flask_blog_app import db, es
+from flask_blog_app import db, es, mail
 from flask_blog_app.auth import User
 from flask_blog_app.post.forms import PostForm, CommentForm
 from flask_blog_app.post.models import Post, PostTranslation, Comment
@@ -26,7 +28,7 @@ def pull_lang_code(endpoint, values):
 
 @post_bp.route('/posts', methods=['GET'])
 def all_posts():
-    return render_template('post/all.html', posts=Post.query.order_by("timestamp").all())
+    return render_template('post/all.html', posts=Post.query.order_by(desc("timestamp")).all())
 
 
 @post_bp.route('/posts/<human_url>')
@@ -63,6 +65,14 @@ def create_comment():
         comment.content = markdown.markdown(comment_form.content.data, extensions=['fenced_code', 'codehilite'])
         db.session.add(comment)
         db.session.commit()
+        # send email
+        msg = Message("Thanks for your comment, it will be published in short",
+                      sender=("My Refactor", current_app.config['MAIL_USERNAME']),
+                      recipients=[user_email])
+        get_post = Post.query.get(comment.post_id)
+        msg.body = "Thanks for your interest in our blog " + get_post.title + ". Your comment will be published in short"
+        msg.reply_to = "no-reply"
+        mail.send(msg)
     referrer = request.referrer
     return redirect(referrer)
 

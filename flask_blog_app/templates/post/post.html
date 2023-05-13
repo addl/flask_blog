@@ -107,11 +107,11 @@
         <h4 class="comments-header"><i class="fa fa-comments" aria-hidden="true"></i> {{ _('Comments') }}</h4>
         <div id="comments">
             {% for comment in post.comments %}
-            {% if not comment.parent %}
-            {{ render_comment(comment) }}git
-            {% endif %}
+                {% if not comment.parent and comment.approved %}
+                    {{ render_comment(comment) }}
+                {% endif %}
             {% else %}
-            <p>{{ _('Be the first in commenting on this post!') }}</p>
+                <p>{{ _('Be the first in commenting on this post!') }}</p>
             {% endfor %}
         </div>
     </div>

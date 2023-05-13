@@ -45,5 +45,6 @@ class Comment(db.Model):
     post_id = db.Column(db.Integer, db.ForeignKey('post.id'))
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     content = db.Column(db.String())
+    approved = db.Column(db.Boolean, default=False)
     parent_id = db.Column(db.Integer, db.ForeignKey('comment.id'))
     parent = relationship("Comment", backref="children", remote_side=[id])

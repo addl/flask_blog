@@ -44,6 +44,14 @@ article.python a, article.python button, article.python select, article.python s
     opacity: 1;
 }
 
+.container .card {
+    transition: all .2s ease-in-out;
+}
+
+.container .card:hover {
+    transform: scale(1.05);
+}
+
 .container .card .face.face1 .cat {
     position: absolute;
     top: 20px;

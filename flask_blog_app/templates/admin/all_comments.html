@@ -1,0 +1,33 @@
+{% extends 'admin/home.html' %}
+
+{% block title %}
+    {{ super() }} create post
+{% endblock %}
+
+{% block admin_content %}
+    <table style="width:100%">
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Post File</th>
+                <th>Content</th>
+                <th colspan="2">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for c in comments %}
+                <tr>
+                    <td>{{ c.user.email }}</td>
+                    <td>{{ c.post.content }}</td>
+                    <td>{{ c.content }}</td>
+                    <td>
+                        {% if not c.approved %}
+                            <a href="{{ url_for('.approve_comment', comment_id=c.id)}}"><i class="fas fa-window-close"></i>Approve</a>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

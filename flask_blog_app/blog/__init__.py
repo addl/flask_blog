@@ -1,6 +1,7 @@
 from flask import Blueprint, g, url_for, render_template, request, flash, current_app
 from flask_mail import Mail, Message
 from flask_login import login_required
+from sqlalchemy import desc
 from werkzeug.utils import redirect
 
 from flask_blog_app import db, mail
@@ -25,7 +26,7 @@ def pull_lang_code(endpoint, values):
 
 @blog_bp.route('/')
 def home():
-    return render_template('index.html', posts=Post.query.order_by("timestamp").all()[:6])
+    return render_template('index.html', posts=Post.query.order_by(desc("timestamp")).all()[:6])
 
 
 @blog_bp.route("/tag/create", methods=['GET', 'POST'])
@@ -48,7 +49,7 @@ def contact_us():
         msg = Message("Message from " + contact_form.name.data,
                       sender=("My Refactor", current_app.config['MAIL_USERNAME']),
                       recipients=[current_app.config['MAIL_ADMIN']])
-        msg.body = contact_form.message.data if contact_form.message.data else "Hello,from Flask and Gmail SMTP server."
+        msg.body = contact_form.message.data
         msg.reply_to = contact_form.email.data
         mail.send(msg)
         flash('Thanks for contact us! We will message you soon.')

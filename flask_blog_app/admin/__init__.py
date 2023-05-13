@@ -10,7 +10,7 @@ from flask_blog_app import db, es
 from flask_blog_app.auth import User
 from flask_blog_app.blog.models import Tag, Category
 from flask_blog_app.post.models import Post
-from flask_blog_app.post import PostForm
+from flask_blog_app.post import PostForm, Comment
 
 admin_bp = Blueprint('ADMIN_BP', __name__)
 
@@ -110,6 +110,22 @@ def all_posts():
 @login_required
 def all_users():
     return render_template('admin/all_users.html', users=User.query.all())
+
+
+@admin_bp.route('/admin/comments/all', methods=['GET'])
+@login_required
+def all_comments():
+    return render_template('admin/all_comments.html', comments=Comment.query.all())
+
+
+@admin_bp.route('/admin/comments/approve/<comment_id>', methods=['GET'])
+@login_required
+def approve_comment(comment_id):
+    comment = Comment.query.get_or_404(int(comment_id))
+    comment.approved = True
+    db.session.add(comment)
+    db.session.commit()
+    return redirect(url_for('.all_comments'))
 
 
 @admin_bp.route('/admin/posts/delete/<post_id>', methods=['GET'])
