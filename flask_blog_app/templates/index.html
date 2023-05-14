@@ -18,22 +18,6 @@
 {% block main_content %}
 <div class="grid-container">
     <div class="grid-item ">
-        <div class="card box" onclick="window.open('{{ url_for('BLOG_BP.filter_by_category', category='design') }}')">
-            <div class="face face2 design">
-                <div class="cat">
-                    {% include 'svg/design_icon.html' %}
-                    <p>{{ _('design') }}</p>
-                </div>
-                <div class="content">
-                    <p>
-                        {{ _('Design patterns are a powerful tool for solving common software design problems') }}
-                    </p>
-                    <a href="#">{{ _('Learn patterns') }}</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="grid-item ">
         <div class="card box" onclick="window.open('{{ url_for('BLOG_BP.filter_by_category', category='spring') }}')">
             <div class="face face2 spring">
                 <div class="cat">
@@ -60,6 +44,22 @@
                     <p>{{ _('Python is a versatile and powerful used from web
                         development to machine learning.') }}</p>
                     <a href="#">{{ _('Discover Python') }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="grid-item ">
+        <div class="card box" onclick="window.open('{{ url_for('BLOG_BP.filter_by_category', category='design') }}')">
+            <div class="face face2 design">
+                <div class="cat">
+                    {% include 'svg/design_icon.html' %}
+                    <p>{{ _('design') }}</p>
+                </div>
+                <div class="content">
+                    <p>
+                        {{ _('Design patterns are a powerful tool for solving common software design problems') }}
+                    </p>
+                    <a href="#">{{ _('Learn patterns') }}</a>
                 </div>
             </div>
         </div>

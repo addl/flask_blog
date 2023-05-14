@@ -2,6 +2,14 @@
     <ul>
         <li><a href="{{ url_for('BLOG_BP.home') }}">{{ _('Home') }}</a></li>
         <li><a href="{{ url_for('POST_BP.all_posts') }}">{{ _('Blog') }}</a></li>
+        <li class="dropdown">
+            <label>Categories</label>
+            <ul class="dropdown-content">
+                <li><a href="{{ url_for('BLOG_BP.filter_by_category', category='spring') }}">{{ _('java') }}</a> </li>
+                <li><a href="{{ url_for('BLOG_BP.filter_by_category', category='python') }}">{{ _('python') }}</a> </li>
+                <li><a href="{{ url_for('BLOG_BP.filter_by_category', category='design') }}">{{ _('design') }}</a> </li>
+            </ul>
+        </li>
         {% if current_user.is_authenticated and current_user.is_admin %}
             <li><a href="{{ url_for('ADMIN_BP.admin_home') }}">Admin</a></li>
         {% endif %}

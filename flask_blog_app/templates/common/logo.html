@@ -10,7 +10,14 @@
     <div class="col-6">
         <nav>
             <ul style="text-align: right;">
-<!--                <li><a href="{{ url_for('BLOG_BP.home') }}">{{ _('Home') }}</a></li>-->
+                <li class="dropdown">
+                    <label>Categories<i style="padding:0 1em" class="fa-solid fa-angle-down"></i></label>
+                    <ul class="dropdown-content">
+                        <li><a href="{{ url_for('BLOG_BP.filter_by_category', category='spring') }}">{{ _('java') }}</a> </li>
+                        <li><a href="{{ url_for('BLOG_BP.filter_by_category', category='python') }}">{{ _('python') }}</a> </li>
+                        <li><a href="{{ url_for('BLOG_BP.filter_by_category', category='design') }}">{{ _('design') }}</a> </li>
+                    </ul>
+                </li>
                 <li><a href="{{ url_for('POST_BP.all_posts') }}">{{ _('Blog') }}</a></li>
                 {% if current_user.is_authenticated and current_user.is_admin %}
                 <li><a href="{{ url_for('ADMIN_BP.admin_home') }}">Admin</a></li>
