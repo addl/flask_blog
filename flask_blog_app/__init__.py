@@ -66,6 +66,8 @@ def create_app(test_config=None, get_locale=None):
 
     @app.route('/robots.txt')
     @app.route('/sitemap.xml')
+    @app.route('/ads.txt')
+    @app.route('/favicon.ico')
     def static_from_root():
         path_ = request.path[1:]
         return send_from_directory(app.static_folder, path_)
