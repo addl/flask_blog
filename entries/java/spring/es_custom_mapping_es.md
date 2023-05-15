@@ -1,5 +1,8 @@
+## poster
+![Elastic Search custom mapping](https://drive.google.com/uc?id=1-CxwkxYJaa05bcVi8IIp2Gj5pnRmaR-q)
+
 ## Introducción
-En Elasticsearch, las asignaciones definen cómo se deben indexar y buscar los campos en los documentos. Las asignaciones especifican los tipos de datos de los campos y también pueden incluir configuraciones adicionales, como si un campo debe permitir búsquedas o no, si debe analizarse o no, etc.
+En Elasticsearch, el mapeo de propiedad o campo define cómo se deben indexar y buscar los campos en los documentos. El mapeo especifica los tipos de datos de los campos y también pueden incluir configuraciones adicionales, como si un campo debe permitir búsquedas o no, si debe analizarse o no, etc.
 
 En este blog, aprenderemos cómo definir mapeos personalizados para nuestros índices dentro de Elasticsearch usando Spring Data Elasticsearch.
 
@@ -45,9 +48,10 @@ Nuestra aplicación tiene el siguiente diagrama:
 
 ![Elastic Search Custom Mapping](https://drive.google.com/uc?id=1LOG-pE2TP-3srUHDOLpA5bpRu4NGhxla)
 
-Los componentes principales son:
-* **Entidad de blog**: Nuestro modelo representa los datos que se almacenarán en Elasticsearch.
-* **BlogRepository**: interfaz de repositorio normal de Spring Data.
+Los componentes principales son: 
+
+* **Blog**: Esta entidad es nuestro modelo, representa los datos que se almacenarán en Elasticsearch.
+* **BlogRepository**: Interfaz de repositorio normal de Spring Data.
 * **BlogService**: El servicio donde se implementa la lógica para procesar y almacenar la información.
 
 ## Las limitaciones de las asignaciones predeterminadas

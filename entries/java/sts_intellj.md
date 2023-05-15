@@ -18,13 +18,15 @@ STS provides a wizard interface for creating new Spring Boot projects. Allowing 
 
 ![Spring Boot Dependencies in STS](https://drive.google.com/uc?id=1zuBtnGwP89WgP8seeIQ8YwJD4i4-g2HQ) 
 
+This is handy as I don't have to go to [https://start.spring.io/](https://start.spring.io/), download the skeleton and then import it in my IDE.
 
 ## Spring Boot Dashboard
 On of my favorites features of STS is the dashboard,  it provides a general overview of the current Spring projects and applications in your workspace.  Including information about status(running, compiling, etc.), the type of Spring project (Boot, MVC, CLI or Spring Data), the port and more.
 
 ![Spring STS Dashboard](https://drive.google.com/uc?id=1HVWXjnYH1wFohlcNdtZT7GV0V4l3oyth) 
 
-For microservices, you can have a "subset" and run only few of them, since the dashboard allows you to tag projects with an arbitrary number of tag. You also have the possibility of managing several profiles(filter/hide them), run/stop all of a subset of projects with one click.
+For microservices, you can have a "subset" and run only few of them, since the dashboard allows you to tag projects with an arbitrary number of tag. I find this particular useful when working in system features that involve only few microservices.
+You also have the possibility of managing several profiles(filter/hide them), run/stop all of a subset of projects with one click.
 
 ### Live information of beans
 The dashboard can also show live data of your Spring applications: 
@@ -97,6 +99,7 @@ Notice also how the keywords are also indicated in blue, so you don't have to re
 
 ## Spring SpEL expressions validations
 STS support basic validation of the syntax of a SpEL expression. 
+
 ![Spring STS SpEL validations](https://drive.google.com/uc?id=1_hBBw-lgFgSok274zi18IXRXe_yu7IQz) 
 
 In contrast, IntelliJ seems to be lesser aware of this.
@@ -108,19 +111,19 @@ In general, to write SpEL expressions is error-prone and having this basic check
 ## General features
 Below there is a list of only few features I would like to mention, although there are more: 
 
-1. `Request Annotations validations`: STS validates the usage of `@RequestMapping` where specific mapping annotations like `@GetMapping` should be used instead. I found these annotations in legacy code.
+* `Request Annotations validations`: STS validates the usage of `@RequestMapping` where specific mapping annotations like `@GetMapping` should be used instead. I found these annotations in legacy code.
 
 ![Spring STS request mapping validation](https://drive.google.com/uc?id=1_up6LAOlLe4GfAC_a-j8UgTdD33ql3ft) 
 
-2. `Add starters on the fly`: Not all profiles have the same dependencies, for example `test` might have `dev-tools` while in `staging` is missing. So if I want to execute `staging` with `dev-tool` or another dependency I could do that directly from the Spring menu. 
+* `Add starters on the fly`: Not all profiles have the same dependencies, for example `test` might have `dev-tools` while in `staging` is missing. So if I want to execute `staging` with `dev-tool` or another dependency I could do that directly from the Spring menu. 
 
 ![Spring STS starters](https://drive.google.com/uc?id=1KucMLPAcDic99iingimShAmGtyK8w7a-) 
 
-3. `Integration with docker`: Spring Boot 2.3 introduced direct support for creating OCI container images when building Spring Boot projects. This support is now integrated in the Spring Boot Dashboard in the Spring Tools 4 for Eclipse. 
+* `Integration with docker`: Spring Boot 2.3 introduced direct support for creating OCI container images when building Spring Boot projects. This support is now integrated in the Spring Boot Dashboard in the Spring Tools 4 for Eclipse. 
 
 ![Spring STS Docker support](https://drive.google.com/uc?id=1DFRJVS5ICa7hg0A8bDL134z9W2p-Nxwg) 
 
-4. `Integration with Cloud Foundry`: Cloud Foundry provides a simple and scalable way to deploy and manage applications in a variety of cloud environments. 
+* `Integration with Cloud Foundry`: Cloud Foundry provides a simple and scalable way to deploy and manage applications in a variety of cloud environments. 
 > Cloud Foundry was developed by Pivotal Software, which is now a part of VMware.
 
 
@@ -131,10 +134,12 @@ In this section I just want to highlight two plugins I use on my everyday tasks,
 SonarLint highlights gugs and security vulnerabilities as you write code, with clear guidance so you can fix them and actually improve your coding skills.
 
 I have the plugin installed in both IDEs, Eclipse and IntelliJ, and this is what I have found:
-Eclipse:
+Eclipse: 
+
 ![Eclipse Sonarlint](https://drive.google.com/uc?id=1jvj60PQrev5oHUeDPCsn_Mt3L88eaZb2) 
 
-IntelliJ:
+IntelliJ: 
+
 ![IntelliJ Sonarlint](https://drive.google.com/uc?id=1DtFky3yYz2O74YUJwfLugKLK7wFbubL8) 
 
 The main difference in that Eclipse highlight the error right in the code where the issue is, while IntelliJ has them inside the window for Sonarlint.
@@ -150,12 +155,13 @@ As a plus, the sonarlint in Eclipse can connect also to Cloud server or intranet
 PlantUML is an open-source tool allowing users to create any sort of diagrams(Sequence, Use case, Class, Activity, etc). Particularly I use it for blog entries, wiki pages and reverse engineering when a picture says a thousand lines of code like component interaction.
 
 After installing the plugin in IntelliJ, I noticed the following.
-IntelliJ
+IntelliJ: 
+
 ![IntelliJ and PlantUML](https://drive.google.com/uc?id=1dRCtwpBwd_tHAuUkymh5abGpbPkgwQpr) 
 
 And I became immediately disappointed, it is not interactive and requires a lot of user input, not productive at all. In addition, the diagram generator doesn't generate picture!, it creates a text-form PlantUml code, to be visualized in the plugin.
 
-In contrast, PlantUml in Eclipse looks like this
+In contrast, PlantUml in Eclipse looks like this: 
 
 ![Eclipse and PLantUML](https://drive.google.com/uc?id=1hMDh2Sf4uBPoubYxm1LS2MCva2oTy1sV) 
 
@@ -191,10 +197,9 @@ In case you are not fully familiar with PlantUML syntax you can copy the text fr
 ## More subjective facts
 No one pick IDEs because of Memory efficiency or CPU usage...well I do. I remember I coded in `vim` when I was working as FE developer in [openblender.io](https://openblender.io/#/welcome). It turns out I have good news for Eclipse lovers.
 
-There is an interesting [study](https://dzone.com/articles/memory-efficient-ide-eclipse-or-intellij) where both IDEs where compared. The result of this study was:
+There is an interesting [study](https://dzone.com/articles/memory-efficient-ide-eclipse-or-intellij) where both IDEs where compared. The result of this study was: 
 
 ![Eclipse and IntelliJ memory stats](https://drive.google.com/uc?id=13-miVVvibwt9v8rG338249CiiDwEwk12) 
-
 
 ### Memory
  Eclipse IDE was creating objects at the rate of **2.41 MB/sec**, whereas IntelliJ was creating objects are the rate of **69.65 MB/sec** (which is **29x more than Eclipse**). For the entire run, Eclipse only created 15.19 GB, where IntelliJ created 430.2 GB of objects. Since more objects were created, CPU consumption was also higher when using the IntelliJ IDE.
@@ -202,10 +207,12 @@ There is an interesting [study](https://dzone.com/articles/memory-efficient-ide-
 ### CPU
 CPU time is the total amount of time an application spends in garbage collection. It’s basically the sum of `User` time and `Sys` time.
 
-The time Eclipse used for GC:
+The time Eclipse used for GC: 
+
 ![Eclipse CPU stats](https://drive.google.com/uc?id=1laLVrQBBGajCIjQzHGQf_Os0ZqUX6Af7) 
 
-While the time for IntelliJ was:
+While the time for IntelliJ was: 
+
 ![IntelliJ CPU stats](https://drive.google.com/uc?id=1esAE0Q7jibtgKqdoWzevLyG0er7mpCVR) 
 
 The difference is more than considerable.
@@ -220,12 +227,13 @@ The STS4 team is working to bring us the best Spring Development experience, amo
 * Advanced Validation for Annotations with Spring Expression Language #520. 
 * Refactoring rename support for SpEL literals that references other code #521 
 
-More than 500! It seems to me more cool stuff are incoming.
+It seems to me that more cool stuff are incoming given the amount of work STS team has at the moment, they are pushing hard.
 
 ## Conclusion
-Both are excellent IDEs, in my opinion IntelliJ is more polished while Eclipse is serviceable. 
-I just wanted to expose some reasons than cannot be compensated with IntelliJ sugarcoating features and that doesn't make so obvious the decision of using IntelliJ over Eclipse. Happy code!
+Both are excellent IDEs, in my opinion IntelliJ is more polished while Eclipse is more serviceable. 
+I just wanted to expose some reasons than cannot be compensated with IntelliJ sugarcoating features and that doesn't make so obvious the decision of using IntelliJ over Eclipse. 
 
+Happy code!
 
 ## References
 

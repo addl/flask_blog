@@ -1,5 +1,8 @@
+## poster
+![Elastic Search custom mapping](https://drive.google.com/uc?id=1-CxwkxYJaa05bcVi8IIp2Gj5pnRmaR-q)
+
 ## Introduction
-In Elasticsearch, mappings define how fields in documents should be indexed and searched. Mappings specify the data types of fields, and can also include additional settings such as whether a field should be searchable or not, whether it should be analyzed or not, and so on.
+In Elasticsearch, field mapping defines how fields in documents should be indexed and searched. Mappings specify the data types of fields, and can also include additional settings such as whether a field should be searchable or not, whether it should be analyzed or not, and so on.
 
 In this blog we will learn how to define custom mappings for our indexes inside Elasticsearch using Spring Data Elasticsearch.
 
@@ -45,10 +48,11 @@ Our application has the following diagram:
 
 ![Elastic Search Custom Mapping](https://drive.google.com/uc?id=1LOG-pE2TP-3srUHDOLpA5bpRu4NGhxla)
 
-The main components are:
-* **Blog entity**: Our model represents the data to be stored in Elasticsearch.
-* **BlogRepository**: Spring Data normal repository interface.
-* **BlogService**: The service where the logic to process and store the information is implemented.
+The main components are: 
+
+* **Blog entity**: Our model represents the data to be stored in Elasticsearch. 
+* **BlogRepository**: Spring Data normal repository interface. 
+* **BlogService**: The service where the logic to process and store the information is implemented. 
 
 ## The limitations of default mappings
 Now, let's imagine we have our index `blog_index` populated with two documents as follows:
