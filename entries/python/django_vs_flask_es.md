@@ -1,5 +1,10 @@
+## poster
+![Django vs Flask](https://drive.google.com/uc?export=view&id=122JenjlMwmsojJwiSYtOzTJRr8KjYiO8)
+
 ## Introducción
-Los marcos web están diseñados para facilitar a los desarrolladores la creación y el mantenimiento de aplicaciones web complejas. Proporcionan un conjunto de herramientas y bibliotecas para manejar tareas comunes como el enrutamiento, la representación de plantillas y la interacción con bases de datos. En esta publicación de blog, compararemos Django y Flask, dos marcos web populares para Python.
+Los marcos web están diseñados para facilitar a los desarrolladores la creación y el mantenimiento de aplicaciones web complejas.
+Manejan tareas comunes como el enrutamiento, la representación de plantillas y la interacción con bases de datos.
+En esta publicación de blog, compararemos dos de los marcos web más populares para Python, Django y Flask, y lo ayudaremos a comprender cuál es el más adecuado para ti.
 
 ## Django
 Django es un marco web de pila completa que fue diseñado para ser rápido y flexible. Sigue la filosofía de "baterías incluidas", lo que significa que proporciona una amplia gama de funciones listas para usar para manejar tareas comunes de desarrollo web. Algunas de las características clave de Django incluyen:

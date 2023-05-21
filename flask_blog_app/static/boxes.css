@@ -190,4 +190,18 @@ article p.extra-data {
     display: block;
 }
 
+/* Series */
+.series-container ol {
+    padding-left: 50px;
+}
+
+.series-container ol li {
+    color: var(--cdark);
+    padding: 1em;
+    margin-top: 24px;
+    position: relative;
+    font-size: 16px;
+    border-bottom: 1px solid;
+}
+
 

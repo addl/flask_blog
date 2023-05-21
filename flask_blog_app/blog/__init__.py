@@ -5,9 +5,10 @@ from sqlalchemy import desc
 from werkzeug.utils import redirect
 
 from flask_blog_app import db, mail
-from flask_blog_app.blog.forms import TagForm, ContactForm
+from flask_blog_app.blog.forms import TagForm, ContactForm, SerieForm
 from flask_blog_app.blog.models import Subscriptor, Tag, Category
 from flask_blog_app.post import Post
+from flask_blog_app.post.models import Serie
 
 blog_bp = Blueprint('BLOG_BP', __name__, url_prefix='/<lang_code>')
 
@@ -39,6 +40,20 @@ def create_tag():
         db.session.commit()
         return redirect(url_for('ADMIN_BP.create_post'))
     return render_template('tag/form.html', form=tag_form)
+
+
+@blog_bp.route("/serie/create", methods=['GET', 'POST'])
+@login_required
+def create_serie():
+    serie_form = SerieForm()
+    if serie_form.validate_on_submit():
+        serie = Serie()
+        serie.translations['en'].name = serie_form.name.data
+        serie.translations['es'].name = serie_form.name_es.data
+        db.session.add(serie)
+        db.session.commit()
+        return redirect(url_for('BLOG_BP.create_serie'))
+    return render_template('serie/form.html', form=serie_form)
 
 
 @blog_bp.route("/contact", methods=['GET', 'POST'])

@@ -16,6 +16,19 @@ post_tags = db.Table('post_tag',
                      db.Column('tag_id', db.Integer, db.ForeignKey('tag.id')))
 
 
+class Serie(Translatable, db.Model):
+    __tablename__ = 'serie'
+    __translatable__ = {'locales': ['en', 'es']}
+    locale = 'en'
+    id = db.Column(db.Integer, primary_key=True)
+    posts = db.relationship('Post', backref='serie', lazy='select')
+
+
+class SerieTranslation(translation_base(Serie)):
+    __tablename__ = 'serie_translation'
+    name = db.Column(db.String())
+
+
 class Post(Translatable, db.Model):
     __tablename__ = 'post'
     __translatable__ = {'locales': ['en', 'es']}
@@ -23,6 +36,8 @@ class Post(Translatable, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    serie_id = db.Column(db.Integer, db.ForeignKey('serie.id'))
+    serie_order = db.Column(db.Integer)
     category_id = db.Column(db.Integer, db.ForeignKey('category.id'))
     tags = db.relationship("Tag", secondary=post_tags, backref=db.backref('posts', lazy='dynamic'), lazy='select')
     comments = db.relationship('Comment', backref='post', lazy='select')

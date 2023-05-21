@@ -1,3 +1,6 @@
+## poster
+![Async Spring Annotation](https://drive.google.com/uc?export=view&id=1zmNosZVzpZjjnx74xz3lgfXQePV4JToX)
+
 ## Introducción
 En una aplicación web, es común realizar tareas de larga duración, como enviar correos electrónicos o procesar grandes cantidades de datos. Estas tareas pueden tardar mucho tiempo en completarse y pueden bloquear el subproceso que las ejecuta, lo que genera un rendimiento deficiente y una experiencia de usuario lenta.
 

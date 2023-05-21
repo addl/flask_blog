@@ -9,7 +9,7 @@ from werkzeug.utils import redirect, secure_filename
 from flask_blog_app import db, es
 from flask_blog_app.auth import User
 from flask_blog_app.blog.models import Tag, Category
-from flask_blog_app.post.models import Post
+from flask_blog_app.post.models import Post, Serie
 from flask_blog_app.post import PostForm, Comment
 
 admin_bp = Blueprint('ADMIN_BP', __name__)
@@ -36,6 +36,7 @@ def create_post():
     post_id = request.args.get('post_id')
     post_form = PostForm()
     post_form.tags.choices = [(t.id, t.name) for t in Tag.query.all()]
+    post_form.serie.choices = [(0, "Select")] + [(serie.id, serie.name) for serie in Serie.query.all()]
     post_form.category.choices = [(cat.id, cat.name) for cat in Category.query.all()]
     current_post = Post.query.get_or_404(post_id) if post_id else None
     if current_post:
@@ -46,6 +47,8 @@ def create_post():
         post_form.description_es.data = current_post.translations['es'].description
         post_form.tags.data = [t.id for t in current_post.tags]
         post_form.category.data = current_post.category_id
+        post_form.serie.data = current_post.serie_id if current_post.serie_id else 0
+        post_form.serie_order.data = current_post.serie_order if current_post.serie_order else 0
     if post_form.validate_on_submit():
         post = Post()
         if post_form.post_id.data:
@@ -80,6 +83,8 @@ def create_post():
         post.translations['es'].description = post_form.description_es.data
         post.tags = [Tag.query.get(t) for t in post_form.tags.data]
         post.category_id = post_form.category.data
+        post.serie_id = post_form.serie.data if post_form.serie.data is not 0 else None
+        post.serie_order = post_form.serie_order.data if post_form.serie_order.data is not 0 else None
         post.user_id = current_user.id
         db.session.add(post)
         db.session.commit()
@@ -113,6 +118,19 @@ def all_posts():
 @login_required
 def all_users():
     return render_template('admin/all_users.html', users=User.query.all())
+
+
+@admin_bp.route('/admin/series/all', methods=['GET'])
+@login_required
+def all_series():
+    return render_template('admin/all_series.html', series=Serie.query.all())
+
+
+@admin_bp.route('/admin/series/<serie_id>/posts', methods=['GET'])
+@login_required
+def all_post_in_serie(serie_id):
+    serie = Serie.query.get_or_404(int(serie_id))
+    return render_template('admin/all_posts_in_serie.html', posts=serie.posts)
 
 
 @admin_bp.route('/admin/comments/all', methods=['GET'])

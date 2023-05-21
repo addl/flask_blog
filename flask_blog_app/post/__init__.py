@@ -9,7 +9,7 @@ from werkzeug.utils import redirect
 from flask_blog_app import db, es, mail
 from flask_blog_app.auth import User
 from flask_blog_app.post.forms import PostForm, CommentForm
-from flask_blog_app.post.models import Post, PostTranslation, Comment
+from flask_blog_app.post.models import Post, PostTranslation, Comment, Serie
 
 post_bp = Blueprint('POST_BP', __name__, url_prefix='/<lang_code>')
 
@@ -29,6 +29,12 @@ def pull_lang_code(endpoint, values):
 @post_bp.route('/posts', methods=['GET'])
 def all_posts():
     return render_template('post/all.html', posts=Post.query.order_by(desc("timestamp")).all())
+
+
+@post_bp.route('/serie/<serie_id>/posts', methods=['GET'])
+def all_posts_of_serie(serie_id):
+    serie = Serie.query.get_or_404(int(serie_id))
+    return render_template('serie/all_posts_in_serie_public.html', serie=serie)
 
 
 @post_bp.route('/posts/<human_url>')
