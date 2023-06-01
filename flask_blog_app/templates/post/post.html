@@ -69,6 +69,7 @@
     <section class="post-content">
         {{ post_md | safe }}
     </section>
+    {% if allow_comments %}
     <div class="comments">
         <form method="POST" action="{{ url_for('POST_BP.create_comment') }}" id="comment-form">
             <input type="hidden" id="glg" value="no"/>
@@ -103,7 +104,6 @@
                  data-callback="verifyCallback"></div>
             <button style="margin-top: 2em; margin-left: 0;" type="submit">{{ _('Comment') }}</button>
         </form>
-
         <h4 class="comments-header"><i class="fa fa-comments" aria-hidden="true"></i> {{ _('Comments') }}</h4>
         <div id="comments">
             {% for comment in post.comments %}
@@ -115,6 +115,7 @@
             {% endfor %}
         </div>
     </div>
+    {% endif %}
 </article>
 {% endblock %}
 
