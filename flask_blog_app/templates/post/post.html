@@ -50,7 +50,11 @@
 {% endblock %}
 
 {% block main_content %}
-<article class="{{ post.category.name }}">
+{% if post.serie_id %}
+    <article class="serie">
+{% else %}
+    <article class="{{ post.category.name }}">
+{% endif %}
     <div>
         <h1 class="section-header post-title">
             {{ post.title }}

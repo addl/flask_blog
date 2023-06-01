@@ -35,6 +35,14 @@ article.python a, article.python button, article.python select, article.python s
     color: var(--cpython);
 }
 
+article.serie h1, article.serie h2, article.serie h3, article.serie h4, article.serie h5 {
+    color: var(--cserie);
+}
+
+article.serie a, article.serie button, article.serie select, article.serie summary {
+    color: var(--cserie);
+}
+
 .container .card .face.face1 .content {
     padding: 0px 20px;
     margin-top: 100px;
