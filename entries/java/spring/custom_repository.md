@@ -1,3 +1,6 @@
+## poster
+![Django vs Flask](https://drive.google.com/uc?export=view&id=1IOMtA1EA8lERcRY75NF4pbfoLO-kb-ec)
+
 ## Introduction
 
 Spring Data is a collection of libraries that make it easy to work with data in Spring Framework-based applications. One of the key features of Spring Data is its support for repositories, which provide a way to interact with data sources using a consistent, simple API.
@@ -46,8 +49,6 @@ public interface JobPostingRepository
 ````
 We simply create an interface and extend `ElasticsearchRepository`. The method **findByUrl** is an example of how to define a custom method following Spring Data name conventions annotated with `@Query` class from Elasticsearch.
 
-The above code is enough to perform CRUD operations supporting pagination and sorting as well, but we have already discussed some of its limitations
-
 ## Custom repository: Interface declaration
 
 First, we need to define an interface and declare all the custom methods we need in our repository:
@@ -93,7 +94,7 @@ public class CustomJobPostingRepositoryImpl implements CustomJobPostingRepositor
         if (searchDto.getFromDate() != null || searchDto.getToDate() != null) {
           Long fromTime = searchDto.getFromDate() != null ? searchDto.getFromDate().getTime() : null;
           Long toTime = searchDto.getToDate() != null ? searchDto.getToDate().getTime() : null;
-          QueryUtil.rangeQueryFromAndTo(boolQuery, "createdDate", fromTime, toTime);
+          boolQuery.must(QueryBuilders.rangeQuery(fieldName).from(fromTime).to(toTime));
         }
         
         return template.queryForPage(
@@ -105,16 +106,15 @@ public class CustomJobPostingRepositoryImpl implements CustomJobPostingRepositor
 
 The method starts by creating a `BoolQueryBuilder` object, which is used to construct the search query. 
 
-1. The method then checks the title field in the JobPostingScrappedSearchDto object, and if it is not empty, it adds a should clause to the query to look for the title.
-2. It then checks the searchQuery field in the JobPostingScrappedSearchDto object, and if it is not empty, it adds a should clause to the query to support text query search using `QueryString`.
-3. Then, it adds a must clause to the query to ensure that only visible job postings are returned using `MatchQuery`.
-4. Then it checks the created date range, if both `fromDate` and `toDate` are not null, it adds a range query to the bool query.
-5. Finally, the method uses the **template.queryForPage()** method to execute the search query and return a `Page` object containing the search results.
-
-> Make sure the implementation name ends in `Impl`
+1. The method then checks the title field in the JobPostingScrappedSearchDto object, and if it is not empty, it adds a should clause to the query to look for the title. 
+2. It then checks the searchQuery field in the JobPostingScrappedSearchDto object, and if it is not empty, it adds a should clause to the query to support text query search using `QueryString`. 
+3. Then, it adds a must clause to the query to ensure that only visible job postings are returned using `MatchQuery`. 
+4. Then it checks the created date range, if both `fromDate` and `toDate` are not null, it adds a range query to the bool query. 
+5. Finally, the method uses the **template.queryForPage()** method to execute the search query and return a `Page` object containing the search results. 
 
 ## Extending our custom repository
 Now we only need to extend our repository from the default/traditional repository we covered before:
+
 ````java
 public interface JobPostingRepository
     extends ElasticsearchRepository<JobPostingEntity, String>, CustomJobPostingRepository {
@@ -148,6 +148,10 @@ public class JobPostingService {
 
 }
 ````
+
+## Class diagram
+Finally, here is the class diagram on how a custom repository for Spring Data should look like:
+![Django vs Flask](https://drive.google.com/uc?export=view&id=1sgFser1XezUIqJAaHHlnbvn0qXD2PrNd)
 
 ## Conclusion
 Spring Data repositories are a powerful and convenient way to work with data in Spring-based applications. They provide a consistent, simple API for performing CRUD operations and can be easily extended to add custom logic for more complex queries.

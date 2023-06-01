@@ -1,5 +1,10 @@
+## poster
+![Django vs Flask](https://drive.google.com/uc?export=view&id=122JenjlMwmsojJwiSYtOzTJRr8KjYiO8)
+
 ## Introduction
-Web frameworks are designed to make it easier for developers to build and maintain complex web applications. They provide a set of tools and libraries to handle common tasks such as routing, rendering templates, and interacting with databases. In this blog post, we will be comparing Django and Flask, two popular web frameworks for Python.
+Web frameworks are designed to make it easier for developers to build and maintain complex web applications. 
+They handle common tasks such as routing, rendering templates, and interacting with databases. 
+In this blog post, we will be comparing two of the most popular web frameworks for Python, Django and Flask and help you understand which one is more suitable for you.
 
 ## Django
 Django is a full-stack web framework that was designed to be fast and flexible. It follows the "batteries included" philosophy, meaning that it provides a wide range of features out of the box to handle common web development tasks. Some of the key features of Django include:

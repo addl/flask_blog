@@ -3,6 +3,11 @@ from wtforms import StringField, TextAreaField
 from wtforms.validators import DataRequired, Email
 
 
+class SerieForm(FlaskForm):
+    name = StringField('Name EN', validators=[DataRequired()])
+    name_es = StringField('Name ES', validators=[DataRequired()])
+
+
 class TagForm(FlaskForm):
     name = StringField('Tag name')
 

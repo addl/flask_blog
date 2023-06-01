@@ -188,6 +188,7 @@ def create_app(test_config=None, get_locale=None):
             'scope': 'openid email profile'
         }
     )
+
     @app.route('/google/')
     def google():
         # Redirect to google_auth function
@@ -215,6 +216,12 @@ def create_app(test_config=None, get_locale=None):
     app.register_error_handler(404, not_found)
     app.register_error_handler(500, internal_error)
 
+    # Global variables
+    @app.before_request
+    def load_globals():
+        from flask_blog_app.post.models import Serie
+        g.mr_series = db.session.query(Serie).all()
+
     # blueprint registration
     from flask_blog_app.blog import blog_bp
     from flask_blog_app.post import post_bp
@@ -227,7 +234,6 @@ def create_app(test_config=None, get_locale=None):
 
     with app.app_context():
         from .post.models import Post
-
         return app
 
 

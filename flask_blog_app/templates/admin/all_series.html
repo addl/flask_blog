@@ -1,0 +1,23 @@
+{% extends 'admin/home.html' %}
+
+{% block title %}
+    {{ super() }} create post
+{% endblock %}
+
+{% block admin_content %}
+    <table style="width:100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for s in series %}
+                <tr>
+                    <td><a href="{{ url_for('.all_post_in_serie', serie_id=s.id)}}">{{ s.name }}</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
