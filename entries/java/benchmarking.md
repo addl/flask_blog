@@ -1,5 +1,5 @@
 ## poster
-![New Project using PyCharm](https://drive.google.com/uc?export=view&id=1Y3RF8GlqW6qn_S3C8fFjZvoNHmnPE1pR)
+![Benchmarking with JMH](https://drive.google.com/uc?export=view&id=1Y3RF8GlqW6qn_S3C8fFjZvoNHmnPE1pR)
 
 ## Introduction
 JMH (Java Microbenchmark Harness) is a powerful benchmarking tool used to measure the performance of Java code. 

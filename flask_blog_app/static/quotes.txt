@@ -1,1 +1,2 @@
 Truth is ever to be found in simplicity, and not in the multiplicity and confusion of things - Isaac Newton
+A universal convention supplies all of maintainability, clarity, consistency, and a foundation for good programming habits too. What it doesn’t do is insist that you follow it against your will. That’s Python! - Tim Peters
